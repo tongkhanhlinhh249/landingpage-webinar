@@ -36,7 +36,7 @@
   /* DS gradients — giữ màu DS, tăng tỉ trọng xanh, giảm tím/hồng */
   --grad-headline: linear-gradient(to right, #1eaaff 0%, #3d8bff 45%, #9462fb 85%, #f86880 100%);
   --grad-label:    linear-gradient(to right, #1eaaff 0%, #4a8dff 50%, #9462fb 100%);
-  --grad-cta:      linear-gradient(to right, #0077cc 0%, #3a6fe0 55%, #7b4fe8 100%);   /* chữ trắng ≥ 4.6:1 trên toàn dải */
+  --grad-cta:      linear-gradient(to right, #1eaaff 0%, #3f8dff 55%, #8a6bfa 100%);
   --grad-divider:  linear-gradient(to right, #1eaaff, #1eaaff 35%, #9462fb 75%, #f86880 92%, #fae096);
 
   /* ── Typography ── */
