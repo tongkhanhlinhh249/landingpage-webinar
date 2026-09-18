@@ -3,8 +3,10 @@
   'use strict';
 
   /* ── Cấu hình gửi form ──────────────────────────────────────────────
-     Điền URL endpoint (Google Apps Script / webhook / CRM) để nhận lead.
-     Để trống → chạy chế độ demo (chỉ hiển thị thông báo thành công). */
+     Dữ liệu đổ về Google Sheet qua Google Apps Script (google-apps-script/Code.gs).
+     (Không ghi link sheet ở đây — file này public trên website.)
+     → Dán URL Web App (dạng https://script.google.com/macros/s/…/exec) vào FORM_ENDPOINT.
+     Để trống → chế độ demo (chỉ hiện thông báo thành công, không lưu dữ liệu). */
   var FORM_ENDPOINT = '';
 
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -245,13 +247,14 @@
       so_dien_thoai: (data.get('so_dien_thoai') || '').trim(),
       vai_tro: data.get('vai_tro') || '',
       mong_muon: data.get('mong_muon') || '',
-      thoi_gian_dang_ky: new Date().toISOString(),
       nguon: window.location.href
     };
 
     submitBtn.setAttribute('aria-busy', 'true');
     submitBtn.querySelector('.btn-label').textContent = 'Đang gửi đăng ký…';
 
+    // Apps Script không trả CORS → gửi dạng "simple request" (text/plain, no-cors).
+    // Script đọc JSON từ e.postData.contents và ghi 1 dòng vào sheet.
     var request = FORM_ENDPOINT
       ? fetch(FORM_ENDPOINT, {
           method: 'POST',
@@ -259,7 +262,10 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(payload)
         })
-      : new Promise(function (resolve) { setTimeout(resolve, 900); });
+      : new Promise(function (resolve) {
+          if (window.console) console.warn('[Form] FORM_ENDPOINT trống — đang chạy demo, dữ liệu không được lưu.');
+          setTimeout(resolve, 900);
+        });
 
     request
       .then(function () {
