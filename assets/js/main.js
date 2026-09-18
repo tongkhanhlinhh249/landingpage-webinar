@@ -179,31 +179,29 @@
     });
   }
 
-  /* ── Sticky CTA (mobile/tablet): hiện khi đã cuộn qua hero CTA và form/footer chưa hiện ── */
+  /* ── Sticky CTA (mobile/tablet): hiện ngay từ đầu trang, ẩn khi form hoặc footer đang hiện ── */
   var sticky = document.getElementById('sticky-cta');
-  var heroCta = document.getElementById('hero-cta');
   var formCol = document.getElementById('dang-ky');
   var footer = document.querySelector('.site-footer');
 
-  if (sticky && heroCta && formCol && 'IntersectionObserver' in window) {
-    var visible = { hero: true, form: false, footer: false };  // hero = "chưa cuộn qua CTA hero"
+  if (sticky && formCol && 'IntersectionObserver' in window) {
+    var visible = { form: false, footer: false };
     var stickyLink = sticky.querySelector('a');
     var updateSticky = function () {
-      var show = !visible.hero && !visible.form && !visible.footer;
+      var show = !visible.form && !visible.footer;
       sticky.classList.toggle('is-visible', show);
       sticky.setAttribute('aria-hidden', String(!show));
       if (stickyLink) stickyLink.tabIndex = show ? 0 : -1;
     };
     var stickyObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.target === heroCta) visible.hero = entry.isIntersecting || entry.boundingClientRect.top > 0;
-        else if (entry.target === formCol) visible.form = entry.isIntersecting;
+        if (entry.target === formCol) visible.form = entry.isIntersecting;
         else if (entry.target === footer) visible.footer = entry.isIntersecting;
       });
       updateSticky();
     });
-    stickyObs.observe(heroCta);
     stickyObs.observe(formCol);
+    updateSticky();
     if (footer) stickyObs.observe(footer);
   }
 
