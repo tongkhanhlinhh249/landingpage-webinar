@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20260918f">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260918g">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -549,14 +549,16 @@
               <form id="register-form" class="reg-form" novalidate>
                 <div class="form-row">
                   <div class="form-field">
-                    <label for="f-name" class="form-label">Họ và tên</label>
-                    <input id="f-name" name="ho_ten" type="text" class="form-input" autocomplete="name" placeholder="Nguyễn Văn A">
+                    <label for="f-name" class="form-label">Họ và tên <span class="req" aria-hidden="true">*</span></label>
+                    <input id="f-name" name="ho_ten" type="text" class="form-input" autocomplete="name"
+                           required aria-required="true" aria-describedby="f-name-err" placeholder="Nguyễn Văn A">
+                    <p id="f-name-err" class="form-error" hidden>Vui lòng nhập họ và tên.</p>
                   </div>
                   <div class="form-field">
-                    <label for="f-phone" class="form-label">Số điện thoại</label>
+                    <label for="f-phone" class="form-label">Số điện thoại <span class="req" aria-hidden="true">*</span></label>
                     <input id="f-phone" name="so_dien_thoai" type="tel" class="form-input" autocomplete="tel" inputmode="tel"
-                           aria-describedby="f-phone-err" placeholder="09xx xxx xxx">
-                    <p id="f-phone-err" class="form-error" hidden>Số điện thoại chưa đúng định dạng.</p>
+                           required aria-required="true" aria-describedby="f-phone-err" placeholder="09xx xxx xxx">
+                    <p id="f-phone-err" class="form-error" hidden>Vui lòng nhập số điện thoại hợp lệ.</p>
                   </div>
                 </div>
 
@@ -589,10 +591,15 @@
 
                 <p id="form-status" class="form-status" role="alert" hidden></p>
 
-                <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn">
+                <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn" aria-describedby="form-consent">
                   <svg class="spinner icon icon-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 60"/></svg>
                   <span class="btn-label">Đăng ký tham dự sự kiện</span>
                 </button>
+                <p class="form-consent" id="form-consent">
+                  <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>
+                  <span>Bằng việc đăng ký, anh/chị đồng ý để NetSpace sử dụng thông tin trên để liên hệ về sự kiện <span class="nowrap">LEGAL x&nbsp;REPUTATION</span>.</span>
+                  <!-- TODO: thêm link Chính sách bảo mật khi có, ví dụ: <a href="https://netspace.vn/...">Chính sách bảo mật</a> -->
+                </p>
                 <p class="micro-text micro-center"><span aria-hidden="true">🎟️</span> Số lượng vé mời có giới hạn.</p>
               </form>
 
@@ -675,6 +682,6 @@
     <a href="#dang-ky" class="btn btn-primary" tabindex="-1">Đăng ký ngay</a>
   </div>
 
-  <script src="assets/js/main.js?v=20260918f" defer></script>
+  <script src="assets/js/main.js?v=20260918g" defer></script>
 </body>
 </html>

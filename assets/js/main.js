@@ -216,28 +216,41 @@
   var submitBtn = document.getElementById('submit-btn');
 
   var PHONE_RE = /^(?:\+?84|0)(?:3|5|7|8|9)\d{8}$/;
-  var phoneInput = document.getElementById('f-phone');
-  var phoneErr = document.getElementById('f-phone-err');
 
-  // Không có trường bắt buộc — chỉ kiểm tra định dạng SĐT nếu có nhập
-  function validatePhone() {
-    var v = phoneInput.value.replace(/[\s.\-()]/g, '');
-    var ok = v === '' || PHONE_RE.test(v);
-    phoneInput.setAttribute('aria-invalid', String(!ok));
-    phoneErr.hidden = ok;
-    return ok;
+  // Bắt buộc: Họ tên + Số điện thoại · 2 dropdown tuỳ chọn
+  var fields = [
+    { input: document.getElementById('f-name'),  err: document.getElementById('f-name-err'),
+      test: function (v) { return v.trim().length >= 2; } },
+    { input: document.getElementById('f-phone'), err: document.getElementById('f-phone-err'),
+      test: function (v) { return PHONE_RE.test(v.replace(/[\s.\-()]/g, '')); } }
+  ];
+
+  function setFieldState(field, ok) {
+    field.input.setAttribute('aria-invalid', String(!ok));
+    field.err.hidden = ok;
   }
-  phoneInput.addEventListener('blur', validatePhone);
-  phoneInput.addEventListener('input', function () {
-    if (phoneInput.getAttribute('aria-invalid') === 'true') validatePhone();
+
+  fields.forEach(function (field) {
+    field.input.addEventListener('blur', function () {
+      if (field.input.value.trim() !== '') setFieldState(field, field.test(field.input.value));
+    });
+    field.input.addEventListener('input', function () {
+      if (field.input.getAttribute('aria-invalid') === 'true' && field.test(field.input.value)) setFieldState(field, true);
+    });
   });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     statusEl.hidden = true;
 
-    if (!validatePhone()) {
-      phoneInput.focus();
+    var firstInvalid = null;
+    fields.forEach(function (field) {
+      var ok = field.test(field.input.value);
+      setFieldState(field, ok);
+      if (!ok && !firstInvalid) firstInvalid = field.input;
+    });
+    if (firstInvalid) {
+      firstInvalid.focus();
       return;
     }
 
