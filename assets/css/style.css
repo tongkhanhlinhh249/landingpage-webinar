@@ -394,11 +394,11 @@ main:focus { outline: none; }
   padding: calc(var(--nav-h) + 8px) 0 48px;
 }
 @media (min-width: 1024px) {
-  .hero { min-height: min(100vh, 940px); display: flex; align-items: center; padding: calc(var(--nav-h) + 48px) 0 56px; }
+  .hero { min-height: min(100vh, 940px); display: flex; align-items: center; padding: calc(var(--nav-h) + 22px) 0 42px; }
 }
 .hero-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
 @media (min-width: 640px) { .hero-grid { gap: 32px; } }
-@media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0, 1.16fr) minmax(0, .84fr); gap: 32px; } }
+@media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0, 1.16fr) minmax(0, .84fr); gap: 18px 32px; } }
 
 
 .hero-title { color: var(--color-ink); }
@@ -532,16 +532,38 @@ main:focus { outline: none; }
   .hero-gift-icon { margin-top: 1px; }
 }
 
-.hero-cta {
-  margin-top: 26px;
-  display: flex; flex-direction: column; align-items: stretch; gap: 14px;
+/* Khối countdown + CTA (cột phải) */
+.hero-cta-card {
+  margin-top: 18px; padding: 16px 18px 18px; text-align: center;
+  border-radius: var(--radius-2xl);
+  background: linear-gradient(155deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .5));
+  -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, .8);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 26px 56px -34px rgba(30, 120, 220, .42);
 }
-@media (min-width: 480px) { .hero-cta { flex-direction: row; align-items: center; gap: 24px; } }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-rows: auto auto; }
+  .hero-copy    { grid-column: 1; grid-row: 1 / span 2; }
+  .hero-visual  { grid-column: 2; grid-row: 1; }
+  .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: 0; }
+}
+.countdown-inline {
+  width: 100%; margin: 0; padding: 0;
+  background: none; border: 0; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.hero-cta-btn { width: 100%; justify-content: center; margin-top: 13px; }
+.hero-cta-card .micro-text { margin-top: 9px; }
+.countdown-inline .countdown-title { margin-bottom: 8px; }
+.countdown-inline .countdown-grid { gap: 7px; }
+.countdown-inline .cd-num { font-size: 21px; padding: 7px 4px; }
+.countdown-inline .countdown-note { margin-top: 8px; font-size: 12px; }
+@media (min-width: 640px) { .countdown-inline .cd-num { font-size: 23px; padding: 8px 6px; } }
 
 /* ── KV: AI puppeteer hand ── */
 /* Mobile/tablet: minh hoạ lên đầu hero · Desktop: cột phải */
 .hero-visual { display: block; width: 100%; max-width: 520px; margin: 0 auto; order: -1; }
-@media (min-width: 1024px) { .hero-visual { max-width: 600px; order: 0; } }
+@media (min-width: 1024px) { .hero-visual { max-width: 430px; order: 0; } }
 
 .kv3d {
   position: relative; width: 100%; aspect-ratio: 600 / 612;
