@@ -960,14 +960,16 @@ main:focus { outline: none; }
   .form-meta { margin-top: 24px; }
 }
 @media (min-width: 1200px) { .form-title-hook { font-size: 30px; } }
-.form-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
-.form-meta li {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: 13px; font-weight: 500; color: var(--color-ink);
-  padding: 7px 13px; border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, .8); box-shadow: inset 0 0 0 1px var(--hairline);
+.form-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+.form-meta li {                    /* chip giống hero */
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 15px; font-weight: 700; color: var(--color-ink-blue); letter-spacing: -0.01em;
+  padding: 8px 18px 8px 9px; border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, #f2f8ff, #ffffff 65%);
+  box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .3), 0 12px 22px -14px rgba(18, 52, 125, .5);
 }
-.form-meta .icon { color: var(--color-accent-icon); }
+.form-meta .meta-icon { width: 32px; height: 32px; }
+.form-meta .meta-icon .icon { width: 17px; height: 17px; }
 
 .reg-form { display: flex; flex-direction: column; gap: 20px; }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 20px; }
