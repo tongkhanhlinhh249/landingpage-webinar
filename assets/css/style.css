@@ -548,15 +548,16 @@ main:focus { outline: none; }
   .hero-visual  { grid-column: 2; grid-row: 1; }
   .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -34px; }
 }
-.countdown-inline {
-  width: 100%; margin: 0; padding: 0;
-  background: none; border: 0; box-shadow: none;
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-}
+
 .hero-cta-btn { width: 100%; justify-content: center; margin-top: 13px; }
 .hero-cta-card .micro-text { margin-top: 9px; }
 /* Hàng ngang: “Chỉ còn” + 4 ô số */
-.countdown-inline { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; text-align: left; }
+.hero-cta-card .countdown-inline {
+  width: 100%; margin: 0; padding: 0;
+  background: none; border: 0; box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; text-align: left;
+}
 .countdown-inline .countdown-title {
   grid-column: 1; grid-row: 1; margin-bottom: 0;
   font-size: 20px; font-weight: 700; letter-spacing: .01em; color: var(--color-accent-text);
@@ -566,7 +567,7 @@ main:focus { outline: none; }
 .countdown-inline .cd-num { font-size: 22px; padding: 8px 4px; }
 @media (min-width: 640px) { .countdown-inline .cd-num { font-size: 24px; padding: 9px 6px; } }
 @media (max-width: 479px) {
-  .countdown-inline { grid-template-columns: 1fr; text-align: center; }
+  .hero-cta-card .countdown-inline { grid-template-columns: 1fr; text-align: center; }
   .countdown-inline .countdown-title { grid-row: 1; font-size: 18px; }
   .countdown-inline .countdown-grid { grid-column: 1; grid-row: 2; margin-top: 8px; }
   .countdown-inline .countdown-note { grid-column: 1; grid-row: 3; max-width: none; margin-top: 8px; }
@@ -916,22 +917,19 @@ main:focus { outline: none; }
 @media (min-width: 640px) { .cd-num { font-size: 26px; padding: 11px 8px; } }
 .eyebrow-left { margin-bottom: 12px; }
 .form-title { font-weight: 600; color: var(--color-ink); }
-.form-title-event {
-  display: block; margin-bottom: 10px;
-  font-size: 13px; font-weight: 600; letter-spacing: .16em; color: var(--color-accent-text);
-}
+.form-title .event-name { margin-bottom: 14px; }
 .form-title-hook {
-  display: block;
-  font-size: 22px; font-weight: 600; line-height: 1.3; letter-spacing: -0.015em; text-wrap: balance;
+  display: block; text-transform: uppercase;
+  font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance;
 }
 @media (min-width: 640px) { .form-title-hook { font-size: 26px; } }
 .form-title-ai { padding-right: .04em; }
 @media (min-width: 1024px) {
-  .form-title-event { font-size: 14px; margin-bottom: 14px; }
-  .form-title-hook { font-size: 28px; line-height: 1.25; letter-spacing: -0.02em; }
+  .form-title .event-name { margin-bottom: 16px; }
+  .form-title-hook { font-size: 26px; line-height: 1.18; letter-spacing: -0.025em; }
   .form-meta { margin-top: 24px; }
 }
-@media (min-width: 1200px) { .form-title-hook { font-size: 34px; } }
+@media (min-width: 1200px) { .form-title-hook { font-size: 30px; } }
 .form-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .form-meta li {
   display: inline-flex; align-items: center; gap: 6px;
@@ -1208,16 +1206,15 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), var(--shadow-soft);
 }
 @media (min-width: 1000px) { .program-aside { position: sticky; top: calc(var(--nav-h) + 20px); } }
-.program-kicker { font-size: 11.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--color-ink-light); }
-.program-name {
-  display: flex; align-items: center; gap: 9px; margin-top: 8px;
-  font-size: 19px; font-weight: 700; letter-spacing: .04em; color: var(--color-accent-text);
+.program-card .event-name { margin-bottom: 14px; }
+.program-hook {
+  font-size: 19px; font-weight: 700; line-height: 1.2; letter-spacing: -0.025em;
+  text-transform: uppercase; color: var(--color-ink);
 }
-.program-hook { margin-top: 12px; font-size: 20px; font-weight: 700; line-height: 1.3; letter-spacing: -0.02em; color: var(--color-ink); }
 .program-facts { display: grid; gap: 8px; margin-top: 16px; }
 .program-facts li { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; color: var(--color-ink-muted); }
 .program-facts .icon { flex-shrink: 0; color: var(--color-accent-icon); }
-.program-card .countdown { width: 100%; margin-top: 18px; }
+.program-card .countdown { width: 100%; margin-top: 18px; text-align: center; }
 .program-cta { margin-top: 18px; width: 100%; justify-content: center; }
 
 .program-timeline { display: grid; gap: 18px; }
