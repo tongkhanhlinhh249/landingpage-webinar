@@ -809,7 +809,7 @@ main:focus { outline: none; }
   .host { grid-column: 1 / -1; }
 }
 @media (min-width: 1024px) {
-  .speakers { grid-template-columns: 1fr minmax(260px, .82fr) 1fr; gap: 48px; align-items: start; }
+  .speakers { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px; max-width: 960px; margin: 0 auto; align-items: start; }
   .host { grid-column: auto; order: 0; align-self: center; }
 }
 
