@@ -3,11 +3,13 @@
   'use strict';
 
   /* ── Cấu hình gửi form ──────────────────────────────────────────────
-     Dữ liệu đổ về Google Sheet qua Google Apps Script (google-apps-script/Code.gs).
-     (Không ghi link sheet ở đây — file này public trên website.)
-     → Dán URL Web App (dạng https://script.google.com/macros/s/…/exec) vào FORM_ENDPOINT.
-     Để trống → chế độ demo (chỉ hiện thông báo thành công, không lưu dữ liệu). */
-  var FORM_ENDPOINT = '';
+     Đăng ký được POST tới webhook n8n với body { name, phone, email, role, value }.
+     Để trống FORM_ENDPOINT → form báo lỗi kèm hotline (không báo thành công giả). */
+  var FORM_ENDPOINT = 'https://n8n.netspace.vn/webhook/event/webinar';
+  /* Đặt true nếu webhook KHÔNG thể trả header CORS: khi đó form gửi lại dạng
+     "simple request" (text/plain, no-cors) — dữ liệu vẫn tới n8n nhưng trang
+     không đọc được phản hồi nên luôn báo thành công. */
+  var ALLOW_NO_CORS_FALLBACK = false;
 
   var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var desktopMQ = window.matchMedia('(min-width: 1024px)');
@@ -306,12 +308,11 @@
 
     var data = new FormData(form);
     var payload = {
-      ho_ten: (data.get('ho_ten') || '').trim(),
-      so_dien_thoai: (data.get('so_dien_thoai') || '').trim(),
+      name:  (data.get('ho_ten') || '').trim(),
+      phone: (data.get('so_dien_thoai') || '').trim(),
       email: (data.get('email') || '').trim(),
-      vai_tro: data.get('vai_tro') || '',
-      mong_muon: data.get('mong_muon') || '',
-      nguon: window.location.href
+      role:  data.get('vai_tro') || '',
+      value: data.get('mong_muon') || ''
     };
 
     submitBtn.setAttribute('aria-busy', 'true');
@@ -321,15 +322,30 @@
     // Script đọc JSON từ e.postData.contents và ghi 1 dòng vào sheet.
     var request;
     if (FORM_ENDPOINT) {
+      // Ưu tiên gửi JSON kèm CORS để đọc được kết quả thật từ webhook
       request = fetch(FORM_ENDPOINT, {
         method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res;
+      }).catch(function (err) {
+        // TypeError = trình duyệt chặn vì webhook không trả header CORS
+        var corsBlocked = err && err.name === 'TypeError';
+        if (!corsBlocked || !ALLOW_NO_CORS_FALLBACK) throw err;
+        if (window.console) console.warn('[Form] Webhook chưa bật CORS — gửi lại dạng text/plain (không đọc được phản hồi).');
+        return fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify(payload)
+        });
       });
     } else {
-      // Chưa dán URL /exec → KHÔNG báo thành công giả, hướng người dùng sang hotline
-      if (window.console) console.error('[Form] FORM_ENDPOINT trống — đăng ký không được lưu. Dán URL /exec của Apps Script vào FORM_ENDPOINT.');
+      // Chưa cấu hình endpoint → KHÔNG báo thành công giả, hướng người dùng sang hotline
+      if (window.console) console.error('[Form] FORM_ENDPOINT trống — đăng ký không được lưu.');
       request = Promise.reject(new Error('missing-endpoint'));
     }
 

@@ -24,29 +24,44 @@ Mở http://localhost:8000
 
 ## Cần cấu hình trước khi chạy thật
 
-- **Nhận dữ liệu form → Google Sheet:** xem mục "Kết nối Google Sheet" bên dưới.
+- **Nhận dữ liệu form:** POST tới webhook n8n — xem mục "Nhận dữ liệu đăng ký" bên dưới.
 - **Ảnh diễn giả / host:** đã có (tách nền, WebP) trong `assets/images/`:
-  `speaker-nguyen-dinh-thanh.webp`, `speaker-tran-tam.webp`, `host-ngo-huyen.webp`.
+  `speaker-nguyen-dinh-thanh.webp`, `speaker-tran-tam.webp` (+ bản `-hero.webp` cắt bán thân cho hero).
   Muốn thay ảnh: giữ nguyên tên file (PNG/WebP nền trong suốt, người canh sát mép dưới).
 - **Link profile chuyên gia:** thay `href="#"` trong `index.html` (tìm `TODO`).
-- **og:image** (1200×630) khi có KV chính thức (tìm `TODO` trong `<head>`).
+- **og:image**: `assets/images/og-cover.jpg` (1200×630) — thay nếu có KV chính thức.
 
-## Kết nối Google Sheet
+## Nhận dữ liệu đăng ký (n8n webhook)
 
-Sheet nhận dữ liệu: đã cấu hình sẵn `SHEET_ID` trong `google-apps-script/Code.gs` (không đưa link sheet vào file public).
+Form POST tới webhook trong `FORM_ENDPOINT` (`assets/js/main.js`):
+`https://n8n.netspace.vn/webhook/event/webinar`
 
-1. Mở Google Sheet trên → **Tiện ích mở rộng → Apps Script**.
-2. Xoá code mẫu, dán toàn bộ nội dung `google-apps-script/Code.gs` → **Lưu**.
-3. **Triển khai → Tùy chọn triển khai mới** → loại **Ứng dụng web**:
-   - Thực thi với tư cách: **Tôi**
-   - Người có quyền truy cập: **Bất kỳ ai**
-4. Bấm **Triển khai**, cấp quyền cho tài khoản Google → copy **URL ứng dụng web** (kết thúc bằng `/exec`).
-5. Dán URL đó vào `FORM_ENDPOINT` trong `assets/js/main.js`, đổi số `?v=` trong `index.html`, deploy lại.
+Body gửi đi (JSON, `Content-Type: application/json`):
 
-Kiểm tra: mở URL `/exec` trên trình duyệt thấy `{"ok":true,...}` là script đã chạy.
-Dữ liệu ghi vào tab **Đăng ký** (tự tạo): Thời gian đăng ký · Họ và tên · Số điện thoại · Vị thế & Vai trò · Giá trị mong muốn · Nguồn (URL).
+```json
+{
+  "name": "Lý Mạnh Hà",
+  "phone": "0912345678",
+  "email": "lymanhha@gmail.com",
+  "role": "KOL / KOC / Content Creator",
+  "value": "Giải pháp xây dựng hệ thống lá chắn bảo vệ thương hiệu 360°"
+}
+```
 
-> Nếu sửa `Code.gs` sau khi đã triển khai: **Triển khai → Quản lý bản triển khai → Chỉnh sửa → Phiên bản mới** để URL cũ nhận code mới.
+Phía n8n cần 2 thứ:
+
+1. **Bật workflow** (toggle Active) — nếu chưa bật, webhook trả 404 `"not registered"`.
+2. **Cho phép CORS** ở node Webhook (Allow Origins = `https://landingpage-webinar.vercel.app` hoặc `*`),
+   vì trình duyệt phải đọc được phản hồi mới báo thành công.
+
+Nếu hạ tầng không trả được header CORS: đặt `ALLOW_NO_CORS_FALLBACK = true` trong `assets/js/main.js`.
+Khi đó form gửi lại dạng `text/plain` (không preflight) — dữ liệu vẫn tới n8n nhưng trang luôn báo
+thành công vì không đọc được phản hồi; n8n phải tự `JSON.parse` phần body.
+
+Chưa gửi được (webhook tắt / lỗi mạng) → form hiện thông báo lỗi kèm Hotline **079 2251 228** và email,
+dữ liệu người dùng nhập vẫn giữ nguyên trên màn hình.
+
+> `google-apps-script/Code.gs` (ghi vào Google Sheet) vẫn giữ lại ở máy để dự phòng, không dùng nữa.
 
 ## Ghi chú
 
