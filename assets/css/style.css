@@ -568,7 +568,7 @@ main:focus { outline: none; }
   .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -34px; }
 }
 
-.hero-cta-btn { width: 100%; justify-content: center; margin-top: 13px; }
+.hero-cta-btn { display: flex; width: fit-content; min-width: 62%; justify-content: center; margin: 16px auto 0; padding-left: 34px; padding-right: 34px; }
 .hero-cta-card .micro-text { margin-top: 9px; }
 /* Hàng ngang: “Chỉ còn” + 4 ô số */
 .hero-cta-card .countdown-inline {
@@ -581,20 +581,20 @@ main:focus { outline: none; }
 }
 .countdown-inline .countdown-title {
   grid-column: 1; grid-row: 1; margin-bottom: 0;
-  font-size: 25px; font-weight: 700; line-height: 1.05; letter-spacing: -0.01em; text-transform: uppercase;
+  font-size: 30px; font-weight: 700; line-height: 1; letter-spacing: -0.015em; text-transform: uppercase;
   color: var(--color-ns-secondary); background-image: var(--grad-label);
   background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
-.countdown-inline .countdown-note { grid-column: 1; grid-row: 2; margin-top: 5px; max-width: 15ch; font-size: 11.5px; line-height: 1.3; }
+.countdown-inline .countdown-note { grid-column: 1; grid-row: 2; margin-top: 6px; max-width: 16ch; font-size: 12px; line-height: 1.25; }
 .countdown-inline .countdown-grid { grid-column: 2; grid-row: 1 / span 2; gap: 8px; }
 .countdown-inline .cd-num {
-  font-size: 27px; padding: 9px 4px; color: #17347d;
+  font-size: 30px; padding: 10px 4px; color: #17347d;
   background: #fff; background-image: none;
   box-shadow: inset 0 0 0 1px rgba(29, 73, 166, .08), 0 12px 24px -18px rgba(40, 110, 210, .9);
 }
-.countdown-inline .cd-label { font-size: 11.5px; font-weight: 700; color: var(--color-ink-muted); }
+.countdown-inline .cd-label { font-size: 12px; font-weight: 700; color: var(--color-ink); }
 .countdown-inline .countdown-note { color: var(--color-ink-muted); }
-@media (min-width: 640px) { .countdown-inline .cd-num { font-size: 30px; padding: 10px 6px; } }
+@media (min-width: 640px) { .countdown-inline .cd-num { font-size: 34px; padding: 11px 8px; } }
 @media (max-width: 479px) {
   .hero-cta-card .countdown-inline { grid-template-columns: 1fr; text-align: center; }
   .countdown-inline .countdown-title { grid-row: 1; font-size: 18px; }
@@ -1135,6 +1135,13 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 /* ==========================================================================
    Section quà tặng
    ========================================================================== */
+.gift-section { background-position: center; }
+.gift-section.section-strong {
+  background:
+    radial-gradient(68% 58% at 88% 4%, rgba(148, 98, 251, .16), transparent 62%),
+    radial-gradient(64% 62% at 8% 46%, rgba(30, 170, 255, .18), transparent 66%),
+    linear-gradient(180deg, rgba(232, 240, 252, 0) 0%, #e9f0fb 9%, #e1ebf9 48%, #eaf1fc 91%, rgba(232, 240, 252, 0) 100%);
+}
 .gift-layout { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
 @media (min-width: 900px) { .gift-layout { grid-template-columns: minmax(0, 1.04fr) minmax(0, .96fr); gap: 56px; } }
 
