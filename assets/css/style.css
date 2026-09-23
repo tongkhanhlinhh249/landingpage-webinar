@@ -1090,44 +1090,41 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 .gift-cta { margin-top: 22px; }
 
 /* Hộp quà mở ra */
-.gift-box {
-  position: relative; padding: 22px 24px 24px; text-align: center;
-  border-radius: var(--radius-2xl);
-  background: linear-gradient(155deg, rgba(255, 255, 255, .82), rgba(255, 255, 255, .5));
-  -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
-  border: 1px solid rgba(255, 255, 255, .8);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), var(--shadow-soft);
-}
+.gift-box { position: relative; padding: 4px 0 0; text-align: center; }
 .gift-box-btn {
   display: flex; flex-direction: column; align-items: center; gap: 12px;
   width: 100%; padding: 4px; border: 0; background: none; cursor: pointer;
   font: inherit; color: inherit; border-radius: var(--radius-xl);
 }
 .gift-box-btn:focus-visible { outline: 2px solid var(--color-accent-icon); outline-offset: 4px; }
-.gift-3d { position: relative; display: block; width: 208px; height: 216px; }
-.gift-art { position: relative; display: block; width: 100%; height: 100%; overflow: visible; }
-.gift-art-lid { transform-box: fill-box; transform-origin: 50% 88%; transition: transform .55s cubic-bezier(.22, .9, .3, 1.25); }
-.gift-box.is-open .gift-art-lid { transform: translateY(-52px) rotate(-9deg); }
-.gift-box:not(.is-open) .gift-art { animation: gift-float 3.8s ease-in-out infinite; }
-.gift-box:not(.is-open) .gift-art-lid { animation: gift-lid-nudge 3.8s ease-in-out infinite; }
+.gift-3d { position: relative; display: block; width: 236px; height: 275px; }
+.gift-img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain;
+  transition: opacity .4s ease, transform .55s cubic-bezier(.22, .9, .3, 1.25);
+}
+.gift-img-open { opacity: 0; transform: scale(.96); }
+.gift-box.is-open .gift-img-closed { opacity: 0; transform: scale(.96); }
+.gift-box.is-open .gift-img-open { opacity: 1; transform: none; }
+.gift-box:not(.is-open) .gift-3d { animation: gift-float 3.8s ease-in-out infinite; }
+.gift-box:not(.is-open) .gift-img-closed { animation: gift-lid-nudge 3.8s ease-in-out infinite; }
 .gift-box:not(.is-open) .gift-glow { animation: gift-glow-pulse 3.8s ease-in-out infinite; }
 @keyframes gift-float {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-9px); }
 }
 @keyframes gift-lid-nudge {
-  0%, 62%, 100% { transform: translate(0, 0) rotate(0deg); }
-  70%  { transform: translate(0, -9px) rotate(-3.5deg); }
-  78%  { transform: translate(0, -2px) rotate(2deg); }
-  86%  { transform: translate(0, -6px) rotate(-1.5deg); }
-  94%  { transform: translate(0, -1px) rotate(.5deg); }
+  0%, 62%, 100% { transform: rotate(0deg) scale(1); }
+  70%  { transform: rotate(-3.2deg) scale(1.02); }
+  78%  { transform: rotate(2.2deg) scale(1.01); }
+  86%  { transform: rotate(-1.4deg) scale(1.015); }
+  94%  { transform: rotate(.5deg) scale(1); }
 }
 @keyframes gift-glow-pulse {
   0%, 100% { opacity: .6;  transform: translate(-50%, -50%) scale(1); }
   50%      { opacity: .95; transform: translate(-50%, -50%) scale(1.09); }
 }
 .gift-glow {
-  position: absolute; left: 50%; top: 58%; width: 250px; height: 168px; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: 62%; width: 260px; height: 190px; transform: translate(-50%, -50%);
   border-radius: 50%; background: radial-gradient(circle, rgba(90, 180, 255, .36), rgba(90, 180, 255, 0) 70%);
 }
 
@@ -1157,7 +1154,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   .gift-prize { padding: 16px 18px; }
   .gift-prize-name { font-size: 18px; }
   .gift-box { padding: 18px 16px 20px; }
-  .gift-3d { width: 178px; height: 186px; }
+  .gift-3d { width: 190px; height: 221px; }
   .gift-list li { font-size: 14px; }
 }
 
