@@ -604,6 +604,7 @@ main:focus { outline: none; }
   position: relative; width: 100%; aspect-ratio: 600 / 612;
   container-type: inline-size;
   --px: 0; --py: 0;
+  filter: saturate(1.12) contrast(1.04);
 }
 .kv3d .obj { translate: calc(var(--px) * var(--d, 0) * 1px) calc(var(--py) * var(--d, 0) * 1px); transition: translate .6s cubic-bezier(.2, .7, .2, 1); }
 
@@ -630,8 +631,8 @@ main:focus { outline: none; }
 .kv-circuit path { stroke-dasharray: 3 5; animation: circuit 1.4s linear infinite; }
 @keyframes circuit { to { stroke-dashoffset: -16; } }
 
-.kv-string { fill: none; stroke: url(#h-string); stroke-width: 1.6; stroke-linecap: round; }
-.kv-string-glow { fill: none; stroke: #7cc4ff; stroke-width: 6; opacity: .22; filter: url(#h-blur); }
+.kv-string { fill: none; stroke: url(#h-string); stroke-width: 2.2; stroke-linecap: round; }
+.kv-string-glow { fill: none; stroke: #3f9dff; stroke-width: 7; opacity: .32; filter: url(#h-blur); }
 .kv-pulse {
   fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round;
   stroke-dasharray: 10 150; filter: drop-shadow(0 0 4px #1eaaff);
