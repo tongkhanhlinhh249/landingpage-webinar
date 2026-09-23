@@ -444,7 +444,7 @@ main:focus { outline: none; }
   font-weight: 700; line-height: 1.14; letter-spacing: -0.02em; text-transform: uppercase;
   color: var(--color-ink-blue);
 }
-.hook .grad-text { padding-right: .03em; }
+.hook .grad-text { padding-right: .04em; font-size: 1.16em; font-weight: 800; letter-spacing: -0.03em; }
 
 .hero-sub {
   margin-top: 24px; max-width: 580px;
