@@ -1077,7 +1077,10 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 .footer-text { font-size: 15px; line-height: 1.6; color: var(--color-ink-muted); }
 .footer-text + .footer-text { margin-top: 6px; }
 .footer-text strong { color: var(--color-ink); font-weight: 600; }
-.footer-link { font-size: 15px; font-weight: 500; color: var(--color-ink); text-decoration: none; border-radius: 4px; }
+.footer-link {
+  display: inline-flex; align-items: center; min-height: 28px; padding: 4px 6px; margin: -4px -6px;
+  font-size: 15px; font-weight: 500; color: var(--color-ink); text-decoration: none; border-radius: 6px;
+}
 .footer-link:hover { color: var(--color-link); }
 
 .footer-bottom {
@@ -1313,3 +1316,6 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   .kv3d .obj { translate: none; }
   .kv-rig { transform: none; }
 }
+
+/* Vùng chạm tối thiểu 24px (WCAG 2.2 – Target Size Minimum) */
+.footer-bottom a, .nav-brand { display: inline-flex; align-items: center; min-height: 28px; }

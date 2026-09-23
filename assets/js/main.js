@@ -319,17 +319,19 @@
 
     // Apps Script không trả CORS → gửi dạng "simple request" (text/plain, no-cors).
     // Script đọc JSON từ e.postData.contents và ghi 1 dòng vào sheet.
-    var request = FORM_ENDPOINT
-      ? fetch(FORM_ENDPOINT, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify(payload)
-        })
-      : new Promise(function (resolve) {
-          if (window.console) console.warn('[Form] FORM_ENDPOINT trống — đang chạy demo, dữ liệu không được lưu.');
-          setTimeout(resolve, 900);
-        });
+    var request;
+    if (FORM_ENDPOINT) {
+      request = fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify(payload)
+      });
+    } else {
+      // Chưa dán URL /exec → KHÔNG báo thành công giả, hướng người dùng sang hotline
+      if (window.console) console.error('[Form] FORM_ENDPOINT trống — đăng ký không được lưu. Dán URL /exec của Apps Script vào FORM_ENDPOINT.');
+      request = Promise.reject(new Error('missing-endpoint'));
+    }
 
     request
       .then(function () {
@@ -338,7 +340,7 @@
         successEl.focus();
       })
       .catch(function () {
-        statusEl.textContent = 'Không gửi được đăng ký. Vui lòng thử lại hoặc gọi Hotline 079 2251 228.';
+        statusEl.textContent = 'Không gửi được đăng ký. Vui lòng gọi Hotline 079 2251 228 hoặc email contact@netspace.vn để ban tổ chức hỗ trợ trực tiếp.';
         statusEl.hidden = false;
       })
       .then(function () {
