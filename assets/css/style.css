@@ -10,6 +10,7 @@
   --color-ink:          #131313;
   --color-ink-muted:    #525b6e;   /* tinh chỉnh: xám lạnh, 6.6:1 */
   --color-ink-light:    #6b7489;   /* tinh chỉnh: xám lạnh, 4.7:1 */
+  --color-ink-blue:     #17347d;   /* navy cho tiêu đề lớn — nhẹ hơn đen */
   --color-ns-primary:   #1eaaff;
   --color-ns-secondary: #9462fb;
   --color-ns-accent:    #6adbe3;
@@ -441,6 +442,7 @@ main:focus { outline: none; }
   font-size: 36px;
   font-size: clamp(24px, 7.35cqi, 52px);
   font-weight: 700; line-height: 1.14; letter-spacing: -0.02em; text-transform: uppercase;
+  color: var(--color-ink-blue);
 }
 .hook .grad-text { padding-right: .03em; }
 
@@ -948,7 +950,7 @@ main:focus { outline: none; }
   -webkit-backdrop-filter: none; backdrop-filter: none;
 }
 .form-title-hook {
-  display: block; text-transform: uppercase;
+  display: block; text-transform: uppercase; color: var(--color-ink-blue);
   font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance;
 }
 @media (min-width: 640px) { .form-title-hook { font-size: 26px; } }
@@ -1251,7 +1253,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 }
 .program-hook {
   font-size: 22px; font-weight: 700; line-height: 1.18; letter-spacing: -0.025em;
-  text-transform: uppercase; color: var(--color-ink);
+  text-transform: uppercase; color: var(--color-ink-blue);
 }
 @media (min-width: 1000px) { .program-hook { font-size: 26px; } }
 .program-facts { display: grid; gap: 8px; margin-top: 16px; }
