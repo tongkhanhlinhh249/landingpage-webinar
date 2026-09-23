@@ -205,6 +205,31 @@
     if (footer) stickyObs.observe(footer);
   }
 
+  /* ── Đồng hồ đếm ngược tới giờ mở màn ── */
+  var cd = document.getElementById('countdown');
+  if (cd) {
+    var target = new Date(cd.dataset.start).getTime();
+    var cells = {};
+    cd.querySelectorAll('[data-cd]').forEach(function (el) { cells[el.dataset.cd] = el; });
+    var pad = function (n) { return n < 10 ? '0' + n : String(n); };
+    var tick = function () {
+      var diff = target - Date.now();
+      if (diff <= 0) {
+        cd.classList.add('is-live');
+        cd.querySelector('.countdown-title').textContent = 'Sự kiện đang diễn ra';
+        clearInterval(timer);
+        return;
+      }
+      var s = Math.floor(diff / 1000);
+      cells.days.textContent    = pad(Math.floor(s / 86400));
+      cells.hours.textContent   = pad(Math.floor(s / 3600) % 24);
+      cells.minutes.textContent = pad(Math.floor(s / 60) % 60);
+      cells.seconds.textContent = pad(s % 60);
+    };
+    tick();
+    var timer = setInterval(tick, 1000);
+  }
+
   /* ── Registration form ── */
   var form = document.getElementById('register-form');
   if (!form) return;
