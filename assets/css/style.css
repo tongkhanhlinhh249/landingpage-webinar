@@ -534,7 +534,8 @@ main:focus { outline: none; }
 
 /* Khối countdown + CTA (cột phải) */
 .hero-cta-card {
-  margin-top: 18px; padding: 16px 18px 18px; text-align: center;
+  position: relative; z-index: 2;
+  margin-top: 14px; padding: 16px 18px 18px; text-align: center;
   border-radius: var(--radius-2xl);
   background: linear-gradient(155deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .5));
   -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
@@ -545,7 +546,7 @@ main:focus { outline: none; }
   .hero-grid { grid-template-rows: auto auto; }
   .hero-copy    { grid-column: 1; grid-row: 1 / span 2; }
   .hero-visual  { grid-column: 2; grid-row: 1; }
-  .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: 0; }
+  .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -34px; }
 }
 .countdown-inline {
   width: 100%; margin: 0; padding: 0;
@@ -554,16 +555,27 @@ main:focus { outline: none; }
 }
 .hero-cta-btn { width: 100%; justify-content: center; margin-top: 13px; }
 .hero-cta-card .micro-text { margin-top: 9px; }
-.countdown-inline .countdown-title { margin-bottom: 8px; }
-.countdown-inline .countdown-grid { gap: 7px; }
-.countdown-inline .cd-num { font-size: 21px; padding: 7px 4px; }
-.countdown-inline .countdown-note { margin-top: 8px; font-size: 12px; }
-@media (min-width: 640px) { .countdown-inline .cd-num { font-size: 23px; padding: 8px 6px; } }
+/* Hàng ngang: “Chỉ còn” + 4 ô số */
+.countdown-inline { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; text-align: left; }
+.countdown-inline .countdown-title {
+  grid-column: 1; grid-row: 1; margin-bottom: 0;
+  font-size: 20px; font-weight: 700; letter-spacing: .01em; color: var(--color-accent-text);
+}
+.countdown-inline .countdown-note { grid-column: 1; grid-row: 2; margin-top: 3px; max-width: 15ch; font-size: 11.5px; line-height: 1.35; }
+.countdown-inline .countdown-grid { grid-column: 2; grid-row: 1 / span 2; gap: 7px; }
+.countdown-inline .cd-num { font-size: 22px; padding: 8px 4px; }
+@media (min-width: 640px) { .countdown-inline .cd-num { font-size: 24px; padding: 9px 6px; } }
+@media (max-width: 479px) {
+  .countdown-inline { grid-template-columns: 1fr; text-align: center; }
+  .countdown-inline .countdown-title { grid-row: 1; font-size: 18px; }
+  .countdown-inline .countdown-grid { grid-column: 1; grid-row: 2; margin-top: 8px; }
+  .countdown-inline .countdown-note { grid-column: 1; grid-row: 3; max-width: none; margin-top: 8px; }
+}
 
 /* ── KV: AI puppeteer hand ── */
 /* Mobile/tablet: minh hoạ lên đầu hero · Desktop: cột phải */
 .hero-visual { display: block; width: 100%; max-width: 520px; margin: 0 auto; order: -1; }
-@media (min-width: 1024px) { .hero-visual { max-width: 430px; order: 0; } }
+@media (min-width: 1024px) { .hero-visual { max-width: 470px; order: 0; } }
 
 .kv3d {
   position: relative; width: 100%; aspect-ratio: 600 / 612;
@@ -882,6 +894,7 @@ main:focus { outline: none; }
   border: 1px solid rgba(255, 255, 255, .75);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 24px 50px -30px rgba(30, 120, 220, .3);
 }
+.form-head .countdown { width: 100%; }
 .countdown-title {
   font-size: 10.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
   color: var(--color-ink-light); margin-bottom: 9px;
@@ -1183,6 +1196,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 /* ==========================================================================
    Nội dung chương trình
    ========================================================================== */
+.program-heading { text-wrap: wrap; }
 .program-layout { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
 @media (min-width: 1000px) { .program-layout { grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr); gap: 44px; } }
 
