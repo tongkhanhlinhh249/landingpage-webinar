@@ -849,10 +849,11 @@ main:focus { outline: none; }
 .speaker-name { margin-top: 6px; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.03em; }
 .speaker-bio {
   display: grid; gap: 9px; list-style: none; margin-top: 12px; font-size: 15px; line-height: 1.7; color: var(--color-ink-muted); }
-.speaker-bio li { position: relative; padding-left: 18px; }
-.speaker-bio li::before {
-  content: ''; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%;
+.speaker-bio li { position: relative; padding-left: 22px; }
+.speaker-bio li::before {          /* đồng bộ với .dot ở các section khác */
+  content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 8px; border-radius: 50%;
   background-image: var(--grad-cta);
+  box-shadow: 0 0 0 4px rgba(30, 170, 255, .12);
 }
 .speaker .link-arrow { margin-top: 16px; }
 
