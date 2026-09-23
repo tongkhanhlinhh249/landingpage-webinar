@@ -214,13 +214,17 @@
   var submitBtn = document.getElementById('submit-btn');
 
   var PHONE_RE = /^(?:\+?84|0)(?:3|5|7|8|9)\d{8}$/;
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   // Bắt buộc: Họ tên + Số điện thoại · 2 dropdown tuỳ chọn
   var fields = [
     { input: document.getElementById('f-name'),  err: document.getElementById('f-name-err'),
       test: function (v) { return v.trim().length >= 2; } },
     { input: document.getElementById('f-phone'), err: document.getElementById('f-phone-err'),
-      test: function (v) { return PHONE_RE.test(v.replace(/[\s.\-()]/g, '')); } }
+      test: function (v) { return PHONE_RE.test(v.replace(/[\s.\-()]/g, '')); } },
+    // Email không bắt buộc — chỉ kiểm tra định dạng khi có nhập
+    { input: document.getElementById('f-email'), err: document.getElementById('f-email-err'), optional: true,
+      test: function (v) { return v.trim() === '' || EMAIL_RE.test(v.trim()); } }
   ];
 
   function setFieldState(field, ok) {
@@ -256,6 +260,7 @@
     var payload = {
       ho_ten: (data.get('ho_ten') || '').trim(),
       so_dien_thoai: (data.get('so_dien_thoai') || '').trim(),
+      email: (data.get('email') || '').trim(),
       vai_tro: data.get('vai_tro') || '',
       mong_muon: data.get('mong_muon') || '',
       nguon: window.location.href
