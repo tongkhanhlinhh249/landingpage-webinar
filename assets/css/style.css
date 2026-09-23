@@ -414,11 +414,10 @@ main:focus { outline: none; }
   color: var(--color-accent-text);
   padding: 9px 18px; margin-bottom: 22px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, .72);
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 0 1.5px rgba(47, 85, 224, .25), 0 8px 22px -14px rgba(40, 110, 210, .5);
+  background: #fff;
+  box-shadow: inset 0 0 0 1.5px rgba(47, 85, 224, .3), 0 14px 28px -16px rgba(18, 52, 125, .55);
 }
-.event-kind { font-weight: 600; color: var(--color-ink-muted); }
+.event-kind { font-weight: 600; color: var(--color-ink); }
 .event-div { width: 1px; height: 13px; flex-shrink: 0; background: rgba(29, 73, 166, .22); }
 .event-title { display: inline-flex; align-items: center; gap: 0 9px; font-weight: 700; }
 @media (min-width: 768px) { .event-name { font-size: 14px; } }
@@ -460,12 +459,12 @@ main:focus { outline: none; }
   padding: 12px 16px 12px 138px;
   border-radius: 22px;
   background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(29, 73, 166, .1), 0 20px 38px -24px rgba(15, 35, 95, .5);
+  box-shadow: inset 0 0 0 1px rgba(29, 73, 166, .14), 0 22px 40px -20px rgba(15, 35, 95, .62);
 }
 .hero-speaker::before {           /* mảng màu sau ảnh chân dung */
   content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 132px;
   border-radius: 22px 0 0 22px;
-  background: linear-gradient(145deg, rgba(30, 170, 255, .22), rgba(148, 98, 251, .12) 65%, rgba(106, 219, 227, .16));
+  background: linear-gradient(145deg, rgba(30, 170, 255, .34), rgba(148, 98, 251, .2) 62%, rgba(106, 219, 227, .26));
 }
 .hero-speaker-ava {
   position: absolute; left: var(--ava-x, 4px); bottom: 0; z-index: 1;
@@ -491,20 +490,14 @@ main:focus { outline: none; }
   display: grid; grid-template-columns: 1fr;
   width: 100%;
   border-radius: 22px;
-  background: linear-gradient(155deg, rgba(255, 255, 255, .58) 0%, rgba(255, 255, 255, .22) 100%);
-  -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
-  border: 1px solid rgba(255, 255, 255, .75);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .95),
-    inset 0 -1px 0 rgba(255, 255, 255, .35),
-    0 24px 50px -26px rgba(30, 120, 220, .3);
+  background: #fff;
+  border: 1px solid rgba(29, 73, 166, .1);
+  box-shadow: 0 22px 44px -24px rgba(15, 35, 95, .55);
   overflow: hidden;
 }
-.hero-meta::before {      /* glass sheen */
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    radial-gradient(60% 120% at 0% 0%, rgba(255, 255, 255, .55), transparent 60%),
-    radial-gradient(50% 120% at 100% 100%, rgba(140, 200, 255, .18), transparent 70%);
+.hero-meta::before {      /* ánh sáng nhẹ phía trên */
+  content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: inherit;
+  background: radial-gradient(70% 120% at 0% 0%, rgba(30, 170, 255, .07), transparent 62%);
 }
 .hero-meta > * { position: relative; }
 .meta-item { display: flex; align-items: center; gap: 12px; padding: 14px 20px; }
@@ -539,9 +532,8 @@ main:focus { outline: none; }
   margin-top: 14px; padding: 9px 18px 9px 14px;
   border-radius: var(--radius-pill);
   font-size: 14px; line-height: 1.35; color: var(--color-ink);
-  background: linear-gradient(135deg, rgba(30, 170, 255, .16), rgba(255, 255, 255, .82));
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-  box-shadow: inset 0 0 0 1px rgba(30, 120, 220, .18), 0 12px 26px -20px rgba(40, 110, 210, .6);
+  background: linear-gradient(135deg, rgba(30, 170, 255, .26), #ffffff 85%);
+  box-shadow: inset 0 0 0 1.25px rgba(30, 120, 220, .3), 0 14px 28px -16px rgba(18, 52, 125, .5);
 }
 .hero-gift strong { font-weight: 700; color: var(--color-accent-text); }
 .hero-gift-icon { display: inline-flex; flex-shrink: 0; color: var(--color-accent-icon); }
@@ -556,10 +548,9 @@ main:focus { outline: none; }
   position: relative; z-index: 2;
   margin-top: 14px; padding: 16px 18px 18px; text-align: center;
   border-radius: var(--radius-2xl);
-  background: linear-gradient(155deg, rgba(255, 255, 255, .8), rgba(255, 255, 255, .5));
-  -webkit-backdrop-filter: blur(22px) saturate(170%); backdrop-filter: blur(22px) saturate(170%);
-  border: 1px solid rgba(255, 255, 255, .8);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .95), 0 26px 56px -34px rgba(30, 120, 220, .42);
+  background: linear-gradient(155deg, #ffffff, rgba(255, 255, 255, .92));
+  border: 1px solid rgba(29, 73, 166, .08);
+  box-shadow: 0 30px 60px -30px rgba(15, 35, 95, .55);
 }
 @media (min-width: 1024px) {
   .hero-grid { grid-template-rows: auto auto; }
