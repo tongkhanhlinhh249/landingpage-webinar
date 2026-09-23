@@ -1104,32 +1104,32 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   font: inherit; color: inherit; border-radius: var(--radius-xl);
 }
 .gift-box-btn:focus-visible { outline: 2px solid var(--color-accent-icon); outline-offset: 4px; }
-.gift-3d { position: relative; display: block; width: 176px; height: 152px; }
+.gift-3d { position: relative; display: block; width: 208px; height: 216px; }
+.gift-art { position: relative; display: block; width: 100%; height: 100%; overflow: visible; }
+.gift-art-lid { transform-box: fill-box; transform-origin: 50% 88%; transition: transform .55s cubic-bezier(.22, .9, .3, 1.25); }
+.gift-box.is-open .gift-art-lid { transform: translateY(-52px) rotate(-9deg); }
+.gift-box:not(.is-open) .gift-art { animation: gift-float 3.8s ease-in-out infinite; }
+.gift-box:not(.is-open) .gift-art-lid { animation: gift-lid-nudge 3.8s ease-in-out infinite; }
+.gift-box:not(.is-open) .gift-glow { animation: gift-glow-pulse 3.8s ease-in-out infinite; }
+@keyframes gift-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-9px); }
+}
+@keyframes gift-lid-nudge {
+  0%, 62%, 100% { transform: translate(0, 0) rotate(0deg); }
+  70%  { transform: translate(0, -9px) rotate(-3.5deg); }
+  78%  { transform: translate(0, -2px) rotate(2deg); }
+  86%  { transform: translate(0, -6px) rotate(-1.5deg); }
+  94%  { transform: translate(0, -1px) rotate(.5deg); }
+}
+@keyframes gift-glow-pulse {
+  0%, 100% { opacity: .6;  transform: translate(-50%, -50%) scale(1); }
+  50%      { opacity: .95; transform: translate(-50%, -50%) scale(1.09); }
+}
 .gift-glow {
-  position: absolute; left: 50%; top: 56%; width: 220px; height: 136px; transform: translate(-50%, -50%);
+  position: absolute; left: 50%; top: 58%; width: 250px; height: 168px; transform: translate(-50%, -50%);
   border-radius: 50%; background: radial-gradient(circle, rgba(90, 180, 255, .36), rgba(90, 180, 255, 0) 70%);
 }
-.gift-body {
-  position: absolute; left: 12px; right: 12px; bottom: 0; height: 94px; overflow: hidden;
-  border-radius: 16px; background: linear-gradient(160deg, #ffffff, #e7f0ff);
-  box-shadow: inset 0 0 0 1.5px rgba(47, 85, 224, .14), 0 22px 36px -26px rgba(40, 110, 210, .85);
-}
-.gift-ribbon { position: absolute; left: 50%; top: 0; bottom: 0; width: 26px; transform: translateX(-50%); background-image: var(--grad-cta); }
-.gift-lid {
-  position: absolute; left: 0; right: 0; top: 40px; height: 34px;
-  border-radius: 12px; background: linear-gradient(160deg, #ffffff, #dde9ff);
-  box-shadow: inset 0 0 0 1.5px rgba(47, 85, 224, .14), 0 16px 28px -20px rgba(40, 110, 210, .9);
-  transition: transform .55s cubic-bezier(.22, .9, .3, 1.25);
-}
-.gift-lid::after { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 26px; transform: translateX(-50%); background-image: var(--grad-cta); }
-.gift-bow { position: absolute; left: 50%; top: -20px; width: 60px; height: 26px; transform: translateX(-50%); }
-.gift-bow span {
-  position: absolute; top: 0; width: 28px; height: 26px; border-radius: 50% 50% 45% 45%;
-  background-image: var(--grad-cta); box-shadow: inset 0 -2px 6px rgba(255, 255, 255, .45);
-}
-.gift-bow span:first-child { left: 0; transform: rotate(-16deg); }
-.gift-bow span:last-child  { right: 0; transform: rotate(16deg); }
-.gift-box.is-open .gift-lid { transform: translateY(-48px) rotate(-9deg); }
 
 .gift-box-label { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--color-accent-text); }
 .gift-box-cue-open { display: none; }
@@ -1157,7 +1157,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   .gift-prize { padding: 16px 18px; }
   .gift-prize-name { font-size: 18px; }
   .gift-box { padding: 18px 16px 20px; }
-  .gift-3d { width: 152px; height: 136px; }
+  .gift-3d { width: 178px; height: 186px; }
   .gift-list li { font-size: 14px; }
 }
 
