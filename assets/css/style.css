@@ -134,6 +134,12 @@ main:focus { outline: none; }
 }
 .section { position: relative; padding: var(--section-gap) 0; isolation: isolate; }
 .section-soft { background: linear-gradient(180deg, rgba(245, 248, 253, 0) 0%, #f5f8fd 18%, #f5f8fd 82%, rgba(245, 248, 253, 0) 100%); }
+.section-strong {
+  background:
+    radial-gradient(72% 60% at 12% 0%, rgba(30, 170, 255, .18), transparent 62%),
+    radial-gradient(60% 65% at 92% 28%, rgba(148, 98, 251, .16), transparent 66%),
+    linear-gradient(180deg, rgba(232, 240, 252, 0) 0%, #e8f0fb 9%, #dfe9f8 48%, #e8f0fb 91%, rgba(232, 240, 252, 0) 100%);
+}
 
 /* ==========================================================================
    Atmosphere — blobs, dot grid, rings, glass
@@ -847,7 +853,13 @@ main:focus { outline: none; }
 }
 .speaker-role { margin-top: 24px; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--color-accent-text); }
 .speaker-name { margin-top: 6px; font-size: 28px; font-weight: 500; line-height: 1.2; letter-spacing: -0.03em; }
-.speaker-bio { margin-top: 12px; font-size: 15px; line-height: 1.7; color: var(--color-ink-muted); }
+.speaker-bio {
+  display: grid; gap: 9px; list-style: none; margin-top: 12px; font-size: 15px; line-height: 1.7; color: var(--color-ink-muted); }
+.speaker-bio li { position: relative; padding-left: 18px; }
+.speaker-bio li::before {
+  content: ''; position: absolute; left: 0; top: .62em; width: 7px; height: 7px; border-radius: 50%;
+  background-image: var(--grad-cta);
+}
 .speaker .link-arrow { margin-top: 16px; }
 
 .host { display: flex; flex-direction: column; align-items: center; text-align: center; }
