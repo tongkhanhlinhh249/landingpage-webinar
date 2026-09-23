@@ -542,11 +542,8 @@ main:focus { outline: none; }
 /* Khối countdown + CTA (cột phải) */
 .hero-cta-card {
   position: relative; z-index: 2;
-  margin-top: 14px; padding: 16px 18px 18px; text-align: center;
-  border-radius: var(--radius-2xl);
-  background: linear-gradient(155deg, #ffffff, rgba(255, 255, 255, .92));
-  border: 1px solid rgba(29, 73, 166, .08);
-  box-shadow: 0 30px 60px -30px rgba(15, 35, 95, .55);
+  margin-top: 14px; padding: 0; text-align: center;
+  background: none; border: 0; box-shadow: none;
 }
 @media (min-width: 1024px) {
   .hero-grid { grid-template-rows: auto auto; }
@@ -555,14 +552,14 @@ main:focus { outline: none; }
   .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -34px; }
 }
 
-.hero-cta-btn { display: flex; width: fit-content; min-width: 62%; justify-content: center; margin: 16px auto 0; padding-left: 34px; padding-right: 34px; }
+.hero-cta-btn { display: flex; width: fit-content; min-width: 64%; justify-content: center; margin: 14px auto 0; padding-left: 34px; padding-right: 34px; box-shadow: 0 18px 34px -18px rgba(30, 110, 220, .9); }
 .hero-cta-card .micro-text { margin-top: 9px; }
 /* Hàng ngang: “Chỉ còn” + 4 ô số */
 .hero-cta-card .countdown-inline {
-  width: 100%; margin: 0; padding: 13px 15px;
-  border: 0; border-radius: var(--radius-xl);
-  background: linear-gradient(135deg, rgba(30, 170, 255, .15), rgba(106, 219, 227, .13));
-  box-shadow: inset 0 0 0 1px rgba(30, 120, 220, .14);
+  width: 100%; margin: 0; padding: 16px 18px;
+  border: 0; border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, #d6ebff 0%, #e4e8ff 55%, #dff3fb 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .26), 0 24px 44px -26px rgba(18, 52, 125, .6);
   -webkit-backdrop-filter: none; backdrop-filter: none;
   display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: center; text-align: left;
 }
@@ -578,7 +575,7 @@ main:focus { outline: none; }
 .countdown-inline .cd-num {
   font-size: 30px; padding: 10px 4px; color: #17347d;
   background: #fff; background-image: none;
-  box-shadow: inset 0 0 0 1px rgba(29, 73, 166, .08), 0 12px 24px -18px rgba(40, 110, 210, .9);
+  box-shadow: inset 0 0 0 1px rgba(29, 73, 166, .1), 0 14px 22px -14px rgba(18, 52, 125, .55);
 }
 .countdown-inline .cd-label { font-size: 12px; font-weight: 700; color: var(--color-ink); }
 .countdown-inline .countdown-note { color: var(--color-ink-muted); }
