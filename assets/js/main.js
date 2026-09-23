@@ -206,8 +206,32 @@
   }
 
   /* ── Đồng hồ đếm ngược tới giờ mở màn ── */
-  var cd = document.getElementById('countdown');
-  if (cd) {
+  /* ── Hộp quà: bấm để mở, tự mở lần đầu khi cuộn tới ── */
+  var giftBox = document.getElementById('gift-box');
+  var giftBtn = document.getElementById('gift-toggle');
+  if (giftBox && giftBtn) {
+    var setGift = function (open) {
+      giftBox.classList.toggle('is-open', open);
+      giftBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    giftBtn.addEventListener('click', function () {
+      setGift(giftBtn.getAttribute('aria-expanded') !== 'true');
+    });
+    if ('IntersectionObserver' in window) {
+      var giftObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          giftObs.disconnect();
+          window.setTimeout(function () { setGift(true); }, noMotion ? 0 : 550);
+        });
+      }, { threshold: 0.4 });
+      giftObs.observe(giftBox);
+    } else {
+      setGift(true);
+    }
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.countdown'), function (cd) {
     var target = new Date(cd.dataset.start).getTime();
     var cells = {};
     cd.querySelectorAll('[data-cd]').forEach(function (el) { cells[el.dataset.cd] = el; });
@@ -228,7 +252,7 @@
     };
     tick();
     var timer = setInterval(tick, 1000);
-  }
+  });
 
   /* ── Registration form ── */
   var form = document.getElementById('register-form');
@@ -247,9 +271,8 @@
       test: function (v) { return v.trim().length >= 2; } },
     { input: document.getElementById('f-phone'), err: document.getElementById('f-phone-err'),
       test: function (v) { return PHONE_RE.test(v.replace(/[\s.\-()]/g, '')); } },
-    // Email không bắt buộc — chỉ kiểm tra định dạng khi có nhập
-    { input: document.getElementById('f-email'), err: document.getElementById('f-email-err'), optional: true,
-      test: function (v) { return v.trim() === '' || EMAIL_RE.test(v.trim()); } }
+    { input: document.getElementById('f-email'), err: document.getElementById('f-email-err'),
+      test: function (v) { return EMAIL_RE.test(v.trim()); } }
   ];
 
   function setFieldState(field, ok) {

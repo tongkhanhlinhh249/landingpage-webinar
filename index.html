@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20260923k">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260923n">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -31,6 +31,8 @@
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
     <symbol id="i-video" viewBox="0 0 24 24"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5C10 3 12 8 12 8s2-5 4.5-5a2.5 2.5 0 0 1 0 5"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
     <symbol id="i-ticket" viewBox="0 0 24 24"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2M13 17v2M13 11v2"/></symbol>
     <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2M10 6h4M10 10h4M10 14h4M10 18h4"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
@@ -60,8 +62,9 @@
       <div class="nav-right">
         <ul class="nav-links">
           <li><a href="#loi-ich" class="nav-link">Lợi ích</a></li>
+          <li><a href="#qua-tang" class="nav-link">Quà tặng</a></li>
           <li><a href="#dien-gia" class="nav-link">Diễn giả</a></li>
-          <li><a href="#chuong-trinh" class="nav-link">Chương trình</a></li>
+          <li><a href="#noi-dung" class="nav-link">Chương trình</a></li>
         </ul>
         <a href="#dang-ky" class="btn btn-primary btn-sm nav-cta">Đăng ký ngay</a>
         <button id="hamburger" type="button" class="nav-toggle"
@@ -75,8 +78,9 @@
     <div id="mobile-menu" class="mobile-menu glass" hidden>
       <ul>
         <li><a href="#loi-ich" class="nav-link-mobile">Lợi ích</a></li>
+        <li><a href="#qua-tang" class="nav-link-mobile">Quà tặng</a></li>
         <li><a href="#dien-gia" class="nav-link-mobile">Diễn giả</a></li>
-        <li><a href="#chuong-trinh" class="nav-link-mobile">Chương trình</a></li>
+        <li><a href="#noi-dung" class="nav-link-mobile">Chương trình</a></li>
         <li><a href="#dang-ky" class="btn btn-primary mobile-menu-cta">Đăng ký tham gia ngay</a></li>
       </ul>
     </div>
@@ -97,12 +101,13 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <h1 id="hero-heading" class="hero-title reveal reveal-d1">
-            <span class="event-name">LEGAL <span class="event-x" aria-hidden="true">×</span><span class="sr-only">x</span> REPUTATION</span>
+            <span class="event-name"><span class="event-kind">Online Webinar</span><span class="event-div" aria-hidden="true"></span><span class="event-title">LEGAL <span class="event-x" aria-hidden="true">×</span><span class="sr-only">x</span> REPUTATION</span></span>
             <span class="hook"><span class="grad-text">“AI”</span> đang kiểm&nbsp;soát<br> hình&nbsp;ảnh doanh&nbsp;nghiệp<br> của&nbsp;bạn trên&nbsp;Internet?</span>
           </h1>
 
 
           <div class="hero-facts reveal reveal-d2">
+            <p class="hero-facts-label">Diễn giả</p>
             <ul class="hero-speakers" aria-label="Diễn giả của sự kiện">
               <li class="hero-speaker">
                 <img class="hero-speaker-ava" src="assets/images/speaker-nguyen-dinh-thanh-avatar.webp?v=20260923i" alt="" width="200" height="200" decoding="async">
@@ -144,6 +149,11 @@
             </div>
           </dl>
           </div>
+
+          <p class="hero-gift reveal reveal-d3">
+            <span class="hero-gift-icon" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-gift"/></svg></span>
+            <span><strong>Quà tặng 10 triệu</strong> dành cho 3 doanh nghiệp đăng ký sớm nhất</span>
+          </p>
 
           <div class="hero-cta reveal reveal-d3" id="hero-cta">
             <a href="#dang-ky" class="btn btn-primary btn-lg">
@@ -377,6 +387,73 @@
       </div>
     </section>
 
+    <!-- ═════════════ 2. QUÀ TẶNG ═════════════ -->
+    <section class="section gift-section" id="qua-tang" aria-labelledby="gift-heading">
+      <div class="bg-layer" aria-hidden="true">
+        <span class="blob blob-blue" style="--w:480px; left:-190px; top:4%"></span>
+        <span class="blob blob-indigo" style="--w:420px; right:-180px; bottom:-10%"></span>
+      </div>
+
+      <div class="container gift-layout">
+        <div class="gift-copy reveal">
+          <p class="gift-lead">Hiểu vấn đề mới là một nửa. Nửa còn lại là biết <strong>hệ thống truyền thông của doanh nghiệp mình đang đứng ở&nbsp;đâu.</strong></p>
+
+          <h2 id="gift-heading" class="section-title gift-title">
+            Đặc quyền dành cho <span class="grad-label-text title-line">doanh nghiệp tham dự</span>
+          </h2>
+
+          <div class="gift-prize">
+            <p class="gift-prize-name">NetSpace Health Check <span class="gift-prize-edition">— Workshop Edition</span></p>
+            <p class="gift-prize-tags">
+              <span class="gift-tag gift-tag-value">Trị giá 10.000.000 VNĐ</span>
+              <span class="gift-tag">Giới hạn 3 doanh nghiệp đăng ký sớm nhất</span>
+            </p>
+          </div>
+
+          <p class="gift-note">
+            <span class="gift-note-icon" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-shield"/></svg></span>
+            <span><strong>Điều kiện nhận quà:</strong> Doanh nghiệp có tham dự chương trình và hoàn thành form thông tin. Số lượng giới hạn được chúng tôi ưu tiên theo thứ tự đăng ký.</span>
+          </p>
+
+          <a href="#dang-ky" class="btn btn-primary gift-cta">
+            Đăng ký nhận đặc quyền
+            <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          </a>
+        </div>
+
+        <div class="gift-box-col reveal reveal-d1">
+          <div class="gift-box" id="gift-box">
+            <button type="button" class="gift-box-btn" id="gift-toggle" aria-expanded="false" aria-controls="gift-contents">
+              <span class="gift-3d" aria-hidden="true">
+                <span class="gift-glow"></span>
+                <span class="gift-lid"><span class="gift-bow"><span></span><span></span></span></span>
+                <span class="gift-body"><span class="gift-ribbon"></span></span>
+              </span>
+              <span class="gift-box-label">
+                <span class="gift-box-cue">Bấm để mở hộp quà</span>
+                <span class="gift-box-cue gift-box-cue-open">Thu gọn phần quà</span>
+                <svg class="icon icon-sm gift-box-chevron" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg>
+              </span>
+            </button>
+
+            <div class="gift-contents" id="gift-contents">
+              <div class="gift-contents-inner">
+                <p class="gift-contents-title">Gói rà soát bao gồm</p>
+                <ul class="gift-list">
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Rà soát website và landing page trên các tiêu chí UX, cấu trúc, CTA và tốc độ tải</li>
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Đánh giá tối đa 3 kênh mạng xã hội</li>
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Phân tích 10 bài nội dung truyền thông gần nhất</li>
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Benchmark với 2 đối thủ trực tiếp</li>
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Báo cáo Health Check dạng PDF 8–10 trang</li>
+                  <li><span class="gift-check" aria-hidden="true"><svg class="icon icon-xs"><use href="#i-check"/></svg></span>Một buổi tư vấn 1:1 kéo dài 30 phút cùng chuyên gia NetSpace</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ═════════════ 2. LỢI ÍCH ═════════════ -->
     <section class="section" id="loi-ich" aria-labelledby="benefit-heading">
       <div class="bg-layer" aria-hidden="true">
@@ -456,6 +533,119 @@
     </section>
 
     <!-- ═════════════ 3. SPEAKERS + HOST ═════════════ -->
+    <!-- ═════════════ 3. NỘI DUNG CHƯƠNG TRÌNH ═════════════ -->
+    <section class="section" id="noi-dung" aria-labelledby="program-heading">
+      <div class="bg-layer" aria-hidden="true">
+        <span class="blob blob-blue" style="--w:520px; left:-190px; top:8%"></span>
+        <span class="blob blob-indigo" style="--w:440px; right:-180px; bottom:-6%"></span>
+      </div>
+
+      <div class="container">
+        <header class="section-head reveal">
+          <h2 id="program-heading" class="section-title">
+            Nội dung <span class="grad-label-text title-line">chương trình</span>
+          </h2>
+        </header>
+
+        <div class="program-layout">
+          <aside class="program-aside reveal">
+            <div class="program-card">
+              <p class="program-kicker">Online Executive Webinar</p>
+              <p class="program-name">LEGAL <span class="event-x" aria-hidden="true">×</span><span class="sr-only">x</span> REPUTATION</p>
+              <p class="program-hook"><span class="grad-text">“AI”</span> đang kiểm soát hình ảnh doanh nghiệp của bạn trên Internet?</p>
+              <ul class="program-facts">
+                <li><svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-calendar"/></svg><span>13h30 – 17h20 · 07/10/2026 (Thứ 4)</span></li>
+                <li><svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-ticket"/></svg><span>Miễn phí · Số lượng vé mời có hạn</span></li>
+              </ul>
+
+              <div class="countdown" data-start="2026-10-07T13:30:00+07:00">
+                <p class="countdown-title">Chỉ còn</p>
+                <div class="countdown-grid" aria-hidden="true">
+                  <div class="cd-cell"><span class="cd-num" data-cd="days">--</span><span class="cd-label">Ngày</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-cd="hours">--</span><span class="cd-label">Giờ</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-cd="minutes">--</span><span class="cd-label">Phút</span></div>
+                  <div class="cd-cell"><span class="cd-num" data-cd="seconds">--</span><span class="cd-label">Giây</span></div>
+                </div>
+                <p class="countdown-note">trước khi bắt đầu sự kiện<span class="sr-only"> — 13h30 ngày 07/10/2026 (giờ Việt Nam)</span></p>
+              </div>
+
+              <a href="#dang-ky" class="btn btn-primary program-cta">
+                Đăng ký tham gia
+                <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+              </a>
+            </div>
+          </aside>
+
+          <div class="program-timeline">
+            <div class="agenda-group reveal">
+              <p class="agenda-group-title"><span class="agenda-group-index">01</span>Khởi động</p>
+              <ol class="agenda-list">
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>13h30 – 14h00</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Check-in</h3>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>14h00 – 14h05</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Khai mạc</h3>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="agenda-group reveal reveal-d1">
+              <p class="agenda-group-title"><span class="agenda-group-index">02</span>Nội dung chuyên môn</p>
+              <ol class="agenda-list">
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>14h05 – 14h50</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Phần 1 — Reputation &amp; Build the system</h3>
+                    <p class="agenda-speaker"><span class="agenda-speaker-label">Diễn giả</span> Ông Nguyễn Đình Thành — Chuyên gia Truyền thông, Phó Tổng Giám đốc NetSpace</p>
+                    <p class="agenda-desc">Danh tiếng số trong bối cảnh nội dung lan truyền nhanh hơn khả năng phản ứng của doanh nghiệp. Vai trò thực sự của website và kênh social chính chủ. Rủi ro từ AI và deepfake đối với hình ảnh thương hiệu. Và phần quan trọng nhất: cách chuyển từ trạng thái xử lý sự cố theo từng vụ sang xây dựng một hệ thống vận hành lâu dài — content governance, monitoring, crisis protocol.</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>14h50 – 15h35</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Phần 2 — Legal</h3>
+                    <p class="agenda-speaker"><span class="agenda-speaker-label">Diễn giả</span> Luật sư Trần Tám — Lĩnh vực Sở hữu Trí tuệ</p>
+                    <p class="agenda-desc">Quyền tác giả và quyền hình ảnh trên môi trường số. Licensing và những điều khoản cần lưu ý trong hợp đồng hợp tác. Bằng chứng cần thu thập vào thời điểm nào để có giá trị pháp lý. Và các phương án phản ứng khi tranh chấp thực sự xảy ra.</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>15h35 – 16h20</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Panel case clinic</h3>
+                    <p class="agenda-desc">Hai chuyên gia cùng phân tích các tình huống thực tế, đối chiếu góc nhìn truyền thông và góc nhìn pháp lý trên cùng một vụ việc. Đây là phần cho thấy rõ nhất vì sao hai lĩnh vực này cần được nhìn cùng nhau.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+            <div class="agenda-group reveal reveal-d2">
+              <p class="agenda-group-title"><span class="agenda-group-index">03</span>Tương tác &amp; Trao quà</p>
+              <ol class="agenda-list">
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>16h20 – 17h05</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Hỏi đáp</h3>
+                    <p class="agenda-desc">45 phút trao đổi trực tiếp. Anh/chị có thể gửi câu hỏi ngay từ đầu chương trình, ban tổ chức sẽ tổng hợp và chuyển tới hai diễn giả.</p>
+                  </div>
+                </li>
+                <li class="agenda-item">
+                  <span class="agenda-time"><svg class="icon icon-xs" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>17h05 – 17h20</span>
+                  <div class="agenda-body">
+                    <h3 class="agenda-title">Trao đặc quyền &amp; Bế mạc</h3>
+                    <p class="agenda-desc">Công bố các doanh nghiệp nhận gói NetSpace Health Check và tổng kết chương trình.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section section-soft" id="dien-gia" aria-labelledby="speaker-heading">
       <div class="bg-layer" aria-hidden="true">
         <span class="dot-grid"></span>
@@ -582,10 +772,10 @@
                 </div>
 
                 <div class="form-field">
-                  <label for="f-email" class="form-label">Email</label>
+                  <label for="f-email" class="form-label">Email <span class="req" aria-hidden="true">*</span></label>
                   <input id="f-email" name="email" type="email" class="form-input" autocomplete="email" inputmode="email"
-                         aria-describedby="f-email-err" placeholder="ten@congty.vn">
-                  <p id="f-email-err" class="form-error" hidden>Email chưa đúng định dạng.</p>
+                         required aria-required="true" aria-describedby="f-email-err" placeholder="ten@congty.vn">
+                  <p id="f-email-err" class="form-error" hidden>Vui lòng nhập email đúng định dạng.</p>
                 </div>
 
                 <div class="form-field">
@@ -655,7 +845,7 @@
     <div class="container footer-grid">
       <div class="footer-brand">
         <img src="assets/logo-netspace.svg" alt="NetSpace" width="176" height="42" loading="lazy">
-        <p class="footer-tagline">Hệ sinh thái Công nghệ &amp; Truyền thông đa nền tảng: Báo chí - Mạng xã hội - KOL/KOC</p>
+        <p class="footer-tagline">NetSpace – ONE STOP AGENCY: Media – Press – Event – Digital Transformation – Influencer Marketing (MCN).</p>
         <a href="https://netspace.vn" class="btn btn-primary footer-cta" target="_blank" rel="noopener">
           Truy cập website NetSpace
           <svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg>
@@ -677,8 +867,8 @@
           <li>
             <span class="footer-icon" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-phone"/></svg></span>
             <div>
-              <p class="footer-label">Hotline</p>
-              <a class="footer-link" href="tel:0888138888">0888 138 888</a>
+              <p class="footer-label">Hotline Hỗ trợ Khách mời</p>
+              <a class="footer-link" href="tel:0792251228">079 2251 228</a>
             </div>
           </li>
           <li>
@@ -709,6 +899,6 @@
     <a href="#dang-ky" class="btn btn-primary" tabindex="-1">Đăng ký ngay</a>
   </div>
 
-  <script src="assets/js/main.js?v=20260923k" defer></script>
+  <script src="assets/js/main.js?v=20260923n" defer></script>
 </body>
 </html>
