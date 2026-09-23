@@ -461,11 +461,6 @@ main:focus { outline: none; }
   border-radius: 22px 0 0 22px;
   background: linear-gradient(145deg, rgba(30, 170, 255, .22), rgba(148, 98, 251, .12) 65%, rgba(106, 219, 227, .16));
 }
-.hero-speaker::after {            /* gờ gradient trái */
-  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
-  border-radius: 22px 0 0 22px;
-  background-image: var(--grad-cta);
-}
 .hero-speaker-ava {
   position: absolute; left: var(--ava-x, 4px); bottom: 0; z-index: 1;
   width: auto; height: var(--ava-h, 126px);
