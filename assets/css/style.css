@@ -563,7 +563,7 @@ main:focus { outline: none; }
 .hero-cta-card .countdown-inline {
   width: 100%; margin: 0; padding: 16px 18px 48px;
   border: 0; border-radius: var(--radius-2xl);
-  background: linear-gradient(135deg, #d6ebff 0%, #e4e8ff 55%, #dff3fb 100%);
+  background: linear-gradient(135deg, #c7e3ff 0%, #d8dcff 55%, #cfeefb 100%);
   box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .26), 0 24px 44px -26px rgba(18, 52, 125, .6);
   -webkit-backdrop-filter: none; backdrop-filter: none;
   display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 14px; align-items: center; text-align: left;
@@ -929,11 +929,10 @@ main:focus { outline: none; }
   display: flex; align-items: center; justify-content: center;
   width: 100%; padding: 9px 6px;
   border-radius: var(--radius-md);
-  background-image: linear-gradient(160deg, #2f9dff 0%, #3f7bff 55%, #6b62fb 100%);
+  background-image: linear-gradient(160deg, #ffffff 0%, #f3f8ff 100%);
   font-size: 23px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.02em;
-  color: #fff;
-  box-shadow: inset 0 -2px 0 rgba(12, 40, 110, .22), inset 0 1px 0 rgba(255, 255, 255, .35),
-              0 14px 26px -14px rgba(25, 80, 200, .95);
+  color: var(--color-ink-blue);
+  box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .32), 0 14px 24px -14px rgba(18, 52, 125, .7);
 }
 .cd-label { font-size: 11px; font-weight: 700; letter-spacing: .03em; color: var(--color-ink-blue); }
 .countdown-note { margin-top: 10px; font-size: 12.5px; color: var(--color-ink-muted); }
@@ -1304,6 +1303,15 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   color: var(--color-ink-light); background: rgba(29, 73, 166, .07);
 }
 .agenda-desc { margin-top: 6px; font-size: 14px; line-height: 1.6; color: var(--color-ink-muted); }
+.agenda-points { display: grid; gap: 7px; margin-top: 8px; list-style: none; }
+.agenda-points li {
+  position: relative; padding-left: 20px;
+  font-size: 14px; line-height: 1.55; color: var(--color-ink-muted);
+}
+.agenda-points li::before {
+  content: ''; position: absolute; left: 0; top: 8px; width: 7px; height: 7px; border-radius: 50%;
+  background-image: var(--grad-cta); box-shadow: 0 0 0 3.5px rgba(30, 170, 255, .12);
+}
 @media (max-width: 559px) {
   .agenda-group { padding: 18px 16px 6px; }
   .agenda-title { font-size: 15px; }
