@@ -327,6 +327,8 @@ main:focus { outline: none; }
 .micro-text .icon, .sticky-cta-info .icon {
   color: var(--color-accent-icon); vertical-align: -2px; margin-right: 2px; stroke-width: 2;
 }
+.sticky-cta-info > span { display: flex; align-items: center; gap: 5px; }
+.sticky-cta-info .icon { flex-shrink: 0; margin-right: 0; vertical-align: 0; }
 .micro-text {
   display: inline-flex; align-items: center; gap: 6px;
   font-size: 13px; font-weight: 500; color: var(--color-ink-muted);
