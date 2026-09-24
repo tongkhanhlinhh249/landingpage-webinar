@@ -1260,13 +1260,17 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 .program-card .countdown { width: 100%; margin-top: 18px; text-align: center; }
 .program-cta { margin-top: 18px; width: 100%; justify-content: center; }
 
-.program-timeline { display: grid; gap: 18px; }
-.agenda-group {
-  padding: 22px 24px 8px; border-radius: var(--radius-2xl);
-  background: linear-gradient(155deg, rgba(255, 255, 255, .84), rgba(255, 255, 255, .52));
+.program-timeline {               /* gộp 3 nhóm vào 1 khung chung */
+  display: grid; gap: 0;
+  padding: 24px 26px 12px; border-radius: var(--radius-2xl);
+  background: linear-gradient(155deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .62));
   -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, .8);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 24px 54px -34px rgba(30, 120, 220, .35);
+  border: 1px solid rgba(255, 255, 255, .85);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 26px 56px -32px rgba(30, 120, 220, .4);
+}
+.agenda-group { padding: 0; background: none; border: 0; box-shadow: none; }
+.agenda-group + .agenda-group {
+  margin-top: 18px; padding-top: 20px; border-top: 1px solid rgba(29, 73, 166, .1);
 }
 .agenda-group-title {
   display: flex; align-items: center; gap: 10px;
@@ -1313,7 +1317,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   background-image: var(--grad-cta); box-shadow: 0 0 0 3.5px rgba(30, 170, 255, .12);
 }
 @media (max-width: 559px) {
-  .agenda-group { padding: 18px 16px 6px; }
+  .program-timeline { padding: 18px 16px 8px; }
   .agenda-title { font-size: 15px; }
   .agenda-desc { font-size: 13.5px; }
   .program-card { padding: 20px 18px; }
