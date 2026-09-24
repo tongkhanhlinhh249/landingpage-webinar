@@ -208,6 +208,17 @@
   }
 
   /* ── Đồng hồ đếm ngược tới giờ mở màn ── */
+  /* ── Mobile: 3 thẻ lợi ích thu gọn, bấm mũi tên để mở ── */
+  Array.prototype.forEach.call(document.querySelectorAll('.ta-toggle'), function (btn) {
+    btn.addEventListener('click', function () {
+      var card = btn.closest('.ta-card');
+      if (!card) return;
+      var open = !card.classList.contains('is-open');
+      card.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
   /* ── Hộp quà: bấm để mở, tự mở lần đầu khi cuộn tới ── */
   var giftBox = document.getElementById('gift-box');
   var giftBtn = document.getElementById('gift-toggle');

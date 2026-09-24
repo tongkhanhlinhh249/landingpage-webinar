@@ -30,7 +30,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20260924w">
+  <link rel="stylesheet" href="assets/css/style.css?v=20260924zf">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -131,7 +131,7 @@
               <span class="meta-icon" aria-hidden="true"><svg class="icon icon-md"><use href="#i-calendar"/></svg></span>
               <div>
                 <dt class="sr-only">Ngày</dt>
-                <dd class="nowrap">07/10/2026 (Thứ 4)</dd>
+                <dd class="nowrap">07/10/2026<span class="meta-dow"> (Thứ 4)</span></dd>
               </div>
             </div>
             <div class="meta-item">
@@ -146,7 +146,7 @@
 
           <p class="hero-gift reveal reveal-d3">
             <span class="hero-gift-icon" aria-hidden="true"><svg class="icon icon-sm"><use href="#i-gift"/></svg></span>
-            <span><strong>Quà tặng trị giá 10 triệu</strong> dành cho 3 doanh nghiệp đăng ký sớm nhất</span>
+            <span><strong>Quà tặng trị giá 10 triệu VNĐ</strong> dành cho 3 doanh nghiệp tham dự chương trình</span>
           </p>
         </div>
 
@@ -408,8 +408,7 @@
           <div class="gift-prize">
             <p class="gift-prize-name">NetSpace Health Check <span class="gift-prize-edition">— Workshop Edition</span></p>
             <p class="gift-prize-tags">
-              <span class="gift-tag gift-tag-value">Trị giá 10.000.000 VNĐ</span>
-              <span class="gift-tag">Giới hạn 3 doanh nghiệp đăng ký sớm nhất</span>
+              <span class="gift-tag gift-tag-full">Trị giá <span class="gift-amount grad-text">10.000.000 VNĐ</span> · dành cho 3 doanh nghiệp tham dự chương trình</span>
             </p>
           </div>
 
@@ -484,12 +483,15 @@
                  aria-label="Đăng ký với vai trò Doanh nghiệp / Chủ thương hiệu / C-Suite">
                 <svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg>
               </a>
+              <button type="button" class="ta-toggle" aria-expanded="false" aria-controls="ta-1-list"><svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="sr-only">Xem chi tiết: Doanh Nghiệp & Brand Owners</span></button>
             </div>
-            <ul class="benefit-list">
+            <div class="ta-details" id="ta-1-list">
+              <ul class="benefit-list">
               <li><span class="dot" aria-hidden="true"></span><p><strong>Danh tiếng số</strong> Bảo vệ Website/Social chính chủ trước tin giả và nguy cơ từ AI/Deepfake.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>Pháp lý số</strong> Nắm chắc quy trình lập vi bằng &amp; bảo vệ bản quyền khi xảy ra tranh chấp.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>Quản trị hệ thống</strong> Chuyển từ “chữa cháy” sang sở hữu khung quản trị khủng hoảng 360°.</p></li>
             </ul>
+            </div>
           </article>
 
           <!-- T.A 2 -->
@@ -504,12 +506,15 @@
                  aria-label="Đăng ký với vai trò Agency / Production House / Freelancer">
                 <svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg>
               </a>
+              <button type="button" class="ta-toggle" aria-expanded="false" aria-controls="ta-2-list"><svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="sr-only">Xem chi tiết: Agency & Production House</span></button>
             </div>
-            <ul class="benefit-list">
+            <div class="ta-details" id="ta-2-list">
+              <ul class="benefit-list">
               <li><span class="dot" aria-hidden="true"></span><p><strong>Nâng tầm vị thế</strong> Trở thành đối tác chiến lược tư vấn danh tiếng số.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>An toàn sản xuất</strong> Giảm thiểu rủi ro đền hợp đồng &amp; vi phạm bản quyền nhạc/ảnh/AI.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>Chuẩn hóa dịch vụ</strong> Đóng gói quy trình kiểm duyệt nội dung để gia tăng giá trị deal B2B.</p></li>
             </ul>
+            </div>
           </article>
 
           <!-- T.A 3 -->
@@ -524,12 +529,15 @@
                  aria-label="Đăng ký với vai trò KOL / KOC / Content Creator">
                 <svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg>
               </a>
+              <button type="button" class="ta-toggle" aria-expanded="false" aria-controls="ta-3-list"><svg class="icon icon-md" aria-hidden="true" focusable="false"><use href="#i-chevron-down"/></svg><span class="sr-only">Xem chi tiết: KOL / KOC & Content Creators</span></button>
             </div>
-            <ul class="benefit-list">
+            <div class="ta-details" id="ta-3-list">
+              <ul class="benefit-list">
               <li><span class="dot" aria-hidden="true"></span><p><strong>Bảo vệ kênh &amp; hình ảnh</strong> Chống mạo danh, cắt ghép Deepfake làm ảnh hưởng uy tín.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>Soi “bẫy” hợp đồng</strong> Làm chủ quyền tác giả &amp; hình ảnh, không lo bị mất kênh hay mất quyền sở hữu.</p></li>
               <li><span class="dot" aria-hidden="true"></span><p><strong>Vận hành an toàn</strong> Nắm rõ quy trình gỡ “gậy” bản quyền và ứng phó khi dính sự cố.</p></li>
             </ul>
+            </div>
           </article>
         </div>
       </div>
@@ -718,7 +726,7 @@
                 </h3>
                 <ul class="form-meta" aria-label="Thông tin sự kiện">
                   <li><span class="meta-icon" aria-hidden="true"><svg class="icon icon-md"><use href="#i-clock"/></svg></span><span class="nowrap">13h30 – 17h20</span></li>
-                  <li><span class="meta-icon" aria-hidden="true"><svg class="icon icon-md"><use href="#i-calendar"/></svg></span><span class="nowrap">07/10/2026 (Thứ 4)</span></li>
+                  <li><span class="meta-icon" aria-hidden="true"><svg class="icon icon-md"><use href="#i-calendar"/></svg></span><span class="nowrap">07/10/2026<span class="meta-dow"> (Thứ 4)</span></span></li>
                   <li><span class="meta-icon" aria-hidden="true"><svg class="icon icon-md"><use href="#i-ticket"/></svg></span><span>Miễn phí</span></li>
                 </ul>
 
@@ -880,6 +888,6 @@
     <a href="#dang-ky" class="btn btn-primary" tabindex="-1">Đăng ký ngay</a>
   </div>
 
-  <script src="assets/js/main.js?v=20260924w" defer></script>
+  <script src="assets/js/main.js?v=20260924zf" defer></script>
 </body>
 </html>
