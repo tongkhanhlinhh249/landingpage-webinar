@@ -1193,7 +1193,7 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 .gift-tag-value { color: #fff; background-image: var(--grad-cta); box-shadow: 0 10px 22px -14px rgba(40, 110, 210, .8); }
 .gift-tag-full {
   display: block; padding: 12px 20px; border-radius: var(--radius-xl);
-  font-size: 15px; font-weight: 600; line-height: 1.55; color: var(--color-ink-blue);
+  font-size: 15px; font-weight: 600; line-height: 1.55; color: var(--color-ink-blue); text-wrap: balance;
   background: linear-gradient(135deg, rgba(30, 170, 255, .16), rgba(255, 255, 255, .9));
   box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .28);
 }
