@@ -613,7 +613,11 @@ main:focus { outline: none; }
   .hero-meta { gap: 6px; }
   .meta-item-time, .meta-item-date, .meta-item-free { display: none; }
   .hero-meta .meta-item-when { display: flex; }
-  .hero-gift-free { display: inline-flex; }
+  .hero-gift { flex-wrap: wrap; }
+  .hero-gift-free {                 /* xuống dòng dưới, thẳng hàng với chữ */
+    display: inline-flex; order: 3; flex: 0 0 100%; max-width: fit-content;
+    margin: 7px 0 0 26px;
+  }
   .meta-item { gap: 6px; padding: 4px 10px 4px 4px; }
   .meta-icon { width: 24px; height: 24px; }
   .meta-icon .icon { width: 13px; height: 13px; }
