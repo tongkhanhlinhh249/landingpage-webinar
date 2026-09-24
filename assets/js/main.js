@@ -58,7 +58,7 @@
   }
 
   /* ── Mũi tên trên thẻ đối tượng → chọn sẵn vai trò trong form ── */
-  document.querySelectorAll('.ta-arrow[data-role]').forEach(function (link) {
+  document.querySelectorAll('[data-role]').forEach(function (link) {
     link.addEventListener('click', function () {
       var roleSelect = document.getElementById('f-role');
       if (roleSelect) roleSelect.value = link.dataset.role;
@@ -187,10 +187,11 @@
   var footer = document.querySelector('.site-footer');
 
   if (sticky && formCol && 'IntersectionObserver' in window) {
-    var visible = { form: false, footer: false };
+    var heroCta = document.getElementById('hero-cta');
+    var visible = { hero: false, form: false, footer: false };
     var stickyLink = sticky.querySelector('a');
     var updateSticky = function () {
-      var show = !visible.form && !visible.footer;
+      var show = !visible.hero && !visible.form && !visible.footer;
       sticky.classList.toggle('is-visible', show);
       sticky.setAttribute('aria-hidden', String(!show));
       if (stickyLink) stickyLink.tabIndex = show ? 0 : -1;
@@ -198,11 +199,13 @@
     var stickyObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.target === formCol) visible.form = entry.isIntersecting;
+        else if (entry.target === heroCta) visible.hero = entry.isIntersecting;
         else if (entry.target === footer) visible.footer = entry.isIntersecting;
       });
       updateSticky();
     });
     stickyObs.observe(formCol);
+    if (heroCta) stickyObs.observe(heroCta);
     updateSticky();
     if (footer) stickyObs.observe(footer);
   }
