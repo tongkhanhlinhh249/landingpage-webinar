@@ -445,11 +445,24 @@ main:focus { outline: none; }
 .hook {
   display: block;
   font-size: 36px;
-  font-size: clamp(24px, 7.35cqi, 52px);
+  font-size: clamp(26px, 8.2cqi, 52px);
   font-weight: 700; line-height: 1.14; letter-spacing: -0.02em; text-transform: uppercase;
   color: var(--color-ink-blue);
 }
 .hook .grad-text { padding-right: .04em; }
+.hook-lead {                       /* dòng nhỏ dẫn vào */
+  display: block; font-size: .5em; font-weight: 700; letter-spacing: .04em;
+  color: var(--color-ink-blue); line-height: 1.1;
+}
+.hook-key {                        /* dòng điểm nhấn lớn nhất */
+  display: block; font-size: 1.06em; font-weight: 800; line-height: 1.04;
+  letter-spacing: -0.055em; padding-right: .04em; white-space: nowrap;
+}
+@media (max-width: 520px) { .hook-key { white-space: normal; font-size: 1.02em; } }
+.hook-tail {                       /* dòng chốt */
+  display: block; margin-top: .14em; font-size: .58em; font-weight: 700;
+  line-height: 1.16; letter-spacing: -0.02em; color: var(--color-ink-blue);
+}
 .hook .hook-ai { font-size: 1.87em; font-weight: 800; letter-spacing: -0.045em; }
 
 .hero-sub {
@@ -492,7 +505,6 @@ main:focus { outline: none; }
 @media (max-width: 400px) {
   .section-title { font-size: 26px; }
   .title-line { white-space: normal; }
-  .hook { font-size: 20.5px; }          /* giữ tiêu đề đúng 3 dòng trên máy hẹp */
   .hero-sub { font-size: 14.5px; }
   .program-card { padding: 18px 16px 16px; }
   .countdown { padding: 14px 14px 12px; }
