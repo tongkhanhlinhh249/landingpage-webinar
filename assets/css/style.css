@@ -636,8 +636,9 @@ main:focus { outline: none; }
 .hero-visual { display: block; width: 100%; max-width: 520px; margin: 0 auto; }
 @media (max-width: 1023px) {          /* mobile: CTA lên trước, KV xuống cuối */
   .hero-copy     { order: 1; position: relative; z-index: 1; }
-  /* cánh tay KV vẽ tràn lên trên khung → cắt bớt để không đè vào chip giờ/ô quà tặng */
-  .hero-visual   { order: 2; margin-top: 10px; overflow: hidden; }
+  /* SVG cánh tay vẽ tràn lên trên khung ~0.55 × bề ngang KV.
+     Chừa đúng khoảng đó (không dùng overflow:hidden để khỏi cắt cụt hình). */
+  .hero-visual   { order: 2; margin-top: 164px; }
   .hero-cta-card { order: 3; }
 }
 @media (max-width: 639px) {           /* gom gọn để nút đăng ký nằm trong màn đầu */
@@ -658,7 +659,7 @@ main:focus { outline: none; }
   .meta-item dd { font-size: 13px; white-space: nowrap; }
 }
 @media (max-width: 559px)  { .hero-visual { max-width: 288px; } }
-@media (min-width: 560px) and (max-width: 1023px) { .hero-visual { max-width: 400px; } }
+@media (min-width: 560px) and (max-width: 1023px) { .hero-visual { max-width: 400px; margin-top: 226px; } }
 @media (min-width: 1024px) {
   .hero-visual { max-width: 360px; position: relative; z-index: 0; left: -40px; }   /* nhích trái nhẹ, không đè lên cột chữ */
   .hero-copy { position: relative; z-index: 1; }
