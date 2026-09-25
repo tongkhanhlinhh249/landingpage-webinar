@@ -406,7 +406,7 @@ main:focus { outline: none; }
   padding: calc(var(--nav-h) + 8px) 0 48px;
 }
 @media (min-width: 1024px) {
-  .hero { min-height: min(100vh, 940px); display: flex; align-items: center; padding: calc(var(--nav-h) + 22px) 0 42px; }
+  .hero { display: flex; align-items: center; padding: calc(var(--nav-h) + 52px) 0 64px; }   /* ôm sát nội dung, không để trống nhiều */
 }
 .hero-grid { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: center; }
 @media (min-width: 640px) { .hero-grid { gap: 32px; } }
@@ -428,6 +428,11 @@ main:focus { outline: none; }
   .deco-orb-1 { width: 38px; height: 38px; right: 6%; top: 8%; }
   .deco-holo  { width: 22px; height: 22px; right: 22%; top: 2%; }
   .deco-orb-2 { width: 16px; height: 16px; right: 38%; top: 12%; }
+}
+/* Desktop: dịch cụm orb + holo sang trái 200px (margin-right trên phần tử neo bằng `right`) */
+@media (min-width: 1024px) {
+  .hook-deco .deco-orb-1,
+  .hook-deco .deco-holo { margin-right: 200px; }
 }
 .event-name {
   display: inline-flex; align-items: center; flex-wrap: nowrap; white-space: nowrap; gap: 0 11px;
@@ -630,8 +635,9 @@ main:focus { outline: none; }
 /* Mobile/tablet: minh hoạ lên đầu hero · Desktop: cột phải */
 .hero-visual { display: block; width: 100%; max-width: 520px; margin: 0 auto; }
 @media (max-width: 1023px) {          /* mobile: CTA lên trước, KV xuống cuối */
-  .hero-copy     { order: 1; }
-  .hero-visual   { order: 2; margin-top: 4px; }   /* KV nằm ngay dưới dòng quà tặng */
+  .hero-copy     { order: 1; position: relative; z-index: 1; }
+  /* cánh tay KV vẽ tràn lên trên khung → cắt bớt để không đè vào chip giờ/ô quà tặng */
+  .hero-visual   { order: 2; margin-top: 10px; overflow: hidden; }
   .hero-cta-card { order: 3; }
 }
 @media (max-width: 639px) {           /* gom gọn để nút đăng ký nằm trong màn đầu */
@@ -847,7 +853,7 @@ main:focus { outline: none; }
 .ta-arrow:hover, .ta-card:hover .ta-arrow { color: #fff; background-image: var(--grad-cta); box-shadow: 0 12px 26px -10px rgba(30, 150, 255, .45); }
 .ta-arrow:hover { transform: rotate(45deg); }
 
-.ta-toggle, .ta-role-link { display: none; }
+.ta-toggle { display: none; }
 .benefit-list { display: flex; flex-direction: column; gap: 20px; padding: 28px 8px 0; }
 .benefit-list li { display: flex; gap: 14px; }
 .benefit-list p { font-size: 15px; line-height: 1.65; color: var(--color-ink-muted); }
@@ -871,13 +877,6 @@ main:focus { outline: none; }
   .ta-card.is-open .ta-toggle { transform: rotate(180deg); }
   .ta-details { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .42s ease; }
   .ta-card.is-open .ta-details { grid-template-rows: 1fr; }
-  .ta-role-link {
-    display: inline-flex; align-items: center; gap: 7px; margin: 14px 8px 4px;
-    padding: 9px 18px; border-radius: var(--radius-pill);
-    font-size: 14px; font-weight: 600; text-decoration: none;
-    color: #fff; background-image: var(--grad-cta);
-    box-shadow: 0 12px 24px -12px rgba(30, 110, 220, .85);
-  }
   .ta-details > .benefit-list { min-height: 0; overflow: hidden; visibility: hidden; transition: visibility 0s linear .42s, padding .42s ease; padding: 0 8px; }
   .ta-card.is-open .ta-details > .benefit-list { visibility: visible; transition-delay: 0s; padding: 20px 8px 0; }
 }
@@ -1052,13 +1051,14 @@ main:focus { outline: none; }
 }
 .form-title-hook {
   display: block; text-transform: uppercase; color: var(--color-ink-blue);
-  font-size: 22px; font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance;
+  font-size: 22px; font-weight: 700; line-height: 1.32; letter-spacing: -0.02em;
 }
 @media (min-width: 640px) { .form-title-hook { font-size: 26px; } }
 .form-title-ai { padding-right: .04em; }
+.ft-line { display: block; }   /* "…danh tiếng số" luôn nằm trọn dòng 1, "trong kỷ nguyên AI" xuống dòng 2 */
 @media (min-width: 1024px) {
   .form-title .event-name { margin-bottom: 16px; }
-  .form-title-hook { font-size: 26px; line-height: 1.18; letter-spacing: -0.025em; }
+  .form-title-hook { font-size: 26px; line-height: 1.3; letter-spacing: -0.025em; }
   .form-meta { margin-top: 24px; }
 }
 @media (min-width: 1200px) { .form-title-hook { font-size: 30px; } }
@@ -1357,14 +1357,23 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
   -webkit-backdrop-filter: none; backdrop-filter: none;
 }
 .program-hook {
-  font-size: 22px; font-weight: 700; line-height: 1.18; letter-spacing: -0.025em;
+  font-size: 22px; font-weight: 700; line-height: 1.32; letter-spacing: -0.025em;
   text-transform: uppercase; color: var(--color-ink-blue);
 }
 @media (min-width: 1000px) { .program-hook { font-size: 26px; } }
 .program-facts { display: grid; gap: 8px; margin-top: 16px; }
 .program-facts li { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 500; color: var(--color-ink-muted); }
 .program-facts .icon { flex-shrink: 0; color: var(--color-accent-icon); }
-.program-card .countdown { width: 100%; margin-top: 18px; text-align: center; }
+.program-card .countdown {
+  /* nền giống khung countdown ở banner hero */
+  width: 100%; margin-top: 18px; text-align: center;
+  border: 0; border-radius: var(--radius-2xl);
+  background: linear-gradient(135deg, #c7e3ff 0%, #d8dcff 55%, #cfeefb 100%);
+  box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .26), 0 24px 44px -26px rgba(18, 52, 125, .6);
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+}
+.program-card .countdown .countdown-title { color: var(--color-ink-blue); }
+.program-card .countdown .countdown-note { color: var(--color-ink-blue); opacity: .78; }
 .program-cta { margin-top: 18px; width: 100%; justify-content: center; }
 
 .program-timeline {               /* gộp 3 nhóm vào 1 khung chung */
