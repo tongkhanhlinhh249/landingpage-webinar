@@ -450,12 +450,12 @@ main:focus { outline: none; }
   color: var(--color-ink-blue);
 }
 .hook .grad-text { padding-right: .04em; }
-.hook-lead {                       /* dòng nhỏ dẫn vào */
-  display: block; font-size: .5em; font-weight: 700; letter-spacing: .04em;
-  color: var(--color-ink-blue); line-height: 1.1;
+.hook-lead {                       /* dòng trên, cỡ vừa */
+  display: block; font-size: .64em; font-weight: 700; letter-spacing: -0.02em;
+  color: var(--color-ink-blue); line-height: 1.12;
 }
 .hook-key {                        /* dòng điểm nhấn lớn nhất */
-  display: block; font-size: 1.06em; font-weight: 800; line-height: 1.04;
+  display: block; font-size: 1.18em; font-weight: 800; line-height: 1.04;
   letter-spacing: -0.055em; padding-right: .04em; white-space: nowrap;
 }
 @media (max-width: 520px) { .hook-key { white-space: normal; font-size: 1.02em; } }
