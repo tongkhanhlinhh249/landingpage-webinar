@@ -1249,26 +1249,24 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 @media (min-width: 1024px) { .gift-title { font-size: clamp(34px, 3.55vw, 46px); } }   /* cột hẹp 1024–1295px: vẫn gọn 2 dòng */
 
 .gift-prize {
-  padding: 18px 22px; border-radius: var(--radius-xl);
+  /* icon quà bên trái + tên/giá trị bên phải, ôm theo nội dung → không còn khoảng trống thừa */
+  display: flex; align-items: center; gap: 16px; width: fit-content; max-width: 100%;
+  padding: 18px 26px 18px 18px; border-radius: var(--radius-xl);
   background: linear-gradient(155deg, rgba(255, 255, 255, .86), rgba(255, 255, 255, .58));
   -webkit-backdrop-filter: blur(20px) saturate(160%); backdrop-filter: blur(20px) saturate(160%);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .9), 0 24px 50px -30px rgba(30, 120, 220, .35);
 }
 .gift-prize-name { font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; color: var(--color-ink); }
 .gift-prize-edition { font-weight: 600; color: var(--color-accent-text); }
-.gift-prize-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-.gift-tag {
-  display: inline-flex; align-items: center; padding: 6px 13px;
-  border-radius: var(--radius-pill); font-size: 13px; font-weight: 600;
-  color: var(--color-accent-text); background: rgba(30, 170, 255, .1);
-  box-shadow: inset 0 0 0 1px rgba(30, 120, 220, .16);
+.gift-prize-icon {
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 60px; height: 60px; border-radius: 18px;
+  color: #fff; background-image: var(--grad-cta);
+  box-shadow: 0 14px 26px -12px rgba(30, 110, 220, .85), inset 0 1px 0 rgba(255, 255, 255, .45);
 }
-.gift-tag-full {
-  display: block; width: fit-content; max-width: 100%; padding: 12px 20px; border-radius: var(--radius-xl);
-  font-size: 15px; font-weight: 600; line-height: 1.55; color: var(--color-ink-blue); text-wrap: pretty;
-  background: linear-gradient(135deg, rgba(30, 170, 255, .16), rgba(255, 255, 255, .9));
-  box-shadow: inset 0 0 0 1.5px rgba(30, 120, 220, .28);
-}
+.gift-prize-icon .icon { width: 30px; height: 30px; stroke-width: 1.8; }
+.gift-prize-body { min-width: 0; }
+.gift-prize-value { margin-top: 4px; font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--color-ink-blue); }
 .gift-amount { font-size: 1.35em; font-weight: 800; letter-spacing: -0.02em; padding-right: .06em; }
 .gift-note { display: flex; gap: 10px; margin-top: 16px; font-size: 14px; line-height: 1.6; color: var(--color-ink-muted); }
 .gift-note-icon { flex-shrink: 0; margin-top: 2px; color: var(--color-accent-icon); }
@@ -1337,8 +1335,11 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 }
 @media (max-width: 559px) {
   .gift-lead { font-size: 15px; }
-  .gift-prize { padding: 16px 18px; }
+  .gift-prize { gap: 14px; padding: 16px 18px 16px 16px; }
+  .gift-prize-icon { width: 48px; height: 48px; border-radius: 15px; }
+  .gift-prize-icon .icon { width: 24px; height: 24px; }
   .gift-prize-name { font-size: 18px; }
+  .gift-prize-value .gift-amount { font-size: 1.2em; }   /* "Quà trị giá 10.000.000 VNĐ" giữ 1 dòng ở màn 375 */
   .gift-box { padding: 18px 16px 20px; }
   .gift-3d { width: 190px; height: 221px; }
   .gift-list li { font-size: 14px; }
