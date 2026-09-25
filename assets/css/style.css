@@ -568,11 +568,7 @@ main:focus { outline: none; }
   box-shadow: inset 0 0 0 1.25px rgba(30, 120, 220, .3), 0 14px 28px -16px rgba(18, 52, 125, .5);
 }
 .hero-gift strong { font-weight: 700; color: var(--color-accent-text); }
-.hero-gift-free {                  /* chỉ hiện ở mobile: gộp "Miễn phí" vào dòng quà tặng */
-  display: none; align-items: center; flex-shrink: 0;
-  margin-right: 8px; padding: 3px 9px; border-radius: var(--radius-pill);
-  font-size: 12px; font-weight: 700; color: #fff; background-image: var(--grad-cta);
-}
+.hero-gift-text { flex: 1 1 0; min-width: 0; }   /* luôn nằm cùng dòng với icon */
 .hero-gift-icon { display: inline-flex; flex-shrink: 0; color: var(--color-accent-icon); }
 .hero-gift-icon .icon { stroke-width: 1.9; }
 @media (max-width: 559px) {
@@ -635,8 +631,8 @@ main:focus { outline: none; }
 .hero-visual { display: block; width: 100%; max-width: 520px; margin: 0 auto; }
 @media (max-width: 1023px) {          /* mobile: CTA lên trước, KV xuống cuối */
   .hero-copy     { order: 1; }
-  .hero-cta-card { order: 2; }
-  .hero-visual   { order: 3; margin-top: 4px; }
+  .hero-visual   { order: 2; margin-top: 4px; }   /* KV nằm ngay dưới dòng quà tặng */
+  .hero-cta-card { order: 3; }
 }
 @media (max-width: 639px) {           /* gom gọn để nút đăng ký nằm trong màn đầu */
   .hero { padding-top: calc(var(--nav-h) - 8px); }
@@ -648,13 +644,8 @@ main:focus { outline: none; }
   .hero-cta-card { margin-top: 10px; }
   .hero-cta-card .countdown-inline { padding: 12px 12px 38px; }
   .hero-meta { gap: 6px; }
-  .meta-item-time, .meta-item-date, .meta-item-free { display: none; }
+  .meta-item-time, .meta-item-date { display: none; }
   .hero-meta .meta-item-when { display: flex; }
-  .hero-gift { flex-wrap: wrap; }
-  .hero-gift-free {                 /* xuống dòng dưới, thẳng hàng với chữ */
-    display: inline-flex; order: 3; flex: 0 0 100%; max-width: fit-content;
-    margin: 7px 0 0 26px;
-  }
   .meta-item { gap: 6px; padding: 4px 10px 4px 4px; }
   .meta-icon { width: 24px; height: 24px; }
   .meta-icon .icon { width: 13px; height: 13px; }
