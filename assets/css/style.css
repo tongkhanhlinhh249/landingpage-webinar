@@ -663,7 +663,7 @@ main:focus { outline: none; }
 @media (max-width: 559px)  { .hero-visual { max-width: 288px; } }
 @media (min-width: 560px) and (max-width: 1023px) { .hero-visual { max-width: 400px; } }
 @media (min-width: 1024px) {
-  .hero-visual { max-width: 352px; position: relative; z-index: 0; left: -200px; }   /* dịch trái cho cân với cột chữ */
+  .hero-visual { max-width: 360px; position: relative; z-index: 0; left: -40px; }   /* nhích trái nhẹ, không đè lên cột chữ */
   .hero-copy { position: relative; z-index: 1; }
 }
 
