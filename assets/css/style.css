@@ -450,6 +450,14 @@ main:focus { outline: none; }
   color: var(--color-ink-blue);
 }
 .hook .grad-text { padding-right: .04em; }
+/* Tiêu đề hero dạng ảnh SVG (bản desktop / mobile) */
+.hook-img { display: block; width: 100%; height: auto; }
+.hook-img-desktop { max-width: 700px; }
+.hook-img-mobile { display: none; max-width: 320px; }
+@media (max-width: 767px) {
+  .hook-img-desktop { display: none; }
+  .hook-img-mobile { display: block; }
+}
 .hook-lead {                       /* dòng trên, cỡ vừa */
   display: block; font-size: .64em; font-weight: 700; letter-spacing: -0.02em;
   color: var(--color-ink-blue); line-height: 1.12;
@@ -616,8 +624,10 @@ main:focus { outline: none; }
   .hero-visual   { order: 3; margin-top: 4px; }
 }
 @media (max-width: 639px) {           /* gom gọn để nút đăng ký nằm trong màn đầu */
-  .event-name { margin-bottom: 20px; }
-  .hero-sub { margin-top: 14px; font-size: 15px; line-height: 1.58; }
+  .hero { padding-top: calc(var(--nav-h) - 8px); }
+  .event-name { margin-bottom: 14px; }
+  .hook-img { margin-top: 2px; }
+  .hero-sub { margin-top: 12px; font-size: 14px; line-height: 1.55; }
   .hero-facts { margin-top: 18px; }
   .hero-gift { margin-top: 10px; font-size: 12.5px; padding: 8px 13px 8px 11px; }
   .hero-cta-card { margin-top: 10px; }

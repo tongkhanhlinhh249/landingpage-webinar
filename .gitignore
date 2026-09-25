@@ -1,0 +1,14 @@
+# local / build
+.DS_Store
+.claude/
+export/
+*.zip
+
+# ảnh gốc chưa xử lý (đã có bản tối ưu trong assets/images)
+/*.jpg
+/*.jpeg
+/*.png
+
+# bản giải nén cũ của file zip
+/legal-x-reputation-landing/
+SVG/
