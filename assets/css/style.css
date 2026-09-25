@@ -413,7 +413,22 @@ main:focus { outline: none; }
 @media (min-width: 1024px) { .hero-grid { grid-template-columns: minmax(0, 1.16fr) minmax(0, .84fr); gap: 18px 32px; } }
 
 
-.hero-title { color: var(--color-ink); }
+.hero-title { position: relative; color: var(--color-ink); }
+/* Trang trí quanh tiêu đề: cùng hệ orb/holo với KV và các section */
+.hook-deco { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.deco-orb-1 { width: 58px; height: 58px; right: 4%; top: 34%; opacity: .95; }
+.deco-holo  { width: 34px; height: 34px; right: 14%; top: 18%; }
+.deco-orb-2 { width: 26px; height: 26px; right: 24%; top: 62%; }
+@media (max-width: 1023px) {
+  .deco-orb-1 { width: 46px; height: 46px; right: 2%; top: 30%; }
+  .deco-holo  { width: 26px; height: 26px; right: 12%; top: 12%; }
+  .deco-orb-2 { width: 20px; height: 20px; right: 22%; top: 58%; }
+}
+@media (max-width: 639px) {
+  .deco-orb-1 { width: 38px; height: 38px; right: 6%; top: 8%; }
+  .deco-holo  { width: 22px; height: 22px; right: 22%; top: 2%; }
+  .deco-orb-2 { width: 16px; height: 16px; right: 38%; top: 12%; }
+}
 .event-name {
   display: inline-flex; align-items: center; flex-wrap: nowrap; white-space: nowrap; gap: 0 11px;
   font-size: 12.5px; font-weight: 600; letter-spacing: .14em; line-height: 1;
@@ -450,13 +465,13 @@ main:focus { outline: none; }
   color: var(--color-ink-blue);
 }
 .hook .grad-text { padding-right: .04em; }
-/* Tiêu đề hero dạng ảnh SVG (bản desktop / mobile) */
-.hook-img { display: block; width: 100%; height: auto; }
-.hook-img-desktop { max-width: 700px; }
-.hook-img-mobile { display: none; max-width: 320px; }
+/* Tiêu đề hero: SVG nhúng trực tiếp để dùng webfont Be Vietnam Pro */
+.hook-svg { display: block; width: 100%; height: auto; }
+.hook-svg-desktop { max-width: 700px; }
+.hook-svg-mobile { display: none; max-width: 330px; }
 @media (max-width: 767px) {
-  .hook-img-desktop { display: none; }
-  .hook-img-mobile { display: block; }
+  .hook-svg-desktop { display: none; }
+  .hook-svg-mobile { display: block; }
 }
 .hook-lead {                       /* dòng trên, cỡ vừa */
   display: block; font-size: .64em; font-weight: 700; letter-spacing: -0.02em;
@@ -575,7 +590,7 @@ main:focus { outline: none; }
   .hero-grid { grid-template-rows: auto auto; }
   .hero-copy    { grid-column: 1; grid-row: 1 / span 2; }
   .hero-visual  { grid-column: 2; grid-row: 1; }
-  .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -34px; }
+  .hero-cta-card { grid-column: 2; grid-row: 2; margin-top: -26px; }
 }
 
 .hero-cta-btn {          /* đè 1/2 lên khung countdown cho liền mạch */
@@ -626,7 +641,7 @@ main:focus { outline: none; }
 @media (max-width: 639px) {           /* gom gọn để nút đăng ký nằm trong màn đầu */
   .hero { padding-top: calc(var(--nav-h) - 8px); }
   .event-name { margin-bottom: 14px; }
-  .hook-img { margin-top: 2px; }
+  .hook-svg { margin-top: 2px; }
   .hero-sub { margin-top: 12px; font-size: 14px; line-height: 1.55; }
   .hero-facts { margin-top: 18px; }
   .hero-gift { margin-top: 10px; font-size: 12.5px; padding: 8px 13px 8px 11px; }
@@ -647,7 +662,10 @@ main:focus { outline: none; }
 }
 @media (max-width: 559px)  { .hero-visual { max-width: 288px; } }
 @media (min-width: 560px) and (max-width: 1023px) { .hero-visual { max-width: 400px; } }
-@media (min-width: 1024px) { .hero-visual { max-width: 436px; order: 0; } }
+@media (min-width: 1024px) {
+  .hero-visual { max-width: 352px; position: relative; z-index: 0; left: -200px; }   /* dịch trái cho cân với cột chữ */
+  .hero-copy { position: relative; z-index: 1; }
+}
 
 .kv3d {
   position: relative; width: 100%; aspect-ratio: 600 / 612;
