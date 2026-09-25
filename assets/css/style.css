@@ -1245,6 +1245,8 @@ legend.form-label { padding: 0; margin-bottom: 12px; }
 .gift-lead { max-width: 34em; margin-bottom: 14px; font-size: 16.5px; line-height: 1.6; color: var(--color-ink-muted); }
 .gift-lead strong { font-weight: 600; color: var(--color-ink); }
 .gift-title { margin-bottom: 22px; }
+.gift-title .title-line { white-space: normal; }   /* lưới an toàn: xuống dòng thay vì tràn khỏi cột */
+@media (min-width: 1024px) { .gift-title { font-size: clamp(34px, 3.55vw, 46px); } }   /* cột hẹp 1024–1295px: vẫn gọn 2 dòng */
 
 .gift-prize {
   padding: 18px 22px; border-radius: var(--radius-xl);
