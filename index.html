@@ -966,7 +966,8 @@
 
               <div class="form-body">
 
-              <form id="register-form" class="reg-form" novalidate>
+              <!-- ĐÃ ĐÓNG ĐĂNG KÝ (07/10/2026). Mở lại: bỏ thuộc tính `hidden` ở form và xoá khối #form-closed -->
+              <form id="register-form" class="reg-form" novalidate hidden>
                 <div class="form-row">
                   <div class="form-field">
                     <label for="f-name" class="form-label">Họ và tên <span class="req" aria-hidden="true">*</span></label>
@@ -1029,6 +1030,16 @@
                 </p>
                 <p class="micro-text micro-center"><svg class="icon icon-sm" aria-hidden="true" focusable="false"><use href="#i-ticket"/></svg> Số lượng vé mời có giới hạn.</p>
               </form>
+
+              <div id="form-closed" class="form-success form-closed" role="status">
+                <div class="success-visual" aria-hidden="true">
+                  <span class="orb orb-pearl success-orb"></span>
+                  <span class="success-check"><svg class="icon icon-xl"><use href="#i-ticket"/></svg></span>
+                </div>
+                <h3 class="success-title">Đã đóng đăng ký</h3>
+                <p class="success-desc">Cảm ơn anh/chị đã quan tâm đến <strong class="nowrap">LEGAL x&nbsp;REPUTATION</strong>. Cổng đăng ký tham dự chương trình đã đóng.</p>
+                <p class="success-desc">Cần hỗ trợ? Gọi Hotline <a href="tel:0792251228">079 2251 228</a></p>
+              </div>
 
               <div id="form-success" class="form-success" role="status" tabindex="-1" hidden>
                 <div class="success-visual" aria-hidden="true">
