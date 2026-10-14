@@ -98,6 +98,9 @@ main, footer { position: relative; z-index: 1; }
 
 /* ---------- Dành cho ai ---------- */
 .audience { padding-block: var(--sec) calc(var(--sec) * 0.6); }
+#danh-cho-ai .sec-head { max-width: none; }
+.aud-title > span { display: block; }
+@media (min-width: 640px) { .aud-title > span { white-space: nowrap; } }
 .aud-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .aud { display: flex; flex-direction: column; gap: 14px; padding: 26px 24px 28px; border-radius: var(--r-lg); background: var(--ink-2); border: 1px solid var(--line); transition: border-color 0.3s, transform 0.4s var(--ease); }
 .aud:hover { border-color: var(--line-2); transform: translateY(-3px); }
@@ -651,7 +654,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <section class="audience solid" id="danh-cho-ai">
     <div class="wrap">
       <div class="sec-head reveal">
-        <h2>Giải pháp cho <span class="grad-text">mọi quy mô</span> sản xuất nội dung</h2>
+        <h2 class="aud-title"><span>Giải pháp cho <span class="grad-text">mọi quy mô</span></span> <span>sản xuất nội dung</span></h2>
       </div>
       <div class="aud-grid">
         <article class="aud spot reveal"><span class="aud-no">01</span><span class="p-ico"><svg><use href="#i-megaphone"/></svg></span><h3>Agency truyền thông</h3><p>Quản lý nhiều khách hàng, mỗi khách cần nội dung đa kênh.</p></article>
