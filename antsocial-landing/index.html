@@ -160,7 +160,8 @@ main, footer { position: relative; z-index: 1; }
 .hero-grid { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 26px; min-width: 0; max-width: 980px; position: relative; }
 .hero-copy .lead { max-width: 64ch; }
-.hero-art { position: relative; width: 100%; height: min(50vh, 460px); }
+.hero-stage { width: 100%; display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: clamp(28px, 4vh, 48px); }
+.hero-art { position: relative; width: 100%; height: min(54vh, 480px); }
 .chip {
   align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
   font: 500 12.5px/1 var(--f-mono); color: var(--fg); letter-spacing: 0.03em;
@@ -235,7 +236,8 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 959px) {
   .hero { padding-top: 76px; }
   .hero-grid { gap: 4px; }
-  .hero-art { height: 40svh; max-height: 360px; }
+  .hero-stage { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 8px; justify-items: center; }
+  .hero-art { order: -1; height: 40svh; max-height: 360px; }
   .hero-copy { gap: 22px; }
   .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .spec { padding-bottom: 18px; }
@@ -695,27 +697,29 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <a class="btn btn-ghost" href="#san-pham">Xem demo sản phẩm</a>
           </div>
         </div>
-        <div class="hero-art" id="anchorHero" aria-hidden="true"></div>
-        <div class="composer intro" id="composer" style="--d:420" aria-label="Minh hoạ ô soạn nội dung của AntSocial.AI">
-          <div class="cmp-top">
-            <div class="cmp-tabs">
-              <span class="cmp-tab is-on" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</span>
-              <span class="cmp-tab" data-tab="podcast"><svg><use href="#i-mic"/></svg>AI Podcast</span>
+        <div class="hero-stage">
+          <div class="composer intro" id="composer" style="--d:420" aria-label="Minh hoạ ô soạn nội dung của AntSocial.AI">
+            <div class="cmp-top">
+              <div class="cmp-tabs">
+                <span class="cmp-tab is-on" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</span>
+                <span class="cmp-tab" data-tab="podcast"><svg><use href="#i-mic"/></svg>AI Podcast</span>
+              </div>
+              <span class="cmp-model">gpt-4o-mini</span>
             </div>
-            <span class="cmp-model">gpt-4o-mini</span>
+            <div class="cmp-input">
+              <span class="cmp-kind" id="cmpKind">URL</span>
+              <span class="cmp-text" id="cmpText">antsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam</span>
+              <span class="caret" aria-hidden="true"></span>
+            </div>
+            <div class="cmp-foot">
+              <ol class="cmp-steps" id="cmpSteps">
+                <li class="is-done">Viết kịch bản</li><li class="is-done">Dựng cảnh</li><li class="is-done">Giọng đọc</li><li class="is-done">Render</li>
+              </ol>
+              <span class="cmp-btn" id="cmpBtn"><svg><use href="#i-spark"/></svg>Tạo kịch bản</span>
+            </div>
+            <div class="cmp-result" id="cmpResult"><svg><use href="#i-check"/></svg><span id="cmpResultText">Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng</span></div>
           </div>
-          <div class="cmp-input">
-            <span class="cmp-kind" id="cmpKind">URL</span>
-            <span class="cmp-text" id="cmpText">antsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam</span>
-            <span class="caret" aria-hidden="true"></span>
-          </div>
-          <div class="cmp-foot">
-            <ol class="cmp-steps" id="cmpSteps">
-              <li class="is-done">Viết kịch bản</li><li class="is-done">Dựng cảnh</li><li class="is-done">Giọng đọc</li><li class="is-done">Render</li>
-            </ol>
-            <span class="cmp-btn" id="cmpBtn"><svg><use href="#i-spark"/></svg>Tạo kịch bản</span>
-          </div>
-          <div class="cmp-result" id="cmpResult"><svg><use href="#i-check"/></svg><span id="cmpResultText">Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng</span></div>
+          <div class="hero-art" id="anchorHero" aria-hidden="true"></div>
         </div>
       </div>
 
