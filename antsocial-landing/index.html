@@ -840,7 +840,6 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         <div class="callout c1" id="co1" aria-hidden="true"><i><svg><use href="#i-spark"/></svg></i><span>Xu hướng từ Google Trends</span></div>
         <div class="callout c2" id="co2" aria-hidden="true"><i><svg><use href="#i-tick"/></svg></i><span>Tự làm mới mỗi 60 phút</span></div>
       </div>
-      <p class="caption" aria-live="polite"><b id="capNo">01 / 06</b><span id="capText">Theo dõi xu hướng tìm kiếm từ Google Trends Việt Nam. Dán bài viết hoặc gõ ý tưởng để tạo kịch bản ngay tại đây.</span></p>
     </div>
   </section>
 
@@ -1228,8 +1227,6 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     imgs.forEach((im, k) => { im.classList.toggle("is-on", k === cur); if (k === cur) im.loading = "eager"; });
     $("screens").setAttribute("aria-labelledby", tabs[cur].id);
     $("addr").textContent = "AntSocial.AI · " + CAPS[cur][0];
-    $("capNo").textContent = String(cur + 1).padStart(2, "0") + " / " + String(tabs.length).padStart(2, "0");
-    $("capText").textContent = CAPS[cur][1];
     placeInd();
     if (user) tabs[cur].scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduce ? "auto" : "smooth" });
     co1.classList.add("is-out"); co2.classList.add("is-out"); clearTimeout(coTimer);
