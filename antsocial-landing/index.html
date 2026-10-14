@@ -291,7 +291,18 @@ main, footer { position: relative; z-index: 1; }
 
 .morph.is-pinned { height: 420vh; margin-top: 8px; }
 .is-pinned .morph-pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
-.is-pinned .morph-grid { width: 100%; height: 100%; grid-template-columns: 150px minmax(0, 450px) minmax(0, 1fr); gap: 40px; align-items: center; }
+.is-pinned .morph-grid { width: 100%; height: 100%; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: 40px; align-items: center; }
+/* Rail + thẻ nội dung gộp chung một khung */
+.is-pinned .flow {
+  display: grid; grid-template-columns: 176px minmax(0, 1fr); border-radius: var(--r-xl); overflow: hidden;
+  background: var(--panel); border: 1px solid var(--line-2);
+  box-shadow: 0 40px 90px -45px rgba(0, 0, 0, 1), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+.is-pinned .flow .rail { padding: 0 20px 0 28px; align-self: center; }
+.is-pinned .flow .rail-track { left: 33px; }
+.is-pinned .flow .cards { border-left: 1px solid var(--line); min-height: 360px; align-items: center; }
+.is-pinned .flow .step-card { background: none; border: 0; box-shadow: none; border-radius: 0; padding: 36px 36px 36px 34px; }
+.is-pinned .flow .step-no em { display: none; }
 .is-pinned .morph-stage { display: block; height: 72vh; min-width: 0; }
 .is-pinned .rail { display: block; position: relative; align-self: center; }
 .rail-track { position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: var(--line-2); overflow: hidden; }
@@ -310,10 +321,13 @@ main, footer { position: relative; z-index: 1; }
 .is-pinned .step-card.is-active { opacity: 1; transform: none; filter: none; visibility: visible; transition: opacity 0.5s ease 0.1s, transform 0.7s var(--ease) 0.1s, filter 0.5s ease 0.1s, visibility 0s; }
 @media (max-width: 1179px) {
   .is-pinned .morph-pin { align-items: stretch; }
-  .is-pinned .morph-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto auto; gap: 12px; padding-top: 72px; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); max-width: 640px; }
+  .is-pinned .morph-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto; gap: 12px; padding-top: 72px; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); max-width: 640px; }
   .is-pinned .morph-stage { height: auto; grid-row: 1; align-self: stretch; }
-  .is-pinned .rail { grid-row: 2; }
-  .is-pinned .cards { grid-row: 3; }
+  .is-pinned .flow { grid-row: 2; grid-template-columns: minmax(0, 1fr); border-radius: 20px; }
+  .is-pinned .flow .rail { padding: 16px 20px 0; align-self: stretch; }
+  .is-pinned .flow .rail-track { left: 20px; right: 20px; }
+  .is-pinned .flow .cards { border-left: 0; min-height: 0; }
+  .is-pinned .flow .step-card { padding: 18px 20px 20px; }
   .rail-track { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: 2px; }
   .rail-fill { transform-origin: left; transform: scaleX(var(--p, 0)); background: linear-gradient(90deg, var(--amber), var(--ember), var(--rose)); }
   .rail ol { flex-direction: row; justify-content: space-between; padding: 0 0 12px; gap: 8px; }
@@ -659,6 +673,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     <div class="morph" id="morph">
       <div class="morph-pin">
         <div class="wrap morph-grid">
+          <div class="flow spot">
           <nav class="rail" aria-label="Các bước trong quy trình">
             <div class="rail-track"><span class="rail-fill"></span></div>
             <ol>
@@ -701,6 +716,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
               <p>Xuất bản ngay, lên lịch, hoặc để AI tối ưu khung giờ đăng dựa trên dữ liệu tương tác của từng kênh.<br>Hỗ trợ Facebook, TikTok, YouTube, Zalo, Instagram, Threads và các nền tảng khác qua SO9.</p>
               <div class="platforms" id="stepPlatforms"></div>
             </article>
+          </div>
           </div>
           <div class="morph-stage" id="anchorMorph" aria-hidden="true"></div>
         </div>
