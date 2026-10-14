@@ -371,7 +371,7 @@ main, footer { position: relative; z-index: 1; }
 .tab { position: relative; z-index: 1; flex-shrink: 0; font: 500 14px/1 var(--f-body); color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 11px 16px; cursor: pointer; transition: color 0.25s; }
 .tab:hover { color: var(--fg); }
 .tab[aria-selected="true"] { color: var(--fg); }
-.tab-ind { position: absolute; z-index: 0; top: 5px; bottom: 5px; left: 0; width: 0; border-radius: 999px; background: rgba(247, 97, 42, 0.14); box-shadow: inset 0 0 0 1px rgba(247, 97, 42, 0.45); overflow: hidden; transition: transform 0.5s var(--ease), width 0.5s var(--ease); }
+.tab-ind { position: absolute; z-index: 0; top: 5px; left: 0; width: 0; height: 0; border-radius: 999px; background: rgba(247, 97, 42, 0.14); box-shadow: inset 0 0 0 1px rgba(247, 97, 42, 0.45); overflow: hidden; transition: transform 0.5s var(--ease), width 0.5s var(--ease), height 0.5s var(--ease); }
 .tab-ind::after { content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px; border-radius: 2px; background: var(--ember); transform-origin: left; transform: scaleX(0); }
 .tab-ind.is-run::after { animation: fill var(--dur, 7s) linear forwards; }
 .tabs.is-paused .tab-ind.is-run::after { animation-play-state: paused; }
@@ -398,8 +398,10 @@ main, footer { position: relative; z-index: 1; }
 .caption b { font: 500 12px/1 var(--f-mono); color: var(--amber); letter-spacing: 0.1em; flex-shrink: 0; }
 @media (max-width: 1120px) { .callout { display: none; } }
 @media (max-width: 700px) {
-  .tabs-wrap { margin-inline: calc(var(--gutter) * -1); }
-  .tabs { border-radius: 0; border-inline: 0; width: auto; padding-inline: var(--gutter); }
+  /* Mobile: hiện đủ 6 tab trong lưới 3 cột, không cần kéo ngang */
+  .tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; width: 100%; border-radius: 18px; overflow: visible; }
+  .tab { padding: 11px 6px; font-size: 13px; line-height: 1.2; text-align: center; border-radius: 12px; }
+  .tab-ind { border-radius: 12px; }
   .screens { aspect-ratio: 1 / 1; }
   .screens img { object-position: var(--fx, 50%) top; }
   .browser { border-radius: 14px; }
@@ -1242,7 +1244,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   const DUR = 7000;
   let cur = 0, autoTimer = 0, inView = false, hover = false, userStopped = false, coTimer = 0;
   tabList.style.setProperty("--dur", DUR + "ms");
-  function placeInd() { const t = tabs[cur]; ind.style.width = t.offsetWidth + "px"; ind.style.transform = `translateX(${t.offsetLeft}px)`; }
+  function placeInd() { const t = tabs[cur]; ind.style.width = t.offsetWidth + "px"; ind.style.height = t.offsetHeight + "px"; ind.style.transform = `translate(${t.offsetLeft}px, ${t.offsetTop - 5}px)`; }
   function select(i, user) {
     cur = (i + tabs.length) % tabs.length;
     tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === cur)); t.tabIndex = k === cur ? 0 : -1; });
