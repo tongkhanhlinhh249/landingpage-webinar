@@ -110,8 +110,6 @@ main, footer { position: relative; z-index: 1; }
 .aud p { color: var(--muted); font-size: 15px; line-height: 1.6; }
 @media (max-width: 1023px) { .aud-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .aud-grid { grid-template-columns: minmax(0, 1fr); } .aud { padding: 22px 20px 24px; } }
-.hero-formats { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: -10px; }
-.hero-formats span { font: 500 12.5px/1 var(--f-mono); color: var(--muted); padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line-2); background: rgba(255, 240, 230, 0.03); }
 
 /* ---------- Nav ---------- */
 .nav { position: fixed; z-index: 40; left: 0; right: 0; top: env(safe-area-inset-top, 0px); padding-block: 14px; }
@@ -602,7 +600,6 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       <div class="hero-grid">
         <div class="hero-copy">
           <h1><span class="line intro" style="--d:90">Từ một bài viết,</span><span class="line intro" style="--d:180">sản xuất nội dung <span class="grad-text">đa định dạng</span></span><span class="line intro" style="--d:240">phân phối đa nền tảng.</span></h1>
-          <p class="hero-formats intro" style="--d:270"><span>Clip ngắn</span><span>Podcast</span><span>Bài đăng MXH</span></p>
           <p class="lead intro" style="--d:300">AntSocial.AI chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
 
           <div class="hero-cta intro" style="--d:540">
