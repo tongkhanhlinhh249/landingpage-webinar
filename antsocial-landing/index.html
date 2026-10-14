@@ -479,6 +479,15 @@ main, footer { position: relative; z-index: 1; }
 .dp-panel[hidden] { display: flex; visibility: hidden; opacity: 0; transform: translateY(10px); pointer-events: none; }
 .dp-panel { transition: opacity 0.4s ease, transform 0.5s var(--ease), visibility 0s; }
 .dp-panel[hidden] { transition: opacity 0.25s ease, transform 0.3s ease, visibility 0s linear 0.3s; }
+@media (max-width: 959px) {
+  .p-list .dp-panel { margin: 4px 0 10px; animation: dpDrop 0.45s var(--ease); }
+  .p-list .dp-panel[hidden] { display: none; }
+  .dp-stage { display: none; }
+  .p-item::after { content: ""; position: absolute; right: 18px; top: 26px; width: 8px; height: 8px; border-right: 2px solid var(--dim); border-bottom: 2px solid var(--dim); transform: rotate(45deg); transition: transform 0.3s var(--ease), border-color 0.3s; }
+  .p-item.is-on::after { transform: translateY(4px) rotate(-135deg); border-color: var(--amber); }
+  .p-item { padding-right: 44px; }
+}
+@keyframes dpDrop { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 .win { border-radius: var(--r-lg); background: #0e0b0c; border: 1px solid var(--line-2); overflow: hidden; box-shadow: 0 50px 100px -55px rgba(247, 97, 42, 0.5); }
 .win-bar { display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 16px; border-bottom: 1px solid var(--line); background: rgba(255, 240, 230, 0.02); }
 .win-bar .dots { display: flex; gap: 6px; } .win-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 240, 230, 0.14); }
@@ -1297,22 +1306,34 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     }
   }
 
-  // ---- Cách thức triển khai: tab chuyển minh hoạ
+  // ---- Cách thức triển khai: desktop là tab + khung minh hoạ bên phải;
+  // mobile thành dạng xổ xuống, minh hoạ hiện ngay dưới mục đang chọn
   const dpTabs = [...document.querySelectorAll(".deploy [role=tab]")];
+  const dpPanels = dpTabs.map((t) => $(t.getAttribute("aria-controls")));
+  const dpStage = document.querySelector(".dp-stage");
+  const dpMq = matchMedia("(max-width: 959px)");
+  let dpCur = 0;
   const dpSel = (i, focus) => {
+    dpCur = i;
     dpTabs.forEach((t, k) => {
-      const on = k === i; t.classList.toggle("is-on", on); t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
-      $(t.getAttribute("aria-controls")).hidden = !on;
+      const on = k === i; t.classList.toggle("is-on", on); t.setAttribute("aria-selected", String(on)); t.setAttribute("aria-expanded", String(on));
+      t.tabIndex = on || (i < 0 && k === 0) ? 0 : -1; dpPanels[k].hidden = !on;
     });
-    if (focus) dpTabs[i].focus();
+    if (focus && i >= 0) dpTabs[i].focus();
+  };
+  const dpPlace = () => {
+    if (dpMq.matches) dpTabs.forEach((t, i) => t.after(dpPanels[i]));
+    else { dpPanels.forEach((p) => dpStage.appendChild(p)); if (dpCur < 0) dpSel(0); }
   };
   dpTabs.forEach((t, i) => {
-    t.addEventListener("click", () => dpSel(i));
+    t.addEventListener("click", () => dpSel(dpMq.matches && dpCur === i ? -1 : i));
     t.addEventListener("keydown", (e) => {
       const n = dpTabs.length, m = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: n - 1 }[e.key];
       if (m === undefined) return; e.preventDefault(); dpSel((m + n) % n, true);
     });
   });
+  dpMq.addEventListener("change", dpPlace);
+  dpPlace();
 
   // ---- Form liên hệ
   const form = $("leadForm"), card = $("formCard"), msg = $("formMsg"), fbtn = $("formBtn"), fbtnText = $("formBtnText");
