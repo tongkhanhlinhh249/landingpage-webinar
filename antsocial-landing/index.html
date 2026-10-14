@@ -267,7 +267,7 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 640px) { .ticker-label { display: none; } .ticker-track { padding-left: 0; gap: 40px; } .ticker-item { font-size: 16px; } }
 
 /* ---------- Quy trình: ghim khi cuộn ---------- */
-.formats { padding-top: var(--sec); }
+.formats { padding-block: var(--sec) var(--sec-b); }
 .formats-head { max-width: 760px; margin-bottom: 0; }
 .morph { margin-top: 40px; }
 .morph-grid { display: grid; gap: 16px; }
@@ -291,9 +291,10 @@ main, footer { position: relative; z-index: 1; }
 .pf { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg); padding: 7px 11px 7px 8px; border-radius: 999px; background: rgba(255, 240, 230, 0.05); border: 1px solid var(--line); }
 .pf svg { width: 16px; height: 16px; fill: var(--c, var(--fg)); }
 
-.morph.is-pinned { height: 340vh; margin-top: 0; }
+.morph.is-pinned { height: 340vh; margin-top: -48px; }
+@media (max-width: 1179px) { .morph.is-pinned { margin-top: 0; } }
 .is-pinned .morph-pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
-.is-pinned .morph-grid { width: 100%; height: 100%; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: 40px; align-items: center; }
+.is-pinned .morph-grid { width: 100%; height: 100%; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: 40px; align-items: start; padding-top: 96px; }
 /* Rail + thẻ nội dung gộp chung một khung */
 .is-pinned .flow {
   display: grid; grid-template-columns: 176px minmax(0, 1fr); border-radius: var(--r-xl); overflow: hidden;
@@ -306,6 +307,12 @@ main, footer { position: relative; z-index: 1; }
 .is-pinned .flow .step-card { background: none; border: 0; box-shadow: none; border-radius: 0; padding: 36px 36px 36px 34px; }
 .is-pinned .flow .step-no em { display: none; }
 .is-pinned .morph-stage { display: block; height: 72vh; min-width: 0; }
+/* Desktop: khung ghim ôm theo nội dung để không thừa khoảng trống trước section sau */
+@media (min-width: 1180px) {
+  .is-pinned .morph-pin { height: auto; }
+  .is-pinned .morph-grid { height: auto; align-items: stretch; }
+  .is-pinned .morph-stage { height: auto; min-height: 460px; }
+}
 .is-pinned .rail { display: block; position: relative; align-self: center; }
 .rail-track { position: absolute; left: 5px; top: 10px; bottom: 10px; width: 2px; border-radius: 2px; background: var(--line-2); overflow: hidden; }
 .rail-fill { position: absolute; inset: 0; background: linear-gradient(180deg, var(--amber), var(--ember), var(--rose)); transform-origin: top; transform: scaleY(var(--p, 0)); }
