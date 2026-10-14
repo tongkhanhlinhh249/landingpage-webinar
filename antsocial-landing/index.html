@@ -33,7 +33,8 @@
   --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --gutter: clamp(16px, 4vw, 40px);
   --maxw: 1240px;
-  --sec: clamp(72px, 9vw, 128px);
+  --sec: clamp(56px, 6vw, 84px);
+  --sec-b: clamp(28px, 3vw, 40px);
   --r-xl: 28px;
   --r-lg: 22px;
   --ease: cubic-bezier(.2, .7, .2, 1);
@@ -67,7 +68,7 @@ h3 { font-size: 21px; line-height: 1.28; letter-spacing: -0.015em; font-variatio
 p { margin: 0; }
 .lead { color: var(--muted); font-size: clamp(16px, 1.2vw, 18.5px); line-height: 1.65; max-width: 60ch; text-wrap: pretty; }
 .grad-text { background: var(--grad); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
-.sec-head { display: flex; flex-direction: column; gap: 18px; max-width: 780px; margin-bottom: clamp(32px, 4vw, 48px); }
+.sec-head { display: flex; flex-direction: column; gap: 14px; max-width: 780px; margin-bottom: clamp(24px, 2.6vw, 36px); }
 .solid { background: var(--ink); position: relative; }
 
 /* Hạt nhiễu phim: lớp tĩnh */
@@ -97,7 +98,7 @@ main, footer { position: relative; z-index: 1; }
 .spot:hover::after { opacity: 1; }
 
 /* ---------- Dành cho ai ---------- */
-.audience { padding-block: var(--sec) calc(var(--sec) * 0.6); }
+.audience { padding-block: var(--sec) var(--sec-b); }
 #danh-cho-ai .sec-head { max-width: none; }
 .aud-title > span { display: block; }
 @media (min-width: 640px) { .aud-title > span { white-space: nowrap; } }
@@ -159,7 +160,7 @@ main, footer { position: relative; z-index: 1; }
 .hero-grid { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 26px; min-width: 0; max-width: 980px; position: relative; }
 .hero-copy .lead { max-width: 64ch; }
-.hero-art { position: relative; width: 100%; height: min(60vh, 560px); }
+.hero-art { position: relative; width: 100%; height: min(50vh, 460px); }
 .chip {
   align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
   font: 500 12.5px/1 var(--f-mono); color: var(--fg); letter-spacing: 0.03em;
@@ -290,7 +291,7 @@ main, footer { position: relative; z-index: 1; }
 .pf { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--fg); padding: 7px 11px 7px 8px; border-radius: 999px; background: rgba(255, 240, 230, 0.05); border: 1px solid var(--line); }
 .pf svg { width: 16px; height: 16px; fill: var(--c, var(--fg)); }
 
-.morph.is-pinned { height: 420vh; margin-top: 8px; }
+.morph.is-pinned { height: 340vh; margin-top: 0; }
 .is-pinned .morph-pin { position: sticky; top: 0; height: 100vh; height: 100svh; display: flex; align-items: center; }
 .is-pinned .morph-grid { width: 100%; height: 100%; grid-template-columns: minmax(0, 640px) minmax(0, 1fr); gap: 40px; align-items: center; }
 /* Rail + thẻ nội dung gộp chung một khung */
@@ -342,7 +343,7 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 420px) { .rail button b { display: none; } .step-card .step-no { display: none; } }
 
 /* ---------- Showcase ---------- */
-.showcase { padding-block: var(--sec); }
+.showcase { padding-block: var(--sec) var(--sec-b); }
 .showcase::before { content: ""; position: absolute; inset: -1px 0 auto 0; height: 220px; pointer-events: none; background: linear-gradient(180deg, rgba(11, 9, 10, 0), var(--ink)); transform: translateY(-100%); }
 .tabs-wrap { position: relative; margin: 0 -4px 26px; }
 .tabs { position: relative; display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; padding: 5px; border-radius: 999px; width: max-content; max-width: 100%; background: rgba(255, 240, 230, 0.03); border: 1px solid var(--line); }
@@ -388,8 +389,8 @@ main, footer { position: relative; z-index: 1; }
 }
 
 /* ---------- Templates ---------- */
-.templates { padding-block: var(--sec); background: radial-gradient(70% 50% at 50% 100%, rgba(247, 97, 42, 0.08), transparent 70%), var(--ink); }
-.tpl-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: end; padding-top: 44px; perspective: 1400px; }
+.templates { padding-block: var(--sec) var(--sec-b); background: radial-gradient(70% 50% at 50% 100%, rgba(247, 97, 42, 0.08), transparent 70%), var(--ink); }
+.tpl-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: end; padding-top: 20px; perspective: 1400px; }
 .tpl { display: flex; flex-direction: column; gap: 16px; min-width: 0; margin: 0; }
 .tpl-phone {
   position: relative; aspect-ratio: 9 / 16; border-radius: 24px; overflow: hidden; background: #000;
@@ -421,7 +422,7 @@ main, footer { position: relative; z-index: 1; }
 }
 
 /* ---------- Tính năng ---------- */
-.bento-sec { padding-block: var(--sec); }
+.bento-sec { padding-block: var(--sec) var(--sec-b); }
 .feat-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .feat { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 20px; padding: 28px; border-radius: var(--r-lg); background: linear-gradient(180deg, var(--ink-3), var(--ink-2) 60%); border: 1px solid var(--line); transition: border-color 0.3s, transform 0.4s var(--ease); }
 .feat:hover { border-color: var(--line-2); transform: translateY(-3px); }
@@ -432,7 +433,7 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 759px) { .feat-grid { grid-template-columns: minmax(0, 1fr); } .feat { padding: 22px; gap: 16px; grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Integration ---------- */
-.partner { padding-block: var(--sec); }
+.partner { padding-block: var(--sec) var(--sec-b); }
 .partner-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; align-items: start; }
 .p-list { display: flex; flex-direction: column; gap: 8px; }
 .p-item {
@@ -536,7 +537,7 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 959px) { .partner-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Liên hệ ---------- */
-.contact-sec { padding-block: var(--sec) calc(var(--sec) + 20px); }
+.contact-sec { padding-block: var(--sec) calc(var(--sec) + 12px); }
 .contact-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: clamp(32px, 5vw, 72px); align-items: start; }
 .contact-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
 .contact-copy h2 { font-size: clamp(36px, 4.8vw, 64px); }
