@@ -71,13 +71,21 @@ p { margin: 0; }
 .sec-head { display: flex; flex-direction: column; gap: 14px; max-width: 780px; margin-bottom: clamp(24px, 2.6vw, 36px); }
 .solid { background: var(--ink); position: relative; }
 /* Nền xen kẽ ám cam */
-.solid.tint {
-  background:
-    radial-gradient(80% 60% at 15% 0%, rgba(247, 97, 42, 0.16), transparent 70%),
-    radial-gradient(70% 55% at 90% 100%, rgba(255, 95, 126, 0.08), transparent 70%),
-    linear-gradient(180deg, #1a100c 0%, #22140e 50%, #1a100c 100%);
-  border-block: 1px solid rgba(247, 97, 42, 0.14);
+.solid.tint { background: var(--ink); isolation: isolate; overflow: hidden; }
+/* Đốm sáng cam mờ (gradient blur) thay cho khối màu phủ — mép section hoà vào nền tối */
+.solid.tint::before, .solid.tint::after {
+  content: ""; position: absolute; z-index: -1; pointer-events: none; border-radius: 50%; filter: blur(80px);
 }
+.solid.tint::before {
+  width: min(70vw, 900px); height: 72%; left: -14%; top: 12%;
+  background: radial-gradient(closest-side, rgba(247, 97, 42, 0.78), rgba(247, 97, 42, 0.28) 58%, transparent);
+}
+.solid.tint::after {
+  width: min(60vw, 760px); height: 64%; right: -12%; bottom: 10%;
+  background: radial-gradient(closest-side, rgba(255, 95, 126, 0.5), rgba(255, 140, 60, 0.22) 58%, transparent);
+}
+#san-pham.tint::before { left: auto; right: -16%; top: 14%; }
+#san-pham.tint::after { right: auto; left: -14%; bottom: 10%; }
 .tint .aud, .tint .feat { background: rgba(11, 9, 10, 0.42); border-color: rgba(255, 200, 170, 0.1); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
 .tint .aud:hover, .tint .feat:hover { border-color: rgba(247, 97, 42, 0.35); }
 .tint .tabs { background: rgba(11, 9, 10, 0.4); }
