@@ -70,6 +70,17 @@ p { margin: 0; }
 .grad-text { background: var(--grad); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; }
 .sec-head { display: flex; flex-direction: column; gap: 14px; max-width: 780px; margin-bottom: clamp(24px, 2.6vw, 36px); }
 .solid { background: var(--ink); position: relative; }
+/* Nền xen kẽ ám cam */
+.solid.tint {
+  background:
+    radial-gradient(80% 60% at 15% 0%, rgba(247, 97, 42, 0.16), transparent 70%),
+    radial-gradient(70% 55% at 90% 100%, rgba(255, 95, 126, 0.08), transparent 70%),
+    linear-gradient(180deg, #1a100c 0%, #22140e 50%, #1a100c 100%);
+  border-block: 1px solid rgba(247, 97, 42, 0.14);
+}
+.tint .aud, .tint .feat { background: rgba(11, 9, 10, 0.42); border-color: rgba(255, 200, 170, 0.1); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.tint .aud:hover, .tint .feat:hover { border-color: rgba(247, 97, 42, 0.35); }
+.tint .tabs { background: rgba(11, 9, 10, 0.4); }
 
 /* Hạt nhiễu phim: lớp tĩnh */
 .grain {
@@ -740,7 +751,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   </section>
 
   <!-- ============ DÀNH CHO AI ============ -->
-  <section class="audience solid" id="danh-cho-ai">
+  <section class="audience solid tint" id="danh-cho-ai">
     <div class="wrap">
       <div class="sec-head reveal">
         <h2 class="aud-title"><span>Giải pháp cho <span class="grad-text">mọi quy mô</span></span> <span>sản xuất nội dung</span></h2>
@@ -817,7 +828,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   </section>
 
   <!-- ============ SHOWCASE ============ -->
-  <section class="showcase solid" id="san-pham">
+  <section class="showcase solid tint" id="san-pham">
     <div class="wrap">
       <div class="sec-head reveal">
         <h2>Bên trong bảng điều khiển</h2>
@@ -877,7 +888,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   </section>
 
   <!-- ============ BENTO ============ -->
-  <section class="bento-sec solid" id="tinh-nang">
+  <section class="bento-sec solid tint" id="tinh-nang">
     <div class="wrap">
       <div class="sec-head reveal">
         <h2>Công cụ quản lý cho toàn bộ đội ngũ nội dung</h2>
