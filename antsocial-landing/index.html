@@ -1001,19 +1001,14 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <input class="input" id="f-name" name="fullName" autocomplete="name" placeholder="Nguyễn Văn A" maxlength="120" required aria-describedby="e-fullName">
             <span class="err" id="e-fullName"></span>
           </div>
-          <div class="field" data-f="company">
-            <label for="f-company">Công ty</label>
-            <input class="input" id="f-company" name="company" autocomplete="organization" placeholder="Tên công ty" maxlength="160" aria-describedby="e-company">
-            <span class="err" id="e-company"></span>
-          </div>
           <div class="field" data-f="phone">
-            <label for="f-phone">Số điện thoại</label>
-            <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" maxlength="30" aria-describedby="e-phone">
+            <label for="f-phone">Số điện thoại <em>*</em></label>
+            <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" maxlength="30" required aria-describedby="e-phone">
             <span class="err" id="e-phone"></span>
           </div>
-          <div class="field full" data-f="email">
-            <label for="f-email">Email công việc</label>
-            <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ban@congty.vn" maxlength="160" aria-describedby="e-email">
+          <div class="field" data-f="email">
+            <label for="f-email">Email <em>*</em></label>
+            <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ban@congty.vn" maxlength="160" required aria-describedby="e-email">
             <span class="err" id="e-email"></span>
           </div>
           <div class="field full" data-f="partnerType">
@@ -1308,16 +1303,16 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     const e = $("e-" + name); if (e) e.textContent = (text || "").trim();
     const inp = f.querySelector(".input"); if (inp) inp.setAttribute("aria-invalid", text ? "true" : "false");
   };
-  const clearErrs = () => ["fullName", "company", "phone", "email", "message"].forEach((n) => setErr(n, ""));
+  const clearErrs = () => ["fullName", "phone", "email", "message"].forEach((n) => setErr(n, ""));
   form.addEventListener("input", (e) => {
     const f = e.target.closest("[data-f]"); if (!f || !f.classList.contains("has-err")) return;
     setErr(f.dataset.f, "");
-    if (f.dataset.f === "phone" || f.dataset.f === "email") { setErr("phone", ""); setErr("email", ""); }
   });
   function validate(d) {
     const errs = {};
     if (d.fullName.length < 2) errs.fullName = "Vui lòng nhập họ và tên.";
-    if (!d.email && !d.phone) { errs.phone = "Nhập số điện thoại hoặc email để chúng tôi liên hệ."; errs.email = " "; }
+    if (!d.phone) errs.phone = "Vui lòng nhập số điện thoại.";
+    if (!d.email) errs.email = "Vui lòng nhập email.";
     if (d.email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) errs.email = "Email chưa đúng định dạng.";
     if (d.phone && (!/^[0-9+().\-\s]{8,30}$/.test(d.phone) || d.phone.replace(/\D/g, "").length < 8)) errs.phone = "Số điện thoại chưa đúng định dạng.";
     return errs;
@@ -1326,7 +1321,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     e.preventDefault();
     const fd = new FormData(form);
     const d = {
-      fullName: String(fd.get("fullName") || "").trim(), company: String(fd.get("company") || "").trim(),
+      fullName: String(fd.get("fullName") || "").trim(),
       phone: String(fd.get("phone") || "").trim(), email: String(fd.get("email") || "").trim(),
       partnerType: String(fd.get("partnerType") || "other"), message: String(fd.get("message") || "").trim(),
       website: String(fd.get("website") || ""), elapsedMs: Math.round(performance.now() - openedAt),
