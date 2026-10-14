@@ -434,23 +434,106 @@ main, footer { position: relative; z-index: 1; }
 /* ---------- Integration ---------- */
 .partner { padding-block: var(--sec); }
 .partner-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 32px; align-items: start; }
-.p-list { display: flex; flex-direction: column; }
-.p-item { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px; padding: 24px 0; border-top: 1px solid var(--line); }
-.p-item:last-child { border-bottom: 1px solid var(--line); }
-.p-ico { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(180deg, rgba(247, 97, 42, 0.18), rgba(247, 97, 42, 0.06)); border: 1px solid rgba(247, 97, 42, 0.3); color: var(--amber); }
+.p-list { display: flex; flex-direction: column; gap: 8px; }
+.p-item {
+  all: unset; box-sizing: border-box; position: relative; cursor: pointer; display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 18px;
+  padding: 20px 20px 20px 18px; border-radius: var(--r-lg); border: 1px solid transparent; transition: background-color 0.3s, border-color 0.3s;
+}
+.p-item::before { content: ""; position: absolute; left: -1px; top: 22px; bottom: 22px; width: 2px; border-radius: 2px; background: var(--grad); opacity: 0; transition: opacity 0.3s; }
+.p-item:hover { background: rgba(255, 240, 230, 0.025); }
+.p-item.is-on { background: var(--ink-2); border-color: var(--line-2); }
+.p-item.is-on::before { opacity: 1; }
+.p-item:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; }
+.p-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.p-t { font: 700 18px/1.3 var(--f-display); letter-spacing: -0.01em; color: var(--muted); transition: color 0.3s; }
+.p-d { color: var(--dim); font-size: 15px; line-height: 1.6; transition: color 0.3s; }
+.p-ico { width: 46px; height: 46px; border-radius: 13px; display: grid; place-items: center; background: linear-gradient(180deg, rgba(247, 97, 42, 0.18), rgba(247, 97, 42, 0.06)); border: 1px solid rgba(247, 97, 42, 0.3); color: var(--amber); transition: filter 0.3s, opacity 0.3s; }
 .p-ico svg { width: 20px; height: 20px; }
-.p-item h3 { font-size: 18.5px; margin-bottom: 6px; }
-.p-item p { color: var(--muted); font-size: 15px; }
-.code { border-radius: var(--r-lg); background: #0e0b0c; border: 1px solid var(--line-2); overflow: hidden; box-shadow: 0 50px 100px -55px rgba(247, 97, 42, 0.5); }
-.code-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px 12px 18px; border-bottom: 1px solid var(--line); background: rgba(255, 240, 230, 0.02); }
-.code-bar span { font: 12.5px/1 var(--f-mono); color: var(--muted); }
-.code-bar span b { color: var(--ok); font-weight: 500; margin-right: 8px; }
+
+/* Khung minh hoạ theo từng cách triển khai */
+.dp-stage { display: grid; position: relative; }
+.dp-panel { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.dp-panel[hidden] { display: flex; visibility: hidden; opacity: 0; transform: translateY(10px); pointer-events: none; }
+.dp-panel { transition: opacity 0.4s ease, transform 0.5s var(--ease), visibility 0s; }
+.dp-panel[hidden] { transition: opacity 0.25s ease, transform 0.3s ease, visibility 0s linear 0.3s; }
+.win { border-radius: var(--r-lg); background: #0e0b0c; border: 1px solid var(--line-2); overflow: hidden; box-shadow: 0 50px 100px -55px rgba(247, 97, 42, 0.5); }
+.win-bar { display: flex; align-items: center; gap: 12px; padding: 12px 14px 12px 16px; border-bottom: 1px solid var(--line); background: rgba(255, 240, 230, 0.02); }
+.win-bar .dots { display: flex; gap: 6px; } .win-bar .dots i { width: 9px; height: 9px; border-radius: 50%; background: rgba(255, 240, 230, 0.14); }
+.win-t { font: 12.5px/1 var(--f-mono); color: var(--muted); flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.win-badge { display: inline-flex; align-items: center; gap: 6px; flex-shrink: 0; font: 500 11.5px/1 var(--f-mono); color: var(--amber); padding: 6px 9px; border-radius: 999px; background: rgba(255, 179, 92, 0.08); border: 1px solid rgba(255, 179, 92, 0.25); }
+.win-badge svg { width: 12px; height: 12px; }
+.win-badge.is-ok { color: var(--ok); background: rgba(94, 224, 143, 0.08); border-color: rgba(94, 224, 143, 0.28); }
+.win-body { padding: 20px; display: flex; flex-direction: column; gap: 18px; }
+/* Workspace */
+.ws-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.ws-stats div { padding: 14px 12px; border-radius: 12px; background: rgba(255, 240, 230, 0.03); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+.ws-stats b { font: 600 24px/1 var(--f-display); letter-spacing: -0.02em; }
+.ws-stats span { font: 11.5px/1 var(--f-mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.ws-block { display: flex; flex-direction: column; gap: 10px; }
+.ws-k { font: 500 11px/1 var(--f-mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
+.ws-team, .ws-log { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ws-team { flex-direction: row; flex-wrap: wrap; }
+.ws-team li { display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; padding: 5px 12px 5px 5px; border-radius: 999px; background: rgba(255, 240, 230, 0.03); border: 1px solid var(--line); }
+.ws-team i { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 600 10.5px/1 var(--f-body); font-style: normal; color: #fff; background: hsl(var(--h) 70% 42%); }
+.ws-team em { font-style: normal; color: var(--dim); font-size: 12px; }
+.ws-log li { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; color: var(--muted); padding-left: 16px; position: relative; }
+.ws-log li::before { content: ""; position: absolute; left: 2px; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--ember); box-shadow: 0 0 0 3px rgba(247, 97, 42, 0.15); }
+.ws-log time { font: 12px/1.6 var(--f-mono); color: var(--dim); flex-shrink: 0; }
+.ws-others { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ws-others span { display: inline-flex; align-items: center; gap: 7px; font: 500 12px/1 var(--f-mono); color: var(--dim); padding: 9px 12px; border-radius: 10px; border: 1px dashed var(--line-3); }
+.ws-others svg { width: 13px; height: 13px; }
+.ws-others em { font-style: normal; font-size: 13px; color: var(--dim); margin-left: 4px; }
+/* CMS */
+.cms-art { display: flex; flex-direction: column; gap: 9px; padding: 16px; border-radius: 12px; background: #f6f2ee; color: #1d1714; }
+.cms-cat { align-self: flex-start; font: 600 11px/1 var(--f-body); color: #c2410c; background: #ffedd5; padding: 5px 8px; border-radius: 6px; }
+.cms-title { font: 700 18px/1.3 var(--f-display); margin: 2px 0 4px; }
+.sk { display: block; height: 7px; border-radius: 4px; background: #e2dad3; }
+.cms-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.cms-btn { display: inline-flex; align-items: center; gap: 7px; font: 600 13px/1 var(--f-body); padding: 10px 13px; border-radius: 10px; border: 1px solid var(--line-2); color: var(--fg); background: rgba(255, 240, 230, 0.04); }
+.cms-btn svg { width: 15px; height: 15px; }
+.cms-btn.is-primary { color: #1b0b04; border-color: transparent; background: linear-gradient(180deg, #ff7a3f, var(--ember)); box-shadow: 0 8px 24px -10px rgba(247, 97, 42, 0.9); }
+.cms-hint { font-size: 12.5px; color: var(--dim); margin-left: 4px; }
+.cms-flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; counter-reset: none; }
+.cms-flow li { position: relative; display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--muted); padding: 10px; border-radius: 10px; border: 1px solid var(--line); background: rgba(255, 240, 230, 0.02); }
+.cms-flow b { width: 20px; height: 20px; flex-shrink: 0; border-radius: 50%; display: grid; place-items: center; font: 600 11px/1 var(--f-mono); background: rgba(94, 224, 143, 0.14); color: var(--ok); }
+.cms-flow li.is-on { border-color: rgba(247, 97, 42, 0.45); color: var(--fg); background: rgba(247, 97, 42, 0.08); }
+.cms-flow li.is-on b { background: var(--ember); color: #1b0b04; }
+.cms-draft { display: flex; align-items: center; gap: 12px; padding: 10px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 240, 230, 0.03); }
+.cms-draft img { width: 40px; height: 64px; object-fit: cover; border-radius: 6px; flex-shrink: 0; }
+.cms-draft div { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.cms-draft strong { font-size: 14px; }
+.cms-draft span { font-size: 12.5px; color: var(--dim); }
+/* API */
+.api-flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+.api-flow li { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 14px; align-items: center; position: relative; padding-bottom: 18px; }
+.api-flow li:last-child { padding-bottom: 0; }
+.api-flow li:not(:last-child)::after { content: ""; position: absolute; left: 66px; top: 38px; bottom: 2px; width: 2px; background: linear-gradient(180deg, var(--line-3), transparent); }
+.api-node { position: relative; z-index: 1; justify-self: stretch; text-align: center; font: 600 12.5px/1.2 var(--f-body); padding: 11px 8px; border-radius: 10px; border: 1px solid var(--line-2); background: #1a1517; }
+.api-node.is-brand { color: #1b0b04; border-color: transparent; background: var(--grad); }
+.api-msg { display: flex; flex-direction: column; gap: 5px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255, 240, 230, 0.02); min-width: 0; }
+.api-msg b { font: 600 11px/1 var(--f-mono); letter-spacing: 0.08em; }
+.api-msg code { font: 13px/1.4 var(--f-mono); color: var(--fg); overflow-wrap: anywhere; }
+.api-msg small { font-size: 12.5px; color: var(--dim); }
+.m-post { color: var(--ok); } .m-run { color: var(--amber); } .m-hook { color: #ff8fa3; }
+.api-key { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 12px 14px; border-radius: 12px; border: 1px dashed var(--line-3); }
+.api-key span { font: 500 11px/1 var(--f-mono); color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
+.api-key code { font: 13px/1 var(--f-mono); color: var(--amber); }
+.api-key em { font-style: normal; font-size: 12.5px; color: var(--muted); }
+@media (max-width: 560px) {
+  .win-body { padding: 16px; }
+  .ws-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cms-flow { grid-template-columns: minmax(0, 1fr); }
+  .api-flow li { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .api-flow li::after { display: none; }
+  .api-node { justify-self: start; padding: 8px 12px; }
+  .win-bar .dots { display: none; }
+}
+.p-item.is-on .p-t { color: var(--fg); }
+.p-item.is-on .p-d { color: var(--muted); }
+.p-item:not(.is-on) .p-ico { filter: saturate(0.4); opacity: 0.75; }
 .copy { font: 500 12px/1 var(--f-mono); color: var(--fg); background: rgba(255, 240, 230, 0.06); border: 1px solid var(--line-2); padding: 8px 10px; border-radius: 8px; cursor: pointer; transition: background-color 0.2s; }
 .copy:hover { background: rgba(255, 240, 230, 0.12); }
-.code pre { margin: 0; padding: 18px 20px 22px; overflow-x: auto; font: 13px/1.75 var(--f-mono); color: #e9dfd8; tab-size: 2; }
-.code .k { color: #ffb35c; } .code .s { color: #9be7b4; } .code .n { color: #ff8fa3; } .code .c { color: #7f7470; }
-.code-sub { border-top: 1px solid var(--line); }
-@media (max-width: 959px) { .partner-grid { grid-template-columns: minmax(0, 1fr); } .code pre { font-size: 12px; } }
+@media (max-width: 959px) { .partner-grid { grid-template-columns: minmax(0, 1fr); } }
 
 /* ---------- Liên hệ ---------- */
 .contact-sec { padding-block: var(--sec) calc(var(--sec) + 20px); }
@@ -803,34 +886,90 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       <div class="sec-head reveal">
         <h2>Tích hợp trực tiếp vào hệ thống hiện có của doanh nghiệp</h2>
       </div>
-      <div class="partner-grid">
-        <div class="p-list">
-          <div class="p-item"><span class="p-ico"><svg><use href="#i-shield"/></svg></span><div><h3>Workspace riêng cho từng doanh nghiệp, minh bạch về bảo mật thông tin</h3><p>Video, podcast, kênh, thành viên và nhật ký hoạt động của mỗi doanh nghiệp nằm trong không gian riêng, không lẫn với nơi khác.</p></div></div>
-          <div class="p-item"><span class="p-ico"><svg><use href="#i-plug"/></svg></span><div><h3>Tạo video và podcast ngay trong CMS</h3><p>Đội ngũ sản xuất nội dung tạo video/podcast trong CMS, đăng nhập một lần, bài viết đã được chọn sẵn. Kết quả đồng bộ ngược về CMS dưới dạng bản nháp.</p></div></div>
-          <div class="p-item"><span class="p-ico"><svg><use href="#i-code"/></svg></span><div><h3>Public API và webhook</h3><p>Tạo video và podcast bằng API key có phạm vi quyền và thời hạn. Hệ thống gọi webhook của người dùng khi video hoàn tất.</p></div></div>
+      <div class="partner-grid deploy">
+        <div class="p-list" role="tablist" aria-label="Cách thức triển khai" aria-orientation="vertical">
+          <button class="p-item is-on" type="button" role="tab" id="dp-0" aria-controls="dpp-0" aria-selected="true"><span class="p-ico"><svg><use href="#i-shield"/></svg></span><span class="p-body"><span class="p-t">Workspace riêng cho từng doanh nghiệp, minh bạch về bảo mật thông tin</span><span class="p-d">Video, podcast, kênh, thành viên và nhật ký hoạt động của mỗi doanh nghiệp nằm trong không gian riêng, không lẫn với nơi khác.</span></span></button>
+          <button class="p-item" type="button" role="tab" id="dp-1" aria-controls="dpp-1" aria-selected="false" tabindex="-1"><span class="p-ico"><svg><use href="#i-plug"/></svg></span><span class="p-body"><span class="p-t">Tạo video và podcast ngay trong CMS</span><span class="p-d">Đội ngũ sản xuất nội dung tạo video/podcast trong CMS, đăng nhập một lần, bài viết đã được chọn sẵn. Kết quả đồng bộ ngược về CMS dưới dạng bản nháp.</span></span></button>
+          <button class="p-item" type="button" role="tab" id="dp-2" aria-controls="dpp-2" aria-selected="false" tabindex="-1"><span class="p-ico"><svg><use href="#i-code"/></svg></span><span class="p-body"><span class="p-t">Public API và webhook</span><span class="p-d">Tạo video và podcast bằng API key có phạm vi quyền và thời hạn. Hệ thống gọi webhook của người dùng khi video hoàn tất.</span></span></button>
         </div>
-        <div class="code reveal">
-          <div class="code-bar"><span><b>POST</b>/api/public/videos</span><button class="copy" type="button" data-copy="req">Sao chép</button></div>
-<pre id="req"><span class="k">curl</span> -X POST <span class="s">'https://&lt;your-domain&gt;/api/public/videos'</span> \
-  -H <span class="s">'Authorization: Bearer YOUR_API_KEY'</span> \
-  -H <span class="s">'Content-Type: application/json'</span> \
-  --data <span class="s">'{
-    "source_urls": ["https://example.com/news/article"],
-    "duration": <span class="n">45</span>,
-    "language": "vi",
-    "voice": "vi-VN-HoaiMyNeural",
-    "video_template": "news",
-    "aspect_ratio": "9:16"
-  }'</span></pre>
-          <div class="code-bar code-sub"><span><b>WEBHOOK</b>video.completed</span></div>
-<pre><span class="c">// Hệ thống gửi tới callback_url của API key</span>
-{
-  <span class="k">"event"</span>: <span class="s">"video.completed"</span>,
-  <span class="k">"status"</span>: <span class="s">"completed"</span>,
-  <span class="k">"video_url"</span>: <span class="s">"https://cdn…/final.mp4"</span>,
-  <span class="k">"thumbnail_url"</span>: <span class="s">"https://cdn…/thumb.jpg"</span>,
-  <span class="k">"aspect_ratio"</span>: <span class="s">"9:16"</span>, <span class="k">"duration"</span>: <span class="n">45</span>
-}</pre>
+
+        <div class="dp-stage reveal">
+          <!-- Workspace -->
+          <div class="dp-panel is-on" id="dpp-0" role="tabpanel" aria-labelledby="dp-0">
+            <div class="win">
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Workspace · Doanh nghiệp A</span><span class="win-badge"><svg><use href="#i-shield"/></svg>Riêng tư</span></div>
+              <div class="win-body">
+                <div class="ws-stats">
+                  <div><b>128</b><span>Video</span></div><div><b>34</b><span>Podcast</span></div><div><b>12</b><span>Kênh</span></div><div><b>8</b><span>Thành viên</span></div>
+                </div>
+                <div class="ws-block">
+                  <span class="ws-k">Thành viên &amp; vai trò</span>
+                  <ul class="ws-team">
+                    <li><i style="--h:22">MA</i>Minh Anh<em>Quản trị</em></li>
+                    <li><i style="--h:200">QB</i>Quốc Bảo<em>Biên tập</em></li>
+                    <li><i style="--h:330">TL</i>Thu Linh<em>Duyệt nội dung</em></li>
+                  </ul>
+                </div>
+                <div class="ws-block">
+                  <span class="ws-k">Nhật ký hoạt động</span>
+                  <ul class="ws-log">
+                    <li><span>Thu Linh duyệt video “Săn mây Tà Xùa”</span><time>09:42</time></li>
+                    <li><span>Hệ thống đăng video lên 4 kênh</span><time>09:45</time></li>
+                    <li><span>Quốc Bảo tạo podcast đối thoại 10 phút</span><time>10:12</time></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="ws-others" aria-hidden="true">
+              <span><svg><use href="#i-shield"/></svg>Doanh nghiệp B</span><span><svg><use href="#i-shield"/></svg>Doanh nghiệp C</span><em>Dữ liệu tách biệt, không truy cập chéo</em>
+            </div>
+          </div>
+
+          <!-- CMS -->
+          <div class="dp-panel" id="dpp-1" role="tabpanel" aria-labelledby="dp-1" hidden>
+            <div class="win">
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">CMS · Biên tập bài viết</span><span class="win-badge is-ok"><svg><use href="#i-tick"/></svg>Đã đăng nhập</span></div>
+              <div class="win-body">
+                <div class="cms-art">
+                  <span class="cms-cat">Du lịch</span>
+                  <p class="cms-title">Săn mây Tà Xùa mùa đẹp nhất trong năm</p>
+                  <span class="sk" style="width:96%"></span><span class="sk" style="width:88%"></span><span class="sk" style="width:64%"></span>
+                </div>
+                <div class="cms-actions">
+                  <span class="cms-btn is-primary"><svg><use href="#i-video"/></svg>Tạo video</span>
+                  <span class="cms-btn"><svg><use href="#i-mic"/></svg>Tạo podcast</span>
+                  <span class="cms-hint">Bài viết đã được chọn sẵn</span>
+                </div>
+                <ol class="cms-flow">
+                  <li class="is-done"><b>1</b>Gửi bài viết</li>
+                  <li class="is-done"><b>2</b>AntSocial.AI xử lý</li>
+                  <li class="is-on"><b>3</b>Bản nháp về CMS</li>
+                </ol>
+                <div class="cms-draft">
+                  <img src="assets/v-karaoke.webp" width="540" height="960" alt="" loading="lazy" decoding="async">
+                  <div><strong>Video 9:16 · 0:45</strong><span>Đồng bộ về CMS lúc 10:18</span></div>
+                  <span class="win-badge is-ok">Bản nháp</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- API -->
+          <div class="dp-panel" id="dpp-2" role="tabpanel" aria-labelledby="dp-2" hidden>
+            <div class="win api">
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Public API · luồng xử lý</span><span class="win-badge"><svg><use href="#i-code"/></svg>REST</span></div>
+              <div class="win-body">
+                <ol class="api-flow">
+                  <li><span class="api-node">Hệ thống của bạn</span><div class="api-msg"><b class="m-post">POST</b><code>/api/public/videos</code><small>source_urls · duration 45 · template news · 9:16</small></div></li>
+                  <li><span class="api-node is-brand">AntSocial.AI</span><div class="api-msg"><b class="m-run">RENDER</b><code>Kịch bản → giọng đọc → dựng video</code><small>Xác thực bằng API key có phạm vi quyền &amp; thời hạn</small></div></li>
+                  <li><span class="api-node">callback_url</span><div class="api-msg"><b class="m-hook">WEBHOOK</b><code>video.completed</code><small>video_url · thumbnail_url · aspect_ratio · duration</small></div></li>
+                </ol>
+                <div class="api-key">
+                  <span>API key</span><code>as_live_••••••••3f9a</code><em>Quyền: video, podcast</em><em>Hết hạn: 31/12/2026</em>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1141,6 +1280,23 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       card.addEventListener("pointerleave", () => { cancelAnimationFrame(raf); phone.style.removeProperty("--ry"); phone.style.removeProperty("--rx"); });
     }
   }
+
+  // ---- Cách thức triển khai: tab chuyển minh hoạ
+  const dpTabs = [...document.querySelectorAll(".deploy [role=tab]")];
+  const dpSel = (i, focus) => {
+    dpTabs.forEach((t, k) => {
+      const on = k === i; t.classList.toggle("is-on", on); t.setAttribute("aria-selected", String(on)); t.tabIndex = on ? 0 : -1;
+      $(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) dpTabs[i].focus();
+  };
+  dpTabs.forEach((t, i) => {
+    t.addEventListener("click", () => dpSel(i));
+    t.addEventListener("keydown", (e) => {
+      const n = dpTabs.length, m = { ArrowDown: i + 1, ArrowRight: i + 1, ArrowUp: i - 1, ArrowLeft: i - 1, Home: 0, End: n - 1 }[e.key];
+      if (m === undefined) return; e.preventDefault(); dpSel((m + n) % n, true);
+    });
+  });
 
   // ---- Form liên hệ
   const form = $("leadForm"), card = $("formCard"), msg = $("formMsg"), fbtn = $("formBtn"), fbtnText = $("formBtnText");
