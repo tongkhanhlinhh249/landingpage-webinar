@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
 /* Layout: sân khấu tối với một canvas WebGL cố định phía sau. Vị trí khối 3D bám theo các "neo"
    trong layout (.hero-art, .morph-stage, .cta-orb) nên luôn khớp bố cục ở mọi kích thước màn hình.
@@ -28,7 +28,7 @@
   --err: #ff7a7a;
   --app: #faf9f7;
   --grad: linear-gradient(100deg, var(--amber) 0%, var(--ember) 48%, var(--rose) 100%);
-  --f-display: "Bricolage Grotesque", "Be Vietnam Pro", system-ui, sans-serif;
+  --f-display: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-body: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --gutter: clamp(16px, 4vw, 40px);
@@ -264,7 +264,7 @@ main, footer { position: relative; z-index: 1; }
   .spec:nth-child(n + 3) { border-top: 1px solid var(--line); }
 }
 @media (max-width: 560px) {
-  .hero h1 { font-size: clamp(30px, 8.6vw, 42px); }
+  .hero h1 { font-size: clamp(27px, 7.4vw, 38px); }
   .composer { padding: 12px; border-radius: 18px; }
   .cmp-model { display: none; }
   .cmp-text { font-size: 13px; }
