@@ -164,6 +164,8 @@ main, footer { position: relative; z-index: 1; }
 .btn-primary:hover::after { transform: translateX(120%); }
 .btn-ghost { background: rgba(255, 240, 230, 0.04); color: var(--fg); border-color: var(--line-2); }
 .btn-ghost:hover { background: rgba(255, 240, 230, 0.09); border-color: var(--line-3); }
+.btn-link { background: none; border-color: transparent; color: var(--muted); text-decoration: underline; text-decoration-color: rgba(247, 241, 236, 0.28); text-underline-offset: 5px; }
+.btn-link:hover { color: var(--fg); text-decoration-color: currentColor; }
 .btn-sm { padding: 11px 17px; font-size: 14px; }
 .nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .nav-login { -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); background: rgba(24, 18, 20, 0.62); }
@@ -175,12 +177,17 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 480px) { .nav-cta .long { display: none; } .nav-cta .short { display: inline; } .brand img { height: 19px; } .nav-actions .btn-sm { padding: 10px 14px; } }
 
 /* ---------- Hero ---------- */
-.hero { padding-block: clamp(112px, 14vh, 156px) 36px; }
+.hero { padding-block: clamp(96px, 12vh, 132px) 36px; }
 .hero-grid { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
 .hero-copy { display: flex; flex-direction: column; align-items: center; gap: 26px; min-width: 0; max-width: 1100px; position: relative; }
-.hero-copy .lead { max-width: 64ch; }
-.hero-stage { width: 100%; display: grid; grid-template-columns: minmax(0, 560px) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: clamp(28px, 4vh, 48px); }
-.hero-art { position: relative; width: 100%; height: min(54vh, 480px); }
+.hero-copy .lead { max-width: 68ch; }
+.hero-stage { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: clamp(22px, 3.2vh, 34px); }
+.hero-art { position: relative; width: 100%; height: min(46vh, 420px); margin-top: -4px; }
+@media (min-width: 960px) {
+  .hero-stage { display: grid; grid-template-columns: minmax(0, 600px) minmax(0, 1fr); grid-template-areas: "form art"; align-items: center; justify-items: start; column-gap: clamp(24px, 4vw, 56px); row-gap: 20px; }
+  .hero-stage .composer { grid-area: form; }
+  .hero-stage .hero-art { grid-area: art; height: min(50vh, 460px); margin-top: 0; }
+}
 .chip {
   align-self: flex-start; display: inline-flex; align-items: center; gap: 10px;
   font: 500 12.5px/1 var(--f-mono); color: var(--fg); letter-spacing: 0.03em;
@@ -188,7 +195,7 @@ main, footer { position: relative; z-index: 1; }
 }
 .chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--ember); box-shadow: 0 0 0 4px rgba(247, 97, 42, 0.18); animation: beat 2.4s ease-in-out infinite; }
 @keyframes beat { 50% { box-shadow: 0 0 0 7px rgba(247, 97, 42, 0.05); } }
-.hero h1 { font-size: clamp(38px, 4.5vw, 66px); line-height: 1.2; letter-spacing: -0.025em; font-weight: 700; font-variation-settings: "opsz" 96, "wdth" 95; }
+.hero h1 { font-size: clamp(38px, 4.2vw, 62px); line-height: 1.2; letter-spacing: -0.025em; font-weight: 700; font-variation-settings: "opsz" 96, "wdth" 95; }
 .hero h1 .line { display: block; }
 .hero h1 .grad-text { animation: sheen 7s ease-in-out infinite; }
 @keyframes sheen { 50% { background-position: 100% 0; } }
@@ -196,7 +203,7 @@ main, footer { position: relative; z-index: 1; }
 
 /* Composer — mô phỏng ô soạn ở trang Khám phá */
 .composer {
-  position: relative; isolation: isolate; width: 100%; max-width: 660px; border-radius: 20px; padding: 14px; text-align: left;
+  position: relative; isolation: isolate; width: 100%; max-width: 640px; border-radius: 20px; padding: 14px; text-align: left;
   background: var(--panel); border: 1px solid var(--line-2);
   box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.04);
   display: flex; flex-direction: column; gap: 12px;
@@ -218,6 +225,19 @@ main, footer { position: relative; z-index: 1; }
 .cmp-input { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 12px; border-radius: 12px; background: rgba(0, 0, 0, 0.34); border: 1px solid var(--line); min-width: 0; }
 .cmp-kind { flex-shrink: 0; font: 500 11px/1 var(--f-mono); letter-spacing: 0.05em; text-transform: uppercase; color: var(--amber); padding: 6px 8px; border-radius: 6px; background: rgba(255, 179, 92, 0.1); border: 1px solid rgba(255, 179, 92, 0.25); }
 .cmp-text { font: 14px/1.4 var(--f-mono); color: var(--fg); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.cmp-tab { border: 0; background: none; font-family: inherit; cursor: pointer; }
+.cmp-tab:focus-visible, .cmp-btn:focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
+.cmp-input { cursor: text; transition: border-color 0.25s, box-shadow 0.25s; }
+.cmp-input:focus-within { border-color: rgba(247, 97, 42, 0.6); box-shadow: 0 0 0 3px rgba(247, 97, 42, 0.14); }
+.cmp-field { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--fg); font: 14px/1.4 var(--f-mono); padding: 0; }
+.cmp-field::placeholder { color: var(--dim); }
+.cmp-field[aria-invalid="true"] { color: #ffb4a3; }
+.cmp-note { margin: -2px 2px 0; font-size: 12.5px; line-height: 1.45; color: var(--dim); }
+.cmp-err { margin: -2px 2px 0; font-size: 12.5px; line-height: 1.45; color: #ff9d86; }
+.cmp-err[hidden] { display: none; }
+.composer .cmp-foot { justify-content: flex-end; }
+button.cmp-btn { border: 0; cursor: pointer; }
+
 .caret { width: 2px; height: 18px; background: var(--ember); flex-shrink: 0; margin-left: -6px; animation: blink 1s steps(1) infinite; }
 @keyframes blink { 50% { opacity: 0; } }
 .cmp-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -255,8 +275,8 @@ main, footer { position: relative; z-index: 1; }
 @media (max-width: 959px) {
   .hero { padding-top: 76px; }
   .hero-grid { gap: 4px; }
-  .hero-stage { grid-template-columns: minmax(0, 1fr); gap: 0; margin-top: 8px; justify-items: center; }
-  .hero-art { order: -1; height: 40svh; max-height: 360px; }
+  .hero-stage { gap: 16px; margin-top: 8px; }
+  .hero-art { height: 36svh; max-height: 320px; }
   .hero-copy { gap: 22px; }
   .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .spec { padding-bottom: 18px; }
@@ -396,6 +416,7 @@ main, footer { position: relative; z-index: 1; }
 .screens { position: relative; aspect-ratio: 16 / 10; background: var(--app); }
 .screens img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transform: scale(1.015); transition: opacity 0.6s ease, transform 1s var(--ease); }
 .screens img.is-on { opacity: 1; transform: none; }
+@media (min-width: 701px) { .screens { aspect-ratio: 1655 / 863; } }
 .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 11px 15px 11px 12px; border-radius: 14px; background: rgba(22, 17, 19, 0.92); border: 1px solid var(--line-2); box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.9); font-size: 14px; font-weight: 500; white-space: nowrap; transition: opacity 0.45s ease, transform 0.6s var(--ease); }
 .callout i { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: rgba(247, 97, 42, 0.15); color: var(--amber); }
 .callout i svg { width: 14px; height: 14px; }
@@ -419,36 +440,44 @@ main, footer { position: relative; z-index: 1; }
 }
 
 /* ---------- Templates ---------- */
-.templates { padding-block: var(--sec) var(--sec-b); background: radial-gradient(70% 50% at 50% 100%, rgba(247, 97, 42, 0.08), transparent 70%), var(--ink); }
-.tpl-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 22px); align-items: end; padding-top: 20px; perspective: 1400px; }
-.tpl { display: flex; flex-direction: column; gap: 16px; min-width: 0; margin: 0; }
+.templates { overflow-x: clip; padding-block: var(--sec) var(--sec-b); background: radial-gradient(70% 50% at 50% 100%, rgba(247, 97, 42, 0.08), transparent 70%), var(--ink); }
+.sec-head.center { align-items: center; text-align: center; margin-inline: auto; max-width: 960px; }
+.sec-head.center .lead { max-width: 62ch; }
+.dim-text { color: rgba(247, 241, 236, 0.42); }
+.tpl-row { margin-top: clamp(28px, 4vw, 56px); width: 100vw; margin-left: calc(50% - 50vw); overflow: hidden; padding-block: 30px 10px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+.tpl-track { display: flex; gap: clamp(22px, 2.6vw, 38px); width: max-content; animation: tplslide 48s linear infinite; }
+.tpl-row:hover .tpl-track { animation-play-state: paused; }
+@keyframes tplslide { to { transform: translateX(calc(-50% - clamp(11px, 1.3vw, 19px))); } }
+.tpl { display: flex; flex-direction: column; gap: 14px; flex: 0 0 clamp(168px, 15.5vw, 224px); margin: 0; --ty: 0px; --rot: 0deg; }
+.tpl:nth-child(3n+1) { --ty: 8px; --rot: -1.5deg; } .tpl:nth-child(3n+2) { --ty: -10px; --rot: 0deg; } .tpl:nth-child(3n) { --ty: 4px; --rot: 1.5deg; }
 .tpl-phone {
-  position: relative; aspect-ratio: 9 / 16; border-radius: 24px; overflow: hidden; background: #000;
-  border: 1px solid rgba(255, 240, 230, 0.18); box-shadow: 0 44px 80px -36px rgba(0, 0, 0, 1);
+  position: relative; aspect-ratio: 9 / 16; border-radius: 22px; overflow: hidden; background: var(--bg, #111); isolation: isolate;
+  border: 1px solid rgba(255, 240, 230, 0.2); box-shadow: 0 40px 70px -34px rgba(0, 0, 0, 1);
   transform: translateY(var(--ty, 0)) rotate(var(--rot, 0deg)) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   transition: transform 0.6s var(--ease), box-shadow 0.4s; will-change: transform;
-  -webkit-box-reflect: below 10px linear-gradient(transparent 72%, rgba(255, 255, 255, 0.12));
 }
-.tpl-phone img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
-.tpl-phone::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.07); background: linear-gradient(160deg, rgba(255, 255, 255, 0.12), transparent 32%); pointer-events: none; }
-.tpl-dur { position: absolute; z-index: 1; top: 10px; right: 10px; font: 500 11px/1 var(--f-mono); color: #fff; padding: 5px 7px; border-radius: 6px; background: rgba(0, 0, 0, 0.55); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
-.tpl:nth-child(1) { --ty: 0px; --rot: -3deg; } .tpl:nth-child(2) { --ty: -24px; --rot: -1.5deg; } .tpl:nth-child(3) { --ty: -40px; --rot: 0deg; }
-.tpl:nth-child(4) { --ty: -24px; --rot: 1.5deg; } .tpl:nth-child(5) { --ty: 0px; --rot: 3deg; }
-.tpl:hover .tpl-phone { --ty: -52px; --rot: 0deg; box-shadow: 0 60px 100px -40px rgba(247, 97, 42, 0.5); }
-.tpl:hover .tpl-phone img { transform: scale(1.04); }
-.tpl-meta { display: flex; flex-direction: column; gap: 5px; margin-top: 28px; }
-.tpl-meta strong { font: 600 16.5px/1.3 var(--f-display); letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
-.tpl-meta strong code { font: 11px/1 var(--f-mono); color: var(--dim); padding: 4px 6px; border-radius: 5px; border: 1px solid var(--line); }
-.tpl-meta span { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.tpl:hover .tpl-phone { --ty: -12px; --rot: 0deg; box-shadow: 0 50px 90px -40px rgba(247, 97, 42, 0.5); }
+.tpl-phone::before, .tpl-phone::after { content: ""; position: absolute; z-index: -1; border-radius: 50%; background: var(--blob, rgba(0, 0, 0, 0.35)); }
+.tpl-phone::before { width: 70%; height: 30%; left: -12%; top: 36%; }
+.tpl-phone::after { width: 62%; height: 28%; right: -14%; top: 30%; opacity: 0.75; }
+.tpl-phone .tpl-gloss { position: absolute; inset: 0; border-radius: inherit; z-index: 1; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06); background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), transparent 32%); }
+.tpl-shade { position: absolute; z-index: -1; inset: auto 0 0 0; height: 48%; background: var(--floor, linear-gradient(transparent, #050507 40%)); }
+.tpl-copy { position: absolute; left: 11%; right: 8%; bottom: 20%; display: flex; flex-direction: column; align-items: flex-start; gap: 5px; }
+.tpl-tag { font: 700 clamp(7px, .62vw, 9px)/1 var(--f-body); letter-spacing: .04em; text-transform: uppercase; color: var(--tagfg, #111); background: var(--tag, #f5b342); padding: 3px 5px; }
+.tpl-title { font: 800 clamp(13px, 1.2vw, 17px)/1.12 var(--f-body); color: var(--tfg, #fff); text-transform: uppercase; letter-spacing: -.01em; }
+.tpl-title em { font-style: normal; color: var(--accent, #f5b342); display: block; }
+.tpl-sub { position: absolute; left: 0; right: 0; bottom: 8%; text-align: center; font: 700 clamp(8px, .75vw, 11px)/1 var(--f-body); color: var(--tfg, #fff); text-transform: uppercase; }
+.tpl-sub b { color: var(--accent, #f5b342); font-weight: 700; }
+.tpl-sub.pill span { display: inline-block; background: var(--accent); color: #fff; text-transform: none; padding: 5px 9px; border-radius: 6px; }
+.tpl-meta { display: flex; flex-direction: column; gap: 3px; margin-top: 10px; padding-left: 4px; }
+.tpl-meta strong { font: 600 15px/1.3 var(--f-display); letter-spacing: -0.01em; }
+.tpl-meta span { font-size: 12.5px; color: var(--dim); line-height: 1.4; }
 .fx { margin-top: 48px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .fx-label { font: 500 11.5px/1 var(--f-mono); color: var(--dim); letter-spacing: 0.12em; text-transform: uppercase; margin-right: 8px; }
 .note { margin-top: 18px; font-size: 13.5px; color: var(--dim); max-width: 80ch; }
 @media (max-width: 959px) {
-  .tpl-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; padding: 56px var(--gutter) 6px; margin-inline: calc(var(--gutter) * -1); scroll-padding-inline: var(--gutter); scrollbar-width: none; }
-  .tpl-row::-webkit-scrollbar { display: none; }
-  .tpl { flex: 0 0 min(56vw, 230px); scroll-snap-align: start; }
-  .tpl-phone { -webkit-box-reflect: unset; }
-  .tpl-meta { margin-top: 6px; }
+  .tpl { flex-basis: min(46vw, 190px); }
+}
 }
 
 /* ---------- Tính năng ---------- */
@@ -666,6 +695,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 @media (prefers-reduced-motion: reduce) {
   .caret, .chip i, .scroll-cue i::after, .hero h1 .grad-text, .ticker-track { animation: none; }
   .tpl-phone, .feat, .screens img, .is-pinned .step-card { transition: none; }
+  .tpl-track { animation: none; }
+  .tpl-row { overflow-x: auto; }
 }
 </style>
 
@@ -719,36 +750,32 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1><span class="line intro" style="--d:90">Từ một bài viết,</span><span class="line intro" style="--d:180">sản xuất nội dung <span class="grad-text">đa định dạng</span></span><span class="line intro" style="--d:240">phân phối đa nền tảng</span></h1>
+          <h1><span class="line intro" style="--d:90">Biến link bài viết</span><span class="line intro" style="--d:180">thành <span class="grad-text">video hoặc podcast</span></span><span class="line intro" style="--d:240">chuyên nghiệp trong vài phút</span></h1>
           <p class="lead intro" style="--d:300">NetSocial chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
 
           <div class="hero-cta intro" style="--d:540">
-            <a class="btn btn-primary" href="#lien-he">Trở thành đối tác <svg><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-ghost" href="#san-pham">Xem demo sản phẩm</a>
+            <a class="btn btn-ghost" href="#lien-he">Trở thành đối tác <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-link" href="#san-pham">Xem demo sản phẩm</a>
           </div>
         </div>
         <div class="hero-stage">
-          <div class="composer intro" id="composer" style="--d:420" aria-label="Minh hoạ ô soạn nội dung của NetSocial">
+          <form class="composer intro" id="composer" style="--d:420" novalidate aria-label="Dùng thử NetSocial: dán link bài viết">
             <div class="cmp-top">
-              <div class="cmp-tabs">
-                <span class="cmp-tab is-on" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</span>
-                <span class="cmp-tab" data-tab="podcast"><svg><use href="#i-mic"/></svg>AI Podcast</span>
+              <div class="cmp-tabs" role="tablist" aria-label="Loại nội dung">
+                <button type="button" class="cmp-tab is-on" role="tab" aria-selected="true" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</button>
+                <button type="button" class="cmp-tab" role="tab" aria-selected="false" data-tab="podcast"><svg><use href="#i-mic"/></svg>AI Podcast</button>
               </div>
-              <span class="cmp-model">gpt-4o-mini</span>
             </div>
-            <div class="cmp-input">
-              <span class="cmp-kind" id="cmpKind">URL</span>
-              <span class="cmp-text" id="cmpText">netsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam</span>
-              <span class="caret" aria-hidden="true"></span>
-            </div>
+            <label class="cmp-input" for="cmpUrl">
+              <span class="cmp-kind">URL</span>
+              <input class="cmp-field" id="cmpUrl" name="url" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Dán link bài viết, ví dụ https://vnexpress.net/…" aria-describedby="cmpNote cmpErr">
+            </label>
+            <p class="cmp-err" id="cmpErr" role="alert" hidden>Vui lòng dán một đường link bài viết hợp lệ (bắt đầu bằng http:// hoặc https://).</p>
+            <p class="cmp-note" id="cmpNote">Vui lòng sử dụng bài viết bạn có bản quyền hoặc được phép khai thác.</p>
             <div class="cmp-foot">
-              <ol class="cmp-steps" id="cmpSteps">
-                <li class="is-done">Viết kịch bản</li><li class="is-done">Dựng cảnh</li><li class="is-done">Giọng đọc</li><li class="is-done">Render</li>
-              </ol>
-              <span class="cmp-btn" id="cmpBtn"><svg><use href="#i-spark"/></svg>Tạo kịch bản</span>
+              <button type="submit" class="cmp-btn" id="cmpBtn"><svg><use href="#i-spark"/></svg><span id="cmpBtnText">Tạo video</span></button>
             </div>
-            <div class="cmp-result" id="cmpResult"><svg><use href="#i-check"/></svg><span id="cmpResultText">Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng</span></div>
-          </div>
+          </form>
           <div class="hero-art" id="anchorHero" aria-hidden="true"></div>
         </div>
       </div>
@@ -771,7 +798,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <!-- ============ DÀNH CHO AI ============ -->
   <section class="audience solid tint" id="danh-cho-ai">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head center reveal">
         <h2 class="aud-title"><span>Giải pháp cho <span class="grad-text">mọi quy mô</span></span> <span>sản xuất nội dung</span></h2>
       </div>
       <div class="aud-grid">
@@ -848,8 +875,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <!-- ============ SHOWCASE ============ -->
   <section class="showcase solid tint" id="san-pham">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>Bên trong bảng điều khiển</h2>
+      <div class="sec-head center reveal">
+        <h2>Công cụ quản lý cho toàn bộ đội ngũ nội dung</h2>
         <p class="lead">Toàn bộ quy trình được quản lý tập trung trong một giao diện duy nhất — từ khám phá nguồn, tạo nội dung đến xuất bản đa kênh.</p>
       </div>
 
@@ -861,7 +888,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           <button class="tab" role="tab" id="tab-2" aria-controls="screens" aria-selected="false" tabindex="-1">Biên tập cảnh</button>
           <button class="tab" role="tab" id="tab-3" aria-controls="screens" aria-selected="false" tabindex="-1">Đăng đa kênh</button>
           <button class="tab" role="tab" id="tab-4" aria-controls="screens" aria-selected="false" tabindex="-1">AI tạo podcast</button>
-          <button class="tab" role="tab" id="tab-5" aria-controls="screens" aria-selected="false" tabindex="-1">Lịch sử đăng</button>
+          <button class="tab" role="tab" id="tab-5" aria-controls="screens" aria-selected="false" tabindex="-1">Đọc văn bản</button>
         </div>
       </div>
 
@@ -869,12 +896,12 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         <div class="browser">
           <div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr" id="addr">NetSocial · Khám phá</span><span style="width:47px"></span></div>
           <div class="screens" id="screens" role="tabpanel" aria-labelledby="tab-0">
-            <img class="is-on" style="--fx:71%" src="assets/s-discover.webp" width="1920" height="1200" alt="Màn hình Khám phá: ô soạn AI Video và AI Podcast, xu hướng từ Google Trends" decoding="async">
-            <img style="--fx:29%" src="assets/s-create.webp" width="1920" height="1200" alt="Màn hình AI tạo video: nội dung bài viết, thời lượng, khung hình, giọng đọc và storyboard" loading="lazy" decoding="async">
-            <img style="--fx:82%" src="assets/s-editor.webp" width="1920" height="1200" alt="Trình biên tập video: danh sách cảnh, xem trước 9:16, thuộc tính cảnh và timeline" loading="lazy" decoding="async">
-            <img style="--fx:100%" src="assets/s-publish.webp" width="1920" height="1200" alt="Bảng đăng bài lên kênh social với 4 kênh đã chọn và chế độ lịch tự động" loading="lazy" decoding="async">
-            <img style="--fx:50%" src="assets/s-podcast-create.webp" width="1920" height="1200" alt="Màn hình AI tạo podcast: kiểu đối thoại, thời lượng, hai giọng đọc" loading="lazy" decoding="async">
-            <img style="--fx:29%" src="assets/s-history.webp" width="1920" height="1200" alt="Lịch sử bài đăng: video, nền tảng, kênh, người đăng và thời gian" loading="lazy" decoding="async">
+            <img class="is-on fit-w" style="--fx:58%" src="assets/s-discover.webp" width="1656" height="861" alt="Màn hình Khám phá: ô dán link bài viết để tạo video, podcast hoặc bài đăng" decoding="async">
+            <img class="fit-w" style="--fx:30%" src="assets/s-create.jpg" width="1654" height="865" alt="Màn hình tạo video bằng AI: nhập nội dung, chọn khổ video, thời lượng và giọng đọc" loading="lazy" decoding="async">
+            <img class="fit-w" style="--fx:50%" src="assets/s-editor.jpg" width="1655" height="860" alt="Biên tập cảnh: bản nháp chờ duyệt, danh sách phân cảnh và các bước xử lý" loading="lazy" decoding="async">
+            <img class="fit-w" style="--fx:50%" src="assets/s-publish.jpg" width="1655" height="863" alt="Tạo bài đăng mạng xã hội: dán link bài báo, chọn nền tảng và giọng văn" loading="lazy" decoding="async">
+            <img class="fit-w" style="--fx:50%" src="assets/s-podcast-create.jpg" width="1656" height="864" alt="Màn hình AI tạo podcast: kiểu đối thoại, thời lượng, hai giọng đọc" loading="lazy" decoding="async">
+            <img class="fit-w" style="--fx:30%" src="assets/s-tts.jpg" width="1655" height="863" alt="Đọc văn bản mới: dán đoạn văn, chọn giọng đọc, tốc độ và nhạc nền" loading="lazy" decoding="async">
           </div>
         </div>
         <div class="callout c1" id="co1" aria-hidden="true"><i><svg><use href="#i-spark"/></svg></i><span>Xu hướng từ Google Trends</span></div>
@@ -886,36 +913,62 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <!-- ============ TEMPLATES ============ -->
   <section class="templates solid" id="mau-video">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>Năm mẫu video tích hợp sẵn, <span class="grad-text">render trực tiếp từ hệ thống</span></h2>
-        <p class="lead">Video được render trên hệ thống dựng video tích hợp, không cần phần mềm chỉnh sửa bên ngoài, tối ưu bảo mật.</p>
+      <div class="sec-head center reveal">
+        <h2>6 phong cách dựng sẵn.<span class="grad-text" style="display:block">Hoặc của riêng thương hiệu bạn.</span></h2>
+        <p class="lead">Mỗi theme có bảng màu, font, kiểu phụ đề và nhịp chuyển cảnh riêng cho từng thể loại tin. Tạo Brand Kit một lần — mọi video của kênh cùng một phong cách.</p>
       </div>
-      <div class="tpl-row" id="tplRow">
-        <figure class="tpl"><div class="tpl-phone"><span class="tpl-dur">1:00</span><img src="assets/v-news.webp" width="540" height="960" alt="Khung hình mẫu Tin tức: đường ray tàu hoả với tiêu đề bản tin" loading="lazy" decoding="async"></div>
-          <figcaption class="tpl-meta"><strong>Tin tức <code>news</code></strong><span>Tiêu đề, nguồn và phụ đề theo bố cục bản tin.</span></figcaption></figure>
-        <figure class="tpl"><div class="tpl-phone"><span class="tpl-dur">1:00</span><img src="assets/v-slideshow.webp" width="540" height="960" alt="Khung hình mẫu Slideshow: quán cà phê" loading="lazy" decoding="async"></div>
-          <figcaption class="tpl-meta"><strong>Slideshow ảnh <code>slideshow</code></strong><span>Ken Burns và chuyển cảnh mờ dần giữa các ảnh.</span></figcaption></figure>
-        <figure class="tpl"><div class="tpl-phone"><span class="tpl-dur">0:30</span><img src="assets/v-quote.webp" width="540" height="960" alt="Khung hình mẫu Quote: câu trích dẫn lớn trên nền mờ" loading="lazy" decoding="async"></div>
-          <figcaption class="tpl-meta"><strong>Quote <code>quote</code></strong><span>Câu trích dẫn hoặc số liệu lớn trên nền ảnh mờ.</span></figcaption></figure>
-        <figure class="tpl"><div class="tpl-phone"><span class="tpl-dur">0:30</span><img src="assets/v-tutorial.webp" width="540" height="960" alt="Khung hình mẫu Hướng dẫn: bước 1 pha cà phê phin" loading="lazy" decoding="async"></div>
-          <figcaption class="tpl-meta"><strong>Hướng dẫn <code>tutorial</code></strong><span>Các bước được đánh số, hợp với nội dung how-to.</span></figcaption></figure>
-        <figure class="tpl"><div class="tpl-phone"><span class="tpl-dur">0:45</span><img src="assets/v-karaoke.webp" width="540" height="960" alt="Khung hình mẫu Karaoke: người leo núi trên biển mây" loading="lazy" decoding="async"></div>
-          <figcaption class="tpl-meta"><strong>Karaoke <code>karaoke</code></strong><span>Phụ đề sáng lên theo từng từ đang được đọc.</span></figcaption></figure>
-      </div>
+      <div class="tpl-row" id="tplRow" role="group" aria-label="Sáu phong cách video dựng sẵn"><div class="tpl-track">
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#26231a,#4a3f1c 55%,#0a0a0a);--accent:#f5b342;--tag:#f5b342"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub"><b>KỶ LỤC</b></div></div>
+<figcaption class="tpl-meta"><strong>Giải Mã</strong><span>Giải mã, dòng thời gian</span></figcaption></figure>
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#0f4b4d,#0b2e45 55%,#07121f);--accent:#19e0c8;--tag:#0c1b2a;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Tài Chính</strong><span>Kinh tế, số liệu</span></figcaption></figure>
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#1a2354,#38216a 55%,#0a0a14);--accent:#37d6e8;--tag:#7c3aed;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Công Nghệ</strong><span>Review, AI, sản phẩm</span></figcaption></figure>
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#5a2a1a,#2e1812 55%,#0c0807);--accent:#ff7a3f;--tag:#ff5a1f;--tagfg:#fff;--tfg:#f7f1ec"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub pill"><span>vàng tăng mạnh</span></div></div>
+<figcaption class="tpl-meta"><strong>Đời Sống</strong><span>Du lịch, ẩm thực, văn hoá</span></figcaption></figure>
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#2c4210,#16200a 55%,#000);--accent:#ffd23a;--tag:#c6f432;--tagfg:#111"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Thể Thao</strong><span>Thể thao, xếp hạng</span></figcaption></figure>
+<figure class="tpl"><div class="tpl-phone" style="--bg:linear-gradient(#521818,#2e1111 55%,#0a0a0a);--accent:#ffb12e;--tag:#e11d2a;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Bản Tin</strong><span>Tin nhanh, tin nóng</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#26231a,#4a3f1c 55%,#0a0a0a);--accent:#f5b342;--tag:#f5b342"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub"><b>KỶ LỤC</b></div></div>
+<figcaption class="tpl-meta"><strong>Giải Mã</strong><span>Giải mã, dòng thời gian</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#0f4b4d,#0b2e45 55%,#07121f);--accent:#19e0c8;--tag:#0c1b2a;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Tài Chính</strong><span>Kinh tế, số liệu</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#1a2354,#38216a 55%,#0a0a14);--accent:#37d6e8;--tag:#7c3aed;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Công Nghệ</strong><span>Review, AI, sản phẩm</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#5a2a1a,#2e1812 55%,#0c0807);--accent:#ff7a3f;--tag:#ff5a1f;--tagfg:#fff;--tfg:#f7f1ec"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub pill"><span>vàng tăng mạnh</span></div></div>
+<figcaption class="tpl-meta"><strong>Đời Sống</strong><span>Du lịch, ẩm thực, văn hoá</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#2c4210,#16200a 55%,#000);--accent:#ffd23a;--tag:#c6f432;--tagfg:#111"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Thể Thao</strong><span>Thể thao, xếp hạng</span></figcaption></figure>
+<figure class="tpl" aria-hidden="true"><div class="tpl-phone" style="--bg:linear-gradient(#521818,#2e1111 55%,#0a0a0a);--accent:#ffb12e;--tag:#e11d2a;--tagfg:#fff"><div class="tpl-shade"></div><i class="tpl-gloss"></i>
+<div class="tpl-copy"><span class="tpl-tag">TIN NÓNG</span><div class="tpl-title">GIÁ VÀNG<em>LẬP ĐỈNH MỚI</em></div></div><div class="tpl-sub">VÀNG <b>TĂNG</b> MẠNH</div></div>
+<figcaption class="tpl-meta"><strong>Bản Tin</strong><span>Tin nhanh, tin nóng</span></figcaption></figure>
+      </div></div>
     </div>
   </section>
 
   <!-- ============ BENTO ============ -->
   <section class="bento-sec solid tint" id="tinh-nang">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <h2>Công cụ quản lý cho toàn bộ đội ngũ nội dung</h2>
+      <div class="sec-head center reveal">
+        <h2>Nhanh như máy,<span style="display:block">cẩn thận như biên tập viên</span></h2>
       </div>
       <div class="feat-grid">
         <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-library"/></svg></span><div class="feat-copy"><span class="tile-k">Quản lý nội dung</span><h3>Thư viện nội dung tập trung</h3><p>Mỗi video hiển thị trạng thái xử lý, thời lượng, khung hình, danh mục và các kênh đã đăng. Lọc theo trạng thái, tìm theo tên.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-file"/></svg></span><div class="feat-copy"><span class="tile-k">Chi tiết</span><h3>Một trang cho mỗi video</h3><p>Xem video, đọc kịch bản, kiểm tra từng cảnh và nhật ký render. Tải MP4, đồng bộ sang CMS hoặc đăng lên mạng xã hội.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-mic"/></svg></span><div class="feat-copy"><span class="tile-k">Podcast</span><h3>Nghe lại trước khi xuất bản</h3><p>Podcast có trình phát, transcript và thông tin giọng đọc. Tải MP3 hoặc đồng bộ sang CMS.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-layers"/></svg></span><div class="feat-copy"><span class="tile-k">Kênh</span><h3>Quản lý kênh theo nhóm nội dung</h3><p>Gom các kênh Facebook, TikTok, YouTube, Zalo, Instagram, Threads theo nhóm như Tin tức, Ẩm thực, Du lịch và theo dõi trạng thái đồng bộ của từng kênh.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-file"/></svg></span><div class="feat-copy"><span class="tile-k">Độ chính xác</span><h3>Không bịa số liệu</h3><p>AI chỉ dùng dữ kiện có trong nguồn và luôn ghi nguồn bài gốc. Bản dịch được kiểm lại số liệu, đơn vị và tên riêng.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-mic"/></svg></span><div class="feat-copy"><span class="tile-k">Podcast</span><h3>Bạn luôn là người duyệt</h3><p>AI dựng bản đầu tiên. Đội ngũ nội dung duyệt kịch bản, phân cảnh và bản nháp.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-shield"/></svg></span><div class="feat-copy"><span class="tile-k">Bảo mật</span><h3>Dữ liệu của bạn được bảo vệ</h3><p>Mỗi tài khoản là một không gian riêng, khoá API được mã hoá, đăng nhập hai lớp và lịch sử thao tác đầy đủ.</p></div></article>
       </div>
     </div>
   </section>
@@ -923,7 +976,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <!-- ============ CÁCH THỨC TRIỂN KHAI ============ -->
   <section class="partner solid" id="trien-khai">
     <div class="wrap">
-      <div class="sec-head reveal">
+      <div class="sec-head center reveal">
         <h2>Tích hợp trực tiếp vào hệ thống hiện có của doanh nghiệp</h2>
       </div>
       <div class="partner-grid deploy">
@@ -1178,47 +1231,29 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     }
   }
 
-  // ---- Composer demo (mô phỏng luồng tạo nội dung thật)
-  const DEMO = [
-    { tab: "video", kind: "URL", text: "netsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng" },
-    { tab: "podcast", kind: "PDF", text: "bao-cao-xu-huong-noi-dung-2026.pdf", steps: ["Làm sạch nguồn", "Kịch bản hội thoại", "2 giọng đọc", "Ghép audio"], result: "Podcast đối thoại · 10 phút · MP3" },
-    { tab: "video", kind: "NetCMS", text: "Săn mây Tà Xùa mùa đẹp nhất trong năm", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 0:45 · đã lên lịch cho 4 kênh" },
-  ];
-  const cmp = $("composer"), kindEl = $("cmpKind"), textEl = $("cmpText"), stepsEl = $("cmpSteps"), btn = $("cmpBtn"), res = $("cmpResult"), resText = $("cmpResultText");
-  const tabsEls = [...cmp.querySelectorAll(".cmp-tab")];
-  let demoOn = false, demoTimer = 0, demoIdx = 0, demoRun = 0;
-  const wait = (ms) => new Promise((r) => { demoTimer = setTimeout(r, ms); });
-  async function runDemo(run) {
-    await wait(1400);
-    while (demoOn && run === demoRun) {
-      const d = DEMO[demoIdx % DEMO.length];
-      tabsEls.forEach((t) => t.classList.toggle("is-on", t.dataset.tab === d.tab));
-      kindEl.textContent = d.kind;
-      stepsEl.innerHTML = d.steps.map((s) => `<li>${s}</li>`).join("");
-      res.classList.add("is-hidden");
-      textEl.textContent = "";
-      await wait(420);
-      for (let i = 1; i <= d.text.length && demoOn; i++) { textEl.textContent = d.text.slice(0, i); await wait(i < 6 ? 70 : 26); }
-      if (!demoOn || run !== demoRun) return;
-      await wait(480);
-      btn.classList.add("is-press"); cmp.classList.add("is-busy");
-      window.dispatchEvent(new CustomEvent("as:pulse"));
-      await wait(170); btn.classList.remove("is-press");
-      const lis = [...stepsEl.children];
-      for (let i = 0; i < lis.length && demoOn; i++) { lis[i].classList.add("is-on"); await wait(640); lis[i].classList.remove("is-on"); lis[i].classList.add("is-done"); }
-      cmp.classList.remove("is-busy");
-      resText.textContent = d.result; res.classList.remove("is-hidden");
-      window.dispatchEvent(new CustomEvent("as:pulse", { detail: { strong: true } }));
-      await wait(2800);
-      demoIdx++;
-    }
-  }
-  if (!reduce) {
-    new IntersectionObserver(([e]) => {
-      if (e.isIntersecting && !demoOn) { demoOn = true; runDemo(++demoRun); }
-      else if (!e.isIntersecting && demoOn) { demoOn = false; clearTimeout(demoTimer); cmp.classList.remove("is-busy"); }
-    }, { threshold: 0.25 }).observe(cmp);
-  }
+  // ---- Composer: dán link bài viết, bấm nút để sang giao diện đăng nhập NetSocial
+  const NETSOCIAL_LOGIN_URL = "https://netsocial.studio/login"; // TODO: thay bằng URL đăng nhập thật của NetSocial
+  const cmp = $("composer"), cmpUrl = $("cmpUrl"), cmpErr = $("cmpErr"), cmpBtnText = $("cmpBtnText");
+  const cmpTabs = [...cmp.querySelectorAll(".cmp-tab")];
+  let cmpMode = "video";
+  cmpTabs.forEach((t) => t.addEventListener("click", () => {
+    cmpMode = t.dataset.tab;
+    cmpTabs.forEach((x) => { const on = x === t; x.classList.toggle("is-on", on); x.setAttribute("aria-selected", String(on)); });
+    cmpBtnText.textContent = cmpMode === "podcast" ? "Tạo podcast" : "Tạo video";
+  }));
+  cmpUrl.addEventListener("input", () => { cmpErr.hidden = true; cmpUrl.removeAttribute("aria-invalid"); });
+  cmp.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const raw = cmpUrl.value.trim();
+    let ok = false;
+    try { const u = new URL(raw); ok = u.protocol === "http:" || u.protocol === "https:"; } catch (_) {}
+    if (!ok) { cmpErr.hidden = false; cmpUrl.setAttribute("aria-invalid", "true"); cmpUrl.focus(); return; }
+    window.dispatchEvent(new CustomEvent("as:pulse", { detail: { strong: true } }));
+    const dest = new URL(NETSOCIAL_LOGIN_URL);
+    dest.searchParams.set("type", cmpMode);
+    dest.searchParams.set("url", raw);
+    window.open(dest.toString(), "_blank", "noopener");
+  });
 
   // ---- Quy trình: ghim, đổi thẻ theo vị trí cuộn
   const morph = $("morph");
@@ -1253,7 +1288,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     ["Biên tập video", "Sửa từng cảnh: ảnh nền, hiệu ứng chuyển động, lời đọc và phụ đề, xem trước ngay trên khung 9:16 và timeline.", "Đổi ảnh, lời đọc, hiệu ứng", "Xem trước trên khung 9:16"],
     ["Đăng lên kênh social", "Chọn nhiều kênh cùng lúc, viết nội dung bài đăng, rồi đăng ngay, hẹn giờ hoặc để AI chọn khung giờ theo lịch sử tương tác.", "Chọn nhiều kênh một lần", "AI chọn khung giờ đăng"],
     ["AI tạo Podcast", "Chọn kiểu đơn thoại, đối thoại hoặc phỏng vấn, thời lượng và hai giọng đọc. Kịch bản sửa được trước khi tạo âm thanh.", "Đơn thoại, đối thoại, phỏng vấn", "Hai giọng đọc tự nhiên"],
-    ["Lịch sử bài đăng", "Mỗi lượt đăng ghi lại video, nền tảng, kênh, người đăng và thời gian, có thể kiểm tra lại trạng thái từng bài.", "Theo dõi từng lượt đăng", "Facebook, TikTok, YouTube, Zalo…"],
+    ["Đọc văn bản", "Dán đoạn văn, chọn giọng đọc, tốc độ và nhạc nền rồi bấm Đọc. Bản đọc chạy nền, bạn có thể rời trang và tải MP3 khi xong.", "Chèn thẻ cảm xúc, ngừng nghỉ", "Tối đa 5.000 ký tự mỗi lần"],
   ];
   const tabList = $("tabs"), tabs = [...tabList.querySelectorAll(".tab")], imgs = [...$("screens").querySelectorAll("img")], ind = $("tabInd");
   const co1 = $("co1"), co2 = $("co2");
