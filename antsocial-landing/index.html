@@ -3,6 +3,13 @@
 <meta charset="utf-8">
 <title>NetSocial</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="NetSocial chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Dán link bài viết để biến thành video hoặc podcast chuyên nghiệp trong vài phút.">
+<meta name="theme-color" content="#0b0909">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="NetSocial: biến link bài viết thành video hoặc podcast">
+<meta property="og:description" content="Dán link bài viết, NetSocial viết kịch bản, lồng giọng, dựng hình và đăng đa kênh. Đội nội dung chỉ cần duyệt.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -55,6 +62,10 @@ a { color: inherit; }
 button, input, textarea { font: inherit; color: inherit; }
 ::selection { background: rgba(247, 97, 42, 0.38); color: #fff; }
 :focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 8px; }
+a, button, summary, [role="tab"], label, input, textarea { touch-action: manipulation; }
+html { -webkit-tap-highlight-color: rgba(247, 97, 42, 0.18); }
+.skip-link { position: fixed; z-index: 1000; left: 16px; top: 12px; padding: 10px 16px; border-radius: 10px; background: var(--fg); color: #1b0b04; font-weight: 600; font-size: 14px; text-decoration: none; transform: translateY(-160%); transition: transform 0.2s; }
+.skip-link:focus { transform: none; }
 
 .wrap { width: 100%; max-width: calc(var(--maxw) + var(--gutter) * 2); margin-inline: auto; padding-inline: var(--gutter); }
 .eyebrow {
@@ -722,6 +733,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 21.7a.5.5 0 0 0 .9 0L22 3.5a.5.5 0 0 0-.6-.6L3.3 9.5a.5.5 0 0 0 0 .9l7.6 3.1a2 2 0 0 1 1.1 1.1z"/><path d="m21.9 2.1-10.9 11"/></symbol>
 </svg>
 
+<a class="skip-link" href="#noi-dung-chinh">Bỏ qua, tới nội dung chính</a>
 <div class="grain" aria-hidden="true"></div>
 <div class="gl-wrap" aria-hidden="true"><canvas id="gl"></canvas><div class="gl-vignette"></div></div>
 
@@ -744,26 +756,26 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   </div>
 </header>
 
-<main id="top">
+<main id="top"><span id="noi-dung-chinh" tabindex="-1"></span>
   <!-- ============ HERO ============ -->
   <section class="hero" data-gl="hero">
     <div class="wrap">
       <div class="hero-grid">
         <div class="hero-copy">
-          <h1><span class="line intro" style="--d:90">Biến link bài viết</span><span class="line intro" style="--d:180">thành <span class="grad-text">video hoặc podcast</span></span><span class="line intro" style="--d:240">chuyên nghiệp trong vài phút</span></h1>
-          <p class="lead intro" style="--d:300">NetSocial chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
+          <h1><span class="line intro" style="--d:90">Biến link bài viết thành</span><span class="line intro" style="--d:180"><span class="grad-text">video hoặc podcast</span></span><span class="line intro" style="--d:240">chuyên nghiệp trong vài phút</span></h1>
+          <p class="lead intro" style="--d:300"><span translate="no">NetSocial</span> chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
 
           <div class="hero-cta intro" style="--d:540">
-            <a class="btn btn-ghost" href="#lien-he">Trở thành đối tác <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn-ghost" href="#lien-he">Trở thành đối tác <svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
             <a class="btn btn-link" href="#san-pham">Xem demo sản phẩm</a>
           </div>
         </div>
         <div class="hero-stage">
           <form class="composer intro" id="composer" style="--d:420" novalidate aria-label="Dùng thử NetSocial: dán link bài viết">
             <div class="cmp-top">
-              <div class="cmp-tabs" role="tablist" aria-label="Loại nội dung">
-                <button type="button" class="cmp-tab is-on" role="tab" aria-selected="true" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</button>
-                <button type="button" class="cmp-tab" role="tab" aria-selected="false" data-tab="podcast"><svg><use href="#i-mic"/></svg>AI Podcast</button>
+              <div class="cmp-tabs" role="group" aria-label="Loại nội dung">
+                <button type="button" class="cmp-tab is-on" aria-pressed="true" data-tab="video"><svg aria-hidden="true"><use href="#i-video"/></svg>AI Video</button>
+                <button type="button" class="cmp-tab" aria-pressed="false" data-tab="podcast"><svg aria-hidden="true"><use href="#i-mic"/></svg>AI Podcast</button>
               </div>
             </div>
             <label class="cmp-input" for="cmpUrl">
@@ -773,7 +785,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <p class="cmp-err" id="cmpErr" role="alert" hidden>Vui lòng dán một đường link bài viết hợp lệ (bắt đầu bằng http:// hoặc https://).</p>
             <p class="cmp-note" id="cmpNote">Vui lòng sử dụng bài viết bạn có bản quyền hoặc được phép khai thác.</p>
             <div class="cmp-foot">
-              <button type="submit" class="cmp-btn" id="cmpBtn"><svg><use href="#i-spark"/></svg><span id="cmpBtnText">Tạo video</span></button>
+              <button type="submit" class="cmp-btn" id="cmpBtn"><svg aria-hidden="true"><use href="#i-spark"/></svg><span id="cmpBtnText">Tạo video</span></button>
             </div>
           </form>
           <div class="hero-art" id="anchorHero" aria-hidden="true"></div>
@@ -802,10 +814,10 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         <h2 class="aud-title"><span>Giải pháp cho <span class="grad-text">mọi quy mô</span></span> <span>sản xuất nội dung</span></h2>
       </div>
       <div class="aud-grid">
-        <article class="aud spot reveal"><span class="aud-no">01</span><span class="p-ico"><svg><use href="#i-megaphone"/></svg></span><h3>Agency truyền thông</h3><p>Quản lý nhiều khách hàng, mỗi khách cần nội dung đa kênh.</p></article>
-        <article class="aud spot reveal"><span class="aud-no">02</span><span class="p-ico"><svg><use href="#i-news"/></svg></span><h3>Toà soạn, media</h3><p>Nhiều bài viết nhưng thiếu nhân lực làm video, podcast.</p></article>
-        <article class="aud spot reveal"><span class="aud-no">03</span><span class="p-ico"><svg><use href="#i-building"/></svg></span><h3>Doanh nghiệp</h3><p>Cần output đều, nhiều định dạng nhưng thiếu nhân lực sản xuất nội dung.</p></article>
-        <article class="aud spot reveal"><span class="aud-no">04</span><span class="p-ico"><svg><use href="#i-share"/></svg></span><h3>Nhà sáng tạo nội dung (Creator/KOL)</h3><p>Cần ra nội dung đều đặn nhưng không có đội ngũ hỗ trợ.</p></article>
+        <article class="aud spot reveal"><span class="aud-no">01</span><span class="p-ico"><svg aria-hidden="true"><use href="#i-megaphone"/></svg></span><h3>Agency truyền thông</h3><p>Quản lý nhiều khách hàng, mỗi khách cần nội dung đa kênh.</p></article>
+        <article class="aud spot reveal"><span class="aud-no">02</span><span class="p-ico"><svg aria-hidden="true"><use href="#i-news"/></svg></span><h3>Toà soạn, media</h3><p>Nhiều bài viết nhưng thiếu nhân lực làm video, podcast.</p></article>
+        <article class="aud spot reveal"><span class="aud-no">03</span><span class="p-ico"><svg aria-hidden="true"><use href="#i-building"/></svg></span><h3>Doanh nghiệp</h3><p>Cần output đều, nhiều định dạng nhưng thiếu nhân lực sản xuất nội dung.</p></article>
+        <article class="aud spot reveal"><span class="aud-no">04</span><span class="p-ico"><svg aria-hidden="true"><use href="#i-share"/></svg></span><h3>Nhà sáng tạo nội dung (Creator/KOL)</h3><p>Cần ra nội dung đều đặn nhưng không có đội ngũ hỗ trợ.</p></article>
       </div>
     </div>
   </section>
@@ -815,7 +827,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     <div class="wrap">
       <div class="sec-head formats-head reveal">
         <h2 class="aud-title"><span>Biến bài viết thành</span> <span><span class="grad-text">video, podcast và hơn thế nữa</span></span></h2>
-        <p class="lead">Từ cùng một bài viết, NetSocial tạo video ngắn, podcast và bài đăng cho từng kênh. Biên tập viên duyệt ở mỗi bước trước khi nội dung được xuất bản.</p>
+        <p class="lead">Từ cùng một bài viết, <span translate="no">NetSocial</span> tạo video ngắn, podcast và bài đăng cho từng kênh. Biên tập viên duyệt ở mỗi bước trước khi nội dung được xuất bản.</p>
       </div>
     </div>
     <div class="morph" id="morph">
@@ -835,8 +847,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <article class="step-card spot is-active" data-step="0">
               <span class="step-no">01 <em>/ 04</em> Nguồn vào</span>
               <h3>Bắt đầu từ bất kỳ nội dung nào</h3>
-              <p>Dán URL bài viết, tải lên PDF, DOCX, ảnh hoặc file ghi âm, chọn bài từ NetCMS hay từ mục Khám phá. Một video gộp được tối đa 8 nguồn.</p>
-              <div class="tags"><span class="tag">URL</span><span class="tag">PDF · DOCX · TXT</span><span class="tag">Ảnh</span><span class="tag">Âm thanh</span><span class="tag">NetCMS</span><span class="tag">Khám phá</span></div>
+              <p>Dán URL bài viết, tải lên PDF, DOCX, ảnh hoặc file ghi âm, chọn bài từ <span translate="no">NetCMS</span> hay từ mục Khám phá. Một video gộp được tối đa 8 nguồn.</p>
+              <div class="tags"><span class="tag">URL</span><span class="tag">PDF · DOCX · TXT</span><span class="tag">Ảnh</span><span class="tag">Âm thanh</span><span class="tag"><span translate="no">NetCMS</span></span><span class="tag">Khám phá</span></div>
             </article>
             <article class="step-card spot" data-step="1">
               <span class="step-no">02 <em>/ 04</em> Video ngắn</span>
@@ -894,7 +906,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
       <div class="stage" id="stage">
         <div class="browser">
-          <div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr" id="addr">NetSocial · Khám phá</span><span style="width:47px"></span></div>
+          <div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr" id="addr"><span translate="no">NetSocial</span> · Khám phá</span><span style="width:47px"></span></div>
           <div class="screens" id="screens" role="tabpanel" aria-labelledby="tab-0">
             <img class="is-on fit-w" style="--fx:58%" src="assets/s-discover.webp" width="1656" height="861" alt="Màn hình Khám phá: ô dán link bài viết để tạo video, podcast hoặc bài đăng" decoding="async">
             <img class="fit-w" style="--fx:30%" src="assets/s-create.jpg" width="1654" height="865" alt="Màn hình tạo video bằng AI: nhập nội dung, chọn khổ video, thời lượng và giọng đọc" loading="lazy" decoding="async">
@@ -904,8 +916,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <img class="fit-w" style="--fx:30%" src="assets/s-tts.jpg" width="1655" height="863" alt="Đọc văn bản mới: dán đoạn văn, chọn giọng đọc, tốc độ và nhạc nền" loading="lazy" decoding="async">
           </div>
         </div>
-        <div class="callout c1" id="co1" aria-hidden="true"><i><svg><use href="#i-spark"/></svg></i><span>Xu hướng từ Google Trends</span></div>
-        <div class="callout c2" id="co2" aria-hidden="true"><i><svg><use href="#i-tick"/></svg></i><span>Tự làm mới mỗi 60 phút</span></div>
+        <div class="callout c1" id="co1" aria-hidden="true"><i><svg aria-hidden="true"><use href="#i-spark"/></svg></i><span>Xu hướng từ Google Trends</span></div>
+        <div class="callout c2" id="co2" aria-hidden="true"><i><svg aria-hidden="true"><use href="#i-tick"/></svg></i><span>Tự làm mới mỗi 60 phút</span></div>
       </div>
     </div>
   </section>
@@ -965,10 +977,10 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         <h2>Nhanh như máy,<span style="display:block">cẩn thận như biên tập viên</span></h2>
       </div>
       <div class="feat-grid">
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-library"/></svg></span><div class="feat-copy"><span class="tile-k">Quản lý nội dung</span><h3>Thư viện nội dung tập trung</h3><p>Mỗi video hiển thị trạng thái xử lý, thời lượng, khung hình, danh mục và các kênh đã đăng. Lọc theo trạng thái, tìm theo tên.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-file"/></svg></span><div class="feat-copy"><span class="tile-k">Độ chính xác</span><h3>Không bịa số liệu</h3><p>AI chỉ dùng dữ kiện có trong nguồn và luôn ghi nguồn bài gốc. Bản dịch được kiểm lại số liệu, đơn vị và tên riêng.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-mic"/></svg></span><div class="feat-copy"><span class="tile-k">Podcast</span><h3>Bạn luôn là người duyệt</h3><p>AI dựng bản đầu tiên. Đội ngũ nội dung duyệt kịch bản, phân cảnh và bản nháp.</p></div></article>
-        <article class="feat spot reveal"><span class="p-ico"><svg><use href="#i-shield"/></svg></span><div class="feat-copy"><span class="tile-k">Bảo mật</span><h3>Dữ liệu của bạn được bảo vệ</h3><p>Mỗi tài khoản là một không gian riêng, khoá API được mã hoá, đăng nhập hai lớp và lịch sử thao tác đầy đủ.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg aria-hidden="true"><use href="#i-library"/></svg></span><div class="feat-copy"><span class="tile-k">Quản lý nội dung</span><h3>Thư viện nội dung tập trung</h3><p>Mỗi video hiển thị trạng thái xử lý, thời lượng, khung hình, danh mục và các kênh đã đăng. Lọc theo trạng thái, tìm theo tên.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg aria-hidden="true"><use href="#i-file"/></svg></span><div class="feat-copy"><span class="tile-k">Độ chính xác</span><h3>Không bịa số liệu</h3><p>AI chỉ dùng dữ kiện có trong nguồn và luôn ghi nguồn bài gốc. Bản dịch được kiểm lại số liệu, đơn vị và tên riêng.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg aria-hidden="true"><use href="#i-mic"/></svg></span><div class="feat-copy"><span class="tile-k">Podcast</span><h3>Bạn luôn là người duyệt</h3><p>AI dựng bản đầu tiên. Đội ngũ nội dung duyệt kịch bản, phân cảnh và bản nháp.</p></div></article>
+        <article class="feat spot reveal"><span class="p-ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><div class="feat-copy"><span class="tile-k">Bảo mật</span><h3>Dữ liệu của bạn được bảo vệ</h3><p>Mỗi tài khoản là một không gian riêng, khoá API được mã hoá, đăng nhập hai lớp và lịch sử thao tác đầy đủ.</p></div></article>
       </div>
     </div>
   </section>
@@ -981,16 +993,16 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       </div>
       <div class="partner-grid deploy">
         <div class="p-list" role="tablist" aria-label="Cách thức triển khai" aria-orientation="vertical">
-          <button class="p-item is-on" type="button" role="tab" id="dp-0" aria-controls="dpp-0" aria-selected="true"><span class="p-ico"><svg><use href="#i-shield"/></svg></span><span class="p-body"><span class="p-t">Workspace của doanh nghiệp</span><span class="p-d">Video, podcast, kênh, thành viên và nhật ký hoạt động của mỗi doanh nghiệp được bảo mật trong workspace riêng.</span></span></button>
-          <button class="p-item" type="button" role="tab" id="dp-1" aria-controls="dpp-1" aria-selected="false" tabindex="-1"><span class="p-ico"><svg><use href="#i-plug"/></svg></span><span class="p-body"><span class="p-t">Tạo video và podcast ngay trong CMS</span><span class="p-d">Đội ngũ sản xuất nội dung tạo video/podcast trong CMS, đăng nhập một lần, bài viết đã được chọn sẵn. Kết quả đồng bộ ngược về CMS dưới dạng bản nháp.</span></span></button>
-          <button class="p-item" type="button" role="tab" id="dp-2" aria-controls="dpp-2" aria-selected="false" tabindex="-1"><span class="p-ico"><svg><use href="#i-code"/></svg></span><span class="p-body"><span class="p-t">Public API và webhook</span><span class="p-d">Tạo video và podcast bằng API key có phạm vi quyền và thời hạn. Hệ thống gọi webhook của người dùng khi video hoàn tất.</span></span></button>
+          <button class="p-item is-on" type="button" role="tab" id="dp-0" aria-controls="dpp-0" aria-selected="true"><span class="p-ico"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span class="p-body"><span class="p-t">Workspace của doanh nghiệp</span><span class="p-d">Video, podcast, kênh, thành viên và nhật ký hoạt động của mỗi doanh nghiệp được bảo mật trong workspace riêng.</span></span></button>
+          <button class="p-item" type="button" role="tab" id="dp-1" aria-controls="dpp-1" aria-selected="false" tabindex="-1"><span class="p-ico"><svg aria-hidden="true"><use href="#i-plug"/></svg></span><span class="p-body"><span class="p-t">Tạo video và podcast ngay trong CMS</span><span class="p-d">Đội ngũ sản xuất nội dung tạo video/podcast trong CMS, đăng nhập một lần, bài viết đã được chọn sẵn. Kết quả đồng bộ ngược về CMS dưới dạng bản nháp.</span></span></button>
+          <button class="p-item" type="button" role="tab" id="dp-2" aria-controls="dpp-2" aria-selected="false" tabindex="-1"><span class="p-ico"><svg aria-hidden="true"><use href="#i-code"/></svg></span><span class="p-body"><span class="p-t">Public API và webhook</span><span class="p-d">Tạo video và podcast bằng API key có phạm vi quyền và thời hạn. Hệ thống gọi webhook của người dùng khi video hoàn tất.</span></span></button>
         </div>
 
         <div class="dp-stage reveal">
           <!-- Workspace -->
           <div class="dp-panel is-on" id="dpp-0" role="tabpanel" aria-labelledby="dp-0">
             <div class="win">
-              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Workspace · Doanh nghiệp A</span><span class="win-badge"><svg><use href="#i-shield"/></svg>Riêng tư</span></div>
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Workspace · Doanh nghiệp A</span><span class="win-badge"><svg aria-hidden="true"><use href="#i-shield"/></svg>Riêng tư</span></div>
               <div class="win-body">
                 <div class="ws-stats">
                   <div><b>128</b><span>Video</span></div><div><b>34</b><span>Podcast</span></div><div><b>12</b><span>Kênh</span></div><div><b>8</b><span>Thành viên</span></div>
@@ -1014,14 +1026,14 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
               </div>
             </div>
             <div class="ws-others" aria-hidden="true">
-              <span><svg><use href="#i-shield"/></svg>Doanh nghiệp B</span><span><svg><use href="#i-shield"/></svg>Doanh nghiệp C</span><em>Dữ liệu tách biệt, không truy cập chéo</em>
+              <span><svg aria-hidden="true"><use href="#i-shield"/></svg>Doanh nghiệp B</span><span><svg aria-hidden="true"><use href="#i-shield"/></svg>Doanh nghiệp C</span><em>Dữ liệu tách biệt, không truy cập chéo</em>
             </div>
           </div>
 
           <!-- CMS -->
           <div class="dp-panel" id="dpp-1" role="tabpanel" aria-labelledby="dp-1" hidden>
             <div class="win">
-              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">CMS · Biên tập bài viết</span><span class="win-badge is-ok"><svg><use href="#i-tick"/></svg>Đã đăng nhập</span></div>
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">CMS · Biên tập bài viết</span><span class="win-badge is-ok"><svg aria-hidden="true"><use href="#i-tick"/></svg>Đã đăng nhập</span></div>
               <div class="win-body">
                 <div class="cms-art">
                   <span class="cms-cat">Du lịch</span>
@@ -1029,13 +1041,13 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
                   <span class="sk" style="width:96%"></span><span class="sk" style="width:88%"></span><span class="sk" style="width:64%"></span>
                 </div>
                 <div class="cms-actions">
-                  <span class="cms-btn is-primary"><svg><use href="#i-video"/></svg>Tạo video</span>
-                  <span class="cms-btn"><svg><use href="#i-mic"/></svg>Tạo podcast</span>
+                  <span class="cms-btn is-primary"><svg aria-hidden="true"><use href="#i-video"/></svg>Tạo video</span>
+                  <span class="cms-btn"><svg aria-hidden="true"><use href="#i-mic"/></svg>Tạo podcast</span>
                   <span class="cms-hint">Bài viết đã được chọn sẵn</span>
                 </div>
                 <ol class="cms-flow">
                   <li class="is-done"><b>1</b>Gửi bài viết</li>
-                  <li class="is-done"><b>2</b>NetSocial xử lý</li>
+                  <li class="is-done"><b>2</b><span translate="no">NetSocial</span> xử lý</li>
                   <li class="is-on"><b>3</b>Bản nháp về CMS</li>
                 </ol>
                 <div class="cms-draft">
@@ -1050,11 +1062,11 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           <!-- API -->
           <div class="dp-panel" id="dpp-2" role="tabpanel" aria-labelledby="dp-2" hidden>
             <div class="win api">
-              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Public API · luồng xử lý</span><span class="win-badge"><svg><use href="#i-code"/></svg>REST</span></div>
+              <div class="win-bar"><span class="dots"><i></i><i></i><i></i></span><span class="win-t">Public API · luồng xử lý</span><span class="win-badge"><svg aria-hidden="true"><use href="#i-code"/></svg>REST</span></div>
               <div class="win-body">
                 <ol class="api-flow">
                   <li><span class="api-node">Hệ thống của bạn</span><div class="api-msg"><b class="m-post">POST</b><code>/api/public/videos</code><small>source_urls · duration 45 · template news · 9:16</small></div></li>
-                  <li><span class="api-node is-brand">NetSocial</span><div class="api-msg"><b class="m-run">RENDER</b><code>Kịch bản → giọng đọc → dựng video</code><small>Xác thực bằng API key có phạm vi quyền &amp; thời hạn</small></div></li>
+                  <li><span class="api-node is-brand"><span translate="no">NetSocial</span></span><div class="api-msg"><b class="m-run">RENDER</b><code>Kịch bản → giọng đọc → dựng video</code><small>Xác thực bằng API key có phạm vi quyền &amp; thời hạn</small></div></li>
                   <li><span class="api-node">callback_url</span><div class="api-msg"><b class="m-hook">WEBHOOK</b><code>video.completed</code><small>video_url · thumbnail_url · aspect_ratio · duration</small></div></li>
                 </ol>
                 <div class="api-key">
@@ -1076,9 +1088,9 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           <h2>Cùng đưa AI vào quy trình sản xuất nội dung, <span class="grad-text">tối ưu hiệu suất ngay</span></h2>
         </div>
         <ul class="perks">
-          <li><svg><use href="#i-check"/></svg><span>Nhận workspace độc lập để vận hành thử nghiệm với bài viết và kênh thật</span></li>
-          <li><svg><use href="#i-check"/></svg><span>Đội ngũ NetSocial hỗ trợ kết nối CMS và Public API theo kiến trúc hiện có</span></li>
-          <li><svg><use href="#i-check"/></svg><span>Đội ngũ NetSocial trực tiếp hướng dẫn quy trình vận hành và tùy chỉnh</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Nhận workspace độc lập để vận hành thử nghiệm với bài viết và kênh thật</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Đội ngũ <span translate="no">NetSocial</span> hỗ trợ kết nối CMS và Public API theo kiến trúc hiện có</span></li>
+          <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Đội ngũ <span translate="no">NetSocial</span> trực tiếp hướng dẫn quy trình vận hành và tùy chỉnh</span></li>
         </ul>
         <div class="contact-list" id="contactList" hidden></div>
         <div class="cta-orb" id="anchorCta" aria-hidden="true"></div>
@@ -1086,21 +1098,21 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
       <div class="form-card spot" id="formCard">
         <h3>Gửi yêu cầu hợp tác</h3>
-        <p>Để lại thông tin, đội NetSocial sẽ liên hệ để sắp xếp buổi demo.</p>
+        <p>Để lại thông tin, đội <span translate="no">NetSocial</span> sẽ liên hệ để sắp xếp buổi demo.</p>
         <form class="lead-form" id="leadForm" novalidate>
           <div class="field full" data-f="fullName">
             <label for="f-name">Họ và tên <em>*</em></label>
-            <input class="input" id="f-name" name="fullName" autocomplete="name" placeholder="Nguyễn Văn A" maxlength="120" required aria-describedby="e-fullName">
+            <input class="input" id="f-name" name="fullName" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn A…" maxlength="120" required aria-describedby="e-fullName">
             <span class="err" id="e-fullName"></span>
           </div>
           <div class="field" data-f="phone">
             <label for="f-phone">Số điện thoại <em>*</em></label>
-            <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="09xx xxx xxx" maxlength="30" required aria-describedby="e-phone">
+            <input class="input" id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="Ví dụ: 09xx xxx xxx…" maxlength="30" required aria-describedby="e-phone">
             <span class="err" id="e-phone"></span>
           </div>
           <div class="field" data-f="email">
             <label for="f-email">Email <em>*</em></label>
-            <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="ban@congty.vn" maxlength="160" required aria-describedby="e-email">
+            <input class="input" id="f-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Ví dụ: ban@congty.vn…" maxlength="160" required aria-describedby="e-email">
             <span class="err" id="e-email"></span>
           </div>
           <div class="field full" data-f="partnerType">
@@ -1121,13 +1133,13 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           <div class="hp" aria-hidden="true"><label for="f-web">Website</label><input id="f-web" name="website" tabindex="-1" autocomplete="off"></div>
           <div class="form-foot">
             <div class="form-msg" id="formMsg" role="alert" hidden></div>
-            <button class="btn btn-primary" id="formBtn" type="submit"><span class="spinner" aria-hidden="true"></span><span id="formBtnText">Đăng ký dùng thử</span><svg class="btn-label-icon"><use href="#i-send"/></svg></button>
+            <button class="btn btn-primary" id="formBtn" type="submit"><span class="spinner" aria-hidden="true"></span><span id="formBtnText">Đăng ký dùng thử</span><svg class="btn-label-icon" aria-hidden="true"><use href="#i-send"/></svg></button>
           </div>
         </form>
         <div class="form-done" id="formDone" tabindex="-1">
-          <span class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
+          <span class="done-ico"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
           <h3>Đã nhận yêu cầu của bạn</h3>
-          <p>Cảm ơn bạn đã quan tâm. Đội NetSocial sẽ liên hệ lại qua thông tin bạn để lại.</p>
+          <p>Cảm ơn bạn đã quan tâm. Đội <span translate="no">NetSocial</span> sẽ liên hệ lại qua thông tin bạn để lại.</p>
         </div>
       </div>
     </div>
@@ -1145,7 +1157,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     </nav>
     <div class="foot-bottom">
       <span>Ảnh giao diện chụp từ hệ thống với dữ liệu mẫu. Khung hình video được render bằng các mẫu có sẵn.</span>
-      <span>© <span id="yr">2026</span> NetSocial</span>
+      <span>© <span id="yr">2026</span> <span translate="no">NetSocial</span></span>
     </div>
   </div>
 </footer>
@@ -1238,7 +1250,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
   let cmpMode = "video";
   cmpTabs.forEach((t) => t.addEventListener("click", () => {
     cmpMode = t.dataset.tab;
-    cmpTabs.forEach((x) => { const on = x === t; x.classList.toggle("is-on", on); x.setAttribute("aria-selected", String(on)); });
+    cmpTabs.forEach((x) => { const on = x === t; x.classList.toggle("is-on", on); x.setAttribute("aria-pressed", String(on)); });
     cmpBtnText.textContent = cmpMode === "podcast" ? "Tạo podcast" : "Tạo video";
   }));
   cmpUrl.addEventListener("input", () => { cmpErr.hidden = true; cmpUrl.removeAttribute("aria-invalid"); });
