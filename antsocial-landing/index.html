@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="vi">
 <meta charset="utf-8">
-<title>AntSocial.AI</title>
+<title>NetSocial</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,7 +141,7 @@ main, footer { position: relative; z-index: 1; }
 .nav.is-scrolled::before { opacity: 1; }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { display: inline-flex; align-items: center; text-decoration: none; flex-shrink: 0; }
-.brand img { height: 26px; width: auto; }
+.brand img { height: 22px; width: auto; }
 .nav-links {
   position: relative; display: flex; gap: 2px; padding: 5px; border-radius: 999px;
   background: rgba(24, 18, 20, 0.62); border: 1px solid var(--line);
@@ -172,7 +172,7 @@ main, footer { position: relative; z-index: 1; }
 .nav-links a { white-space: nowrap; }
 @media (max-width: 1180px) { .nav-links a { padding: 8px 11px; font-size: 13.5px; } }
 @media (max-width: 1060px) { .nav-links { display: none; } }
-@media (max-width: 480px) { .nav-cta .long { display: none; } .nav-cta .short { display: inline; } .brand img { height: 23px; } .nav-actions .btn-sm { padding: 10px 14px; } }
+@media (max-width: 480px) { .nav-cta .long { display: none; } .nav-cta .short { display: inline; } .brand img { height: 19px; } .nav-actions .btn-sm { padding: 10px 14px; } }
 
 /* ---------- Hero ---------- */
 .hero { padding-block: clamp(112px, 14vh, 156px) 36px; }
@@ -646,7 +646,7 @@ textarea.input { min-height: 104px; resize: vertical; line-height: 1.55; }
 footer { border-top: 1px solid var(--line); background: var(--ink); }
 .foot { display: grid; grid-template-columns: minmax(0, 1.2fr) auto; gap: 24px 40px; padding-block: 40px 30px; }
 .foot-brand { display: flex; flex-direction: column; gap: 12px; }
-.foot-brand img { height: 24px; width: auto; align-self: flex-start; }
+.foot-brand img { height: 20px; width: auto; align-self: flex-start; }
 .foot-brand p { color: var(--dim); font-size: 14px; max-width: 46ch; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 8px 24px; align-content: flex-start; }
 .foot-links a { color: var(--muted); text-decoration: none; font-size: 14px; }
@@ -696,7 +696,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="#top" aria-label="AntSocial.AI, về đầu trang"><img src="assets/logo-light.png" alt="AntSocial.AI" width="104" height="26"></a>
+    <a class="brand" href="#top" aria-label="NetSocial, về đầu trang"><img src="assets/logo-light.png" alt="NetSocial" width="143" height="22"></a>
     <nav class="nav-links" id="navLinks" aria-label="Mục lục">
       <span class="nav-pill" aria-hidden="true"></span>
       <a href="#quy-trinh">Quy trình</a>
@@ -720,7 +720,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       <div class="hero-grid">
         <div class="hero-copy">
           <h1><span class="line intro" style="--d:90">Từ một bài viết,</span><span class="line intro" style="--d:180">sản xuất nội dung <span class="grad-text">đa định dạng</span></span><span class="line intro" style="--d:240">phân phối đa nền tảng</span></h1>
-          <p class="lead intro" style="--d:300">AntSocial.AI chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
+          <p class="lead intro" style="--d:300">NetSocial chuyển đổi bài viết, tài liệu và tin tức thành video ngắn, podcast và bài đăng sẵn sàng xuất bản. Toàn bộ quy trình: kịch bản, lồng giọng, dựng hình và đăng đa kênh (Facebook, TikTok, YouTube,…) được AI hỗ trợ xử lý. Đội ngũ nội dung chỉ cần duyệt.</p>
 
           <div class="hero-cta intro" style="--d:540">
             <a class="btn btn-primary" href="#lien-he">Trở thành đối tác <svg><use href="#i-arrow"/></svg></a>
@@ -728,7 +728,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           </div>
         </div>
         <div class="hero-stage">
-          <div class="composer intro" id="composer" style="--d:420" aria-label="Minh hoạ ô soạn nội dung của AntSocial.AI">
+          <div class="composer intro" id="composer" style="--d:420" aria-label="Minh hoạ ô soạn nội dung của NetSocial">
             <div class="cmp-top">
               <div class="cmp-tabs">
                 <span class="cmp-tab is-on" data-tab="video"><svg><use href="#i-video"/></svg>AI Video</span>
@@ -738,7 +738,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             </div>
             <div class="cmp-input">
               <span class="cmp-kind" id="cmpKind">URL</span>
-              <span class="cmp-text" id="cmpText">antsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam</span>
+              <span class="cmp-text" id="cmpText">netsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam</span>
               <span class="caret" aria-hidden="true"></span>
             </div>
             <div class="cmp-foot">
@@ -788,7 +788,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     <div class="wrap">
       <div class="sec-head formats-head reveal">
         <h2 class="aud-title"><span>Biến bài viết thành</span> <span><span class="grad-text">video, podcast và hơn thế nữa</span></span></h2>
-        <p class="lead">Từ cùng một bài viết, AntSocial.AI tạo video ngắn, podcast và bài đăng cho từng kênh. Biên tập viên duyệt ở mỗi bước trước khi nội dung được xuất bản.</p>
+        <p class="lead">Từ cùng một bài viết, NetSocial tạo video ngắn, podcast và bài đăng cho từng kênh. Biên tập viên duyệt ở mỗi bước trước khi nội dung được xuất bản.</p>
       </div>
     </div>
     <div class="morph" id="morph">
@@ -808,8 +808,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
             <article class="step-card spot is-active" data-step="0">
               <span class="step-no">01 <em>/ 04</em> Nguồn vào</span>
               <h3>Bắt đầu từ bất kỳ nội dung nào</h3>
-              <p>Dán URL bài viết, tải lên PDF, DOCX, ảnh hoặc file ghi âm, chọn bài từ AntCMS hay từ mục Khám phá. Một video gộp được tối đa 8 nguồn.</p>
-              <div class="tags"><span class="tag">URL</span><span class="tag">PDF · DOCX · TXT</span><span class="tag">Ảnh</span><span class="tag">Âm thanh</span><span class="tag">AntCMS</span><span class="tag">Khám phá</span></div>
+              <p>Dán URL bài viết, tải lên PDF, DOCX, ảnh hoặc file ghi âm, chọn bài từ NetCMS hay từ mục Khám phá. Một video gộp được tối đa 8 nguồn.</p>
+              <div class="tags"><span class="tag">URL</span><span class="tag">PDF · DOCX · TXT</span><span class="tag">Ảnh</span><span class="tag">Âm thanh</span><span class="tag">NetCMS</span><span class="tag">Khám phá</span></div>
             </article>
             <article class="step-card spot" data-step="1">
               <span class="step-no">02 <em>/ 04</em> Video ngắn</span>
@@ -867,7 +867,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
       <div class="stage" id="stage">
         <div class="browser">
-          <div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr" id="addr">AntSocial.AI · Khám phá</span><span style="width:47px"></span></div>
+          <div class="browser-bar"><span class="dots"><i></i><i></i><i></i></span><span class="addr" id="addr">NetSocial · Khám phá</span><span style="width:47px"></span></div>
           <div class="screens" id="screens" role="tabpanel" aria-labelledby="tab-0">
             <img class="is-on" style="--fx:71%" src="assets/s-discover.webp" width="1920" height="1200" alt="Màn hình Khám phá: ô soạn AI Video và AI Podcast, xu hướng từ Google Trends" decoding="async">
             <img style="--fx:29%" src="assets/s-create.webp" width="1920" height="1200" alt="Màn hình AI tạo video: nội dung bài viết, thời lượng, khung hình, giọng đọc và storyboard" loading="lazy" decoding="async">
@@ -982,7 +982,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
                 </div>
                 <ol class="cms-flow">
                   <li class="is-done"><b>1</b>Gửi bài viết</li>
-                  <li class="is-done"><b>2</b>AntSocial.AI xử lý</li>
+                  <li class="is-done"><b>2</b>NetSocial xử lý</li>
                   <li class="is-on"><b>3</b>Bản nháp về CMS</li>
                 </ol>
                 <div class="cms-draft">
@@ -1001,7 +1001,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
               <div class="win-body">
                 <ol class="api-flow">
                   <li><span class="api-node">Hệ thống của bạn</span><div class="api-msg"><b class="m-post">POST</b><code>/api/public/videos</code><small>source_urls · duration 45 · template news · 9:16</small></div></li>
-                  <li><span class="api-node is-brand">AntSocial.AI</span><div class="api-msg"><b class="m-run">RENDER</b><code>Kịch bản → giọng đọc → dựng video</code><small>Xác thực bằng API key có phạm vi quyền &amp; thời hạn</small></div></li>
+                  <li><span class="api-node is-brand">NetSocial</span><div class="api-msg"><b class="m-run">RENDER</b><code>Kịch bản → giọng đọc → dựng video</code><small>Xác thực bằng API key có phạm vi quyền &amp; thời hạn</small></div></li>
                   <li><span class="api-node">callback_url</span><div class="api-msg"><b class="m-hook">WEBHOOK</b><code>video.completed</code><small>video_url · thumbnail_url · aspect_ratio · duration</small></div></li>
                 </ol>
                 <div class="api-key">
@@ -1024,8 +1024,8 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         </div>
         <ul class="perks">
           <li><svg><use href="#i-check"/></svg><span>Nhận workspace độc lập để vận hành thử nghiệm với bài viết và kênh thật</span></li>
-          <li><svg><use href="#i-check"/></svg><span>Đội ngũ AntSocial.AI hỗ trợ kết nối CMS và Public API theo kiến trúc hiện có</span></li>
-          <li><svg><use href="#i-check"/></svg><span>Đội ngũ AntSocial.AI trực tiếp hướng dẫn quy trình vận hành và tùy chỉnh</span></li>
+          <li><svg><use href="#i-check"/></svg><span>Đội ngũ NetSocial hỗ trợ kết nối CMS và Public API theo kiến trúc hiện có</span></li>
+          <li><svg><use href="#i-check"/></svg><span>Đội ngũ NetSocial trực tiếp hướng dẫn quy trình vận hành và tùy chỉnh</span></li>
         </ul>
         <div class="contact-list" id="contactList" hidden></div>
         <div class="cta-orb" id="anchorCta" aria-hidden="true"></div>
@@ -1033,7 +1033,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
       <div class="form-card spot" id="formCard">
         <h3>Gửi yêu cầu hợp tác</h3>
-        <p>Để lại thông tin, đội AntSocial.AI sẽ liên hệ để sắp xếp buổi demo.</p>
+        <p>Để lại thông tin, đội NetSocial sẽ liên hệ để sắp xếp buổi demo.</p>
         <form class="lead-form" id="leadForm" novalidate>
           <div class="field full" data-f="fullName">
             <label for="f-name">Họ và tên <em>*</em></label>
@@ -1074,7 +1074,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
         <div class="form-done" id="formDone" tabindex="-1">
           <span class="done-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>
           <h3>Đã nhận yêu cầu của bạn</h3>
-          <p>Cảm ơn bạn đã quan tâm. Đội AntSocial.AI sẽ liên hệ lại qua thông tin bạn để lại.</p>
+          <p>Cảm ơn bạn đã quan tâm. Đội NetSocial sẽ liên hệ lại qua thông tin bạn để lại.</p>
         </div>
       </div>
     </div>
@@ -1084,7 +1084,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 <footer>
   <div class="wrap foot">
     <div class="foot-brand">
-      <img src="assets/logo-light.png" alt="AntSocial.AI" width="96" height="24">
+      <img src="assets/logo-light.png" alt="NetSocial" width="130" height="20">
       <p>Nền tảng chuyển đổi bài viết thành video ngắn, podcast và bài đăng mạng xã hội, phân phối đa nền tảng — hỗ trợ bởi AI, kiểm soát bởi đội ngũ nội dung.</p>
     </div>
     <nav class="foot-links" aria-label="Liên kết cuối trang">
@@ -1092,7 +1092,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     </nav>
     <div class="foot-bottom">
       <span>Ảnh giao diện chụp từ hệ thống với dữ liệu mẫu. Khung hình video được render bằng các mẫu có sẵn.</span>
-      <span>© <span id="yr">2026</span> AntSocial.AI</span>
+      <span>© <span id="yr">2026</span> NetSocial</span>
     </div>
   </div>
 </footer>
@@ -1180,9 +1180,9 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
 
   // ---- Composer demo (mô phỏng luồng tạo nội dung thật)
   const DEMO = [
-    { tab: "video", kind: "URL", text: "antsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng" },
+    { tab: "video", kind: "URL", text: "netsocial.studio/bai-viet/duong-sat-toc-do-cao-bac-nam", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 1:00 · 5 cảnh, sẵn sàng đăng" },
     { tab: "podcast", kind: "PDF", text: "bao-cao-xu-huong-noi-dung-2026.pdf", steps: ["Làm sạch nguồn", "Kịch bản hội thoại", "2 giọng đọc", "Ghép audio"], result: "Podcast đối thoại · 10 phút · MP3" },
-    { tab: "video", kind: "AntCMS", text: "Săn mây Tà Xùa mùa đẹp nhất trong năm", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 0:45 · đã lên lịch cho 4 kênh" },
+    { tab: "video", kind: "NetCMS", text: "Săn mây Tà Xùa mùa đẹp nhất trong năm", steps: ["Viết kịch bản", "Dựng cảnh", "Giọng đọc", "Render"], result: "Video 9:16 · 0:45 · đã lên lịch cho 4 kênh" },
   ];
   const cmp = $("composer"), kindEl = $("cmpKind"), textEl = $("cmpText"), stepsEl = $("cmpSteps"), btn = $("cmpBtn"), res = $("cmpResult"), resText = $("cmpResultText");
   const tabsEls = [...cmp.querySelectorAll(".cmp-tab")];
@@ -1266,7 +1266,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
     tabs.forEach((t, k) => { t.setAttribute("aria-selected", String(k === cur)); t.tabIndex = k === cur ? 0 : -1; });
     imgs.forEach((im, k) => { im.classList.toggle("is-on", k === cur); if (k === cur) im.loading = "eager"; });
     $("screens").setAttribute("aria-labelledby", tabs[cur].id);
-    $("addr").textContent = "AntSocial.AI · " + CAPS[cur][0];
+    $("addr").textContent = "NetSocial · " + CAPS[cur][0];
     placeInd();
     if (user) tabs[cur].scrollIntoView({ block: "nearest", inline: "nearest", behavior: reduce ? "auto" : "smooth" });
     co1.classList.add("is-out"); co2.classList.add("is-out"); clearTimeout(coTimer);
@@ -1383,7 +1383,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
       return;
     }
     if (!CONF.formEndpoint) {
-      showMsg("Đây là bản xem trước. Biểu mẫu chỉ gửi được trên trang chính thức của AntSocial.AI.", "info");
+      showMsg("Đây là bản xem trước. Biểu mẫu chỉ gửi được trên trang chính thức của NetSocial.", "info");
       return;
     }
     const body = {};
