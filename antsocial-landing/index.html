@@ -428,6 +428,7 @@ button.cmp-btn { border: 0; cursor: pointer; }
 .screens img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left top; opacity: 0; transform: scale(1.015); transition: opacity 0.6s ease, transform 1s var(--ease); }
 .screens img.is-on { opacity: 1; transform: none; }
 @media (min-width: 701px) { .screens { aspect-ratio: 1655 / 863; } }
+@media (min-width: 701px) { .screens img.fit-contain { object-fit: contain; object-position: center top; -webkit-mask-image: linear-gradient(#000 84%, transparent); mask-image: linear-gradient(#000 84%, transparent); } }
 .callout { position: absolute; z-index: 2; display: flex; align-items: center; gap: 10px; padding: 11px 15px 11px 12px; border-radius: 14px; background: rgba(22, 17, 19, 0.92); border: 1px solid var(--line-2); box-shadow: 0 24px 50px -20px rgba(0, 0, 0, 0.9); font-size: 14px; font-weight: 500; white-space: nowrap; transition: opacity 0.45s ease, transform 0.6s var(--ease); }
 .callout i { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; background: rgba(247, 97, 42, 0.15); color: var(--amber); }
 .callout i svg { width: 14px; height: 14px; }
@@ -910,7 +911,7 @@ footer { border-top: 1px solid var(--line); background: var(--ink); }
           <div class="screens" id="screens" role="tabpanel" aria-labelledby="tab-0">
             <img class="is-on fit-w" style="--fx:58%" src="assets/s-discover.webp" width="1656" height="861" alt="Màn hình Khám phá: ô dán link bài viết để tạo video, podcast hoặc bài đăng" decoding="async">
             <img class="fit-w" style="--fx:30%" src="assets/s-create.jpg" width="1654" height="865" alt="Màn hình tạo video bằng AI: nhập nội dung, chọn khổ video, thời lượng và giọng đọc" loading="lazy" decoding="async">
-            <img class="fit-w" style="--fx:50%" src="assets/s-editor.jpg" width="1655" height="860" alt="Biên tập cảnh: bản nháp chờ duyệt, danh sách phân cảnh và các bước xử lý" loading="lazy" decoding="async">
+            <img class="fit-w fit-contain" style="--fx:50%" src="assets/s-editor.jpg" width="1920" height="868" alt="Biên tập cảnh: bản nháp chờ duyệt, danh sách phân cảnh và các bước xử lý" loading="lazy" decoding="async">
             <img class="fit-w" style="--fx:50%" src="assets/s-publish.jpg" width="1655" height="863" alt="Tạo bài đăng mạng xã hội: dán link bài báo, chọn nền tảng và giọng văn" loading="lazy" decoding="async">
             <img class="fit-w" style="--fx:50%" src="assets/s-podcast-create.jpg" width="1656" height="864" alt="Màn hình AI tạo podcast: kiểu đối thoại, thời lượng, hai giọng đọc" loading="lazy" decoding="async">
             <img class="fit-w" style="--fx:30%" src="assets/s-tts.jpg" width="1655" height="863" alt="Đọc văn bản mới: dán đoạn văn, chọn giọng đọc, tốc độ và nhạc nền" loading="lazy" decoding="async">
